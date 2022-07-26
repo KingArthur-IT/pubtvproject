@@ -3,17 +3,13 @@
             :class="{'outlined': isOutlined}"
             :style="`padding-top: ${paddingY}px; padding-bottom: ${paddingY}px;`"
     >
-        {{text}}
+        <slot></slot>
     </button>
 </template>
 
 <script>
 export default {
     props:{
-        text: {
-            type: String,
-            required: true
-        },
         paddingY: {
             type: Number,
             default: 8

@@ -16,7 +16,7 @@ export default {
         height: 29px;
     }
     .icon path{
-        transition: fill .2s ease-in-out;
+        transition: fill var(--transition-time) ease-in-out;
     }
     .icon:hover path{
         fill: var(--primary-hover-color);

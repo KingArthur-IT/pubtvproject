@@ -54,7 +54,7 @@ export default {
         font-size: 15px;
         color: #fff;
         text-decoration: none;
-        transition: color .2s ease-in-out;
+        transition: color var(--transition-time) ease-in-out;
     }
     .footer__link:hover{
         color: var(--primary-hover-color) !important;

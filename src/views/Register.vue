@@ -2,17 +2,16 @@
   <HeaderDefault />
   <div class="login">
       <div class="container login__hero">
-        <h1 class="big-title login__title">Вход</h1>
+        <h1 class="big-title login__title">Регистрация</h1>
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
             <input type="password" class="input login__input" placeholder="Пароль">
-            <a href="#" class="link login__forgot-link">Забыли пароль?</a>
+            <a href="#" class="link login__forgot-link">Есть аккаунт? <span>Войти</span></a>
             <div class="login__btns">
-                <CustomButton class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
-                <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
+                <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
             <p class="text login__text">ИЛИ</p>
-            <p class="text login__mobile-text">Войти через:</p>
+            <p class="text login__mobile-text">Регистрация через:</p>
             <div class="login__socials">
                 <a class="login__social">
                     <img src="@/assets/google-logo.png" alt="Google">
@@ -79,6 +78,8 @@ export default {
     margin-left: auto;
     font-size: 15px;
     margin-bottom: 17px;
+}
+.login__forgot-link span{
     text-decoration: underline;
 }
 .login__btns{
@@ -89,9 +90,6 @@ export default {
 .login__btn{
     width: 100%;
     margin-bottom: 29px;
-}
-.login__btn:first-child{
-    margin-right: 20px;
 }
 .login__btn-text{
     font-size: 23px;
@@ -172,10 +170,7 @@ export default {
     .login__btns{
         flex-direction: column-reverse;
     }
-    .login__btn:first-child{
-        margin-right: 0px;
-    }
-    .login__btn:last-child{
+    .login__btn{
         margin-right: 0px;
         margin-bottom: 18px;
     }

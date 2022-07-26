@@ -6,6 +6,8 @@
   --primary-hover-color: #9E80FC;
   --section-bg-color: #2A2A2A;
   --main-bg-color: #212121;
+
+  --transition-time: 0.2s
 }
 
 *{
@@ -118,11 +120,12 @@ a{
         font-size: 32px;
     }
     .container{
-        padding: 0 22px;
+        padding: 0 15px;
     }
     .input{
         font-size: 15px;
         padding: 16px 23px;
+        border-radius: 6px;
     }
     .text{
         font-size: 14px;

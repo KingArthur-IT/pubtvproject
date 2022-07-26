@@ -17,7 +17,7 @@
             <div class="header__icon">
                 <SearchIcon />
             </div>
-            <CustomButton class="header__enter-btn" :text="'Войти'" />
+            <CustomButton class="header__enter-btn">Войти</CustomButton>
         </div>
     </div>
   </header>
@@ -61,7 +61,7 @@ export default {
     font-weight: bold;
     font-size: 23px;
     cursor: pointer;
-    transition: color .2s ease-in-out;
+    transition: color var(--transition-time) ease-in-out;
 }
 .header__item:hover{
     color: var(--primary-hover-color) !important;

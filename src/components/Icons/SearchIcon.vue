@@ -17,7 +17,7 @@ export default {
         height: 20px;
     }
     .icon path{
-        transition: stroke .2s ease-in-out;
+        transition: stroke var(--transition-time) ease-in-out;
     }
     .icon:hover path{
         stroke: var(--primary-hover-color);
