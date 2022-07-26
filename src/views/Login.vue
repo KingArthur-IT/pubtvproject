@@ -1,7 +1,7 @@
 <template>
   <HeaderDefault />
   <div class="login">
-      <div class="login__hero">
+      <div class="container login__hero">
         <h1 class="big-title login__title">Вход</h1>
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
@@ -11,7 +11,7 @@
                 <CustomButton class="login__btn" :text="'Регистрация'" :paddingY="12" :isOutlined="true" />
                 <CustomButton class="login__btn" :text="'Войти'" :paddingY="12" />
             </div>
-            <p class="text login__text">или</p>
+            <p class="text login__text">Войти через:</p>
             <div class="login__socials">
                 <a class="login__social">
                     <img src="@/assets/google-logo.png" alt="Google">
@@ -75,6 +75,7 @@ export default {
     margin-left: auto;
     font-size: 15px;
     margin-bottom: 17px;
+    text-decoration: underline;
 }
 .login__btns{
     display: flex;
@@ -118,5 +119,48 @@ export default {
 .login__social img{
     width: 26px;
     height: 26px;
+}
+
+@media screen and (max-width: 768px) {
+    .login__title{
+        margin-bottom: 62px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .login__title{
+        text-align: left;
+        margin-bottom: 42px;
+    }
+    .login__input:first-child{
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .login__title{
+        margin-bottom: 24px;
+    }
+    .login__input:first-child{
+        margin-bottom: 15px;
+    }
+    .login__forgot-link{
+        font-size: 12px;
+        margin-bottom: 22px;
+    }
+    .login__btns{
+        flex-direction: column;
+    }
+    .login__btn:first-child{
+        margin-right: 0px;
+        margin-bottom: 18px;
+    }
+    .login__social{
+        width: 100%;
+        border-radius: 8px;
+        height: 46px;
+    }
+    .login__social:first-child{
+        margin-right: 20px;
+    }
 }
 </style>

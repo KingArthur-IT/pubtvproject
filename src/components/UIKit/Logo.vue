@@ -16,7 +16,7 @@ export default {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     color: #fff;
-    height: 63px;
+    /* height: 63px; */
     min-width: 170px;
     cursor: pointer;
     transition: color .2s ease-in-out;
@@ -32,5 +32,30 @@ export default {
 .logo__description{
     margin: 0;   
     font-size: 11px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo__title{
+        font-size: 42px;
+    }
+    .logo__description{
+        font-size: 11px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .logo__title{
+        font-size: 36px;
+    }
+    .logo__description{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .logo__title{
+        font-size: 32px;
+    }
+    .logo__description{
+        font-size: 8px;
+    }
 }
 </style>

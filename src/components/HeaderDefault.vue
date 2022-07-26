@@ -14,8 +14,10 @@
             <li class="header__item">Мультфильмы</li>
         </ul>
         <div class="header__controls">
-            <SearchIcon class="header__icon" />
-            <CustomButton :text="'Войти'" />
+            <div class="header__icon">
+                <SearchIcon />
+            </div>
+            <CustomButton class="header__enter-btn" :text="'Войти'" />
         </div>
     </div>
   </header>
@@ -70,5 +72,30 @@ export default {
 }
 .header__icon{
     margin-right: 36px;
+}
+
+@media screen and (max-width: 1024px){
+    .header{
+        min-height: 88px;
+        padding: 25px 0;
+    }
+    .header__list{
+        display: none;
+    }
+}
+@media screen and (max-width: 768px){
+    .header__enter-btn{
+        display: none;
+    }
+    .header__icon{
+        margin-right: 0px;
+        width: 43px;
+        height: 43px;
+        border-radius: 50%;
+        background: #3E3E3E;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 </style>

@@ -20,12 +20,24 @@ export default {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
-    line-height: 20px;
+    line-height: 130%;
     text-align: center;
     color: #FFFFFF;
     padding-bottom: 15px;
 }
 .footer__link{
     text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    .footer{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .footer{
+        font-size: 8px;
+    }
 }
 </style>
