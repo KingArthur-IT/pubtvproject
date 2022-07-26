@@ -15,20 +15,20 @@
         </ul>
         <div class="header__controls">
             <SearchIcon class="header__icon" />
-            <Button :text="'Войти'" />
+            <CustomButton :text="'Войти'" />
         </div>
     </div>
   </header>
 </template>
 
 <script>
-import Button from '@/components/UIKit/Button.vue';
+import CustomButton from '@/components/UIKit/CustomButton.vue';
 import Logo from '@/components/UIKit/Logo.vue';
 import SearchIcon from '@/components/Icons/SearchIcon.vue';
 
 export default {
     components:{
-        Button, Logo, SearchIcon
+        CustomButton, Logo, SearchIcon
     }
 }
 </script>

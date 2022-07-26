@@ -17,7 +17,7 @@ export default {
     font-weight: bold;
     color: #fff;
     height: 63px;
-    max-width: 170px;
+    min-width: 170px;
     cursor: pointer;
     transition: color .2s ease-in-out;
 }

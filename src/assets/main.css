@@ -5,10 +5,14 @@
   --primary-color: #7E4EFA;
   --primary-hover-color: #9E80FC;
   --section-bg-color: #2A2A2A;
+  --main-bg-color: #212121;
 }
 
 *{
     box-sizing: border-box;
+}
+html{
+    background: var(--main-bg-color);
 }
 body{
     margin: 0;
@@ -30,8 +34,56 @@ h1, h2, h3, h4, h5, h6{
 a{
     text-decoration: none;
 }
+
+.section{
+    width: 100%;
+    position: relative;
+}
 .container{
     max-width: 1240px;
     padding: 0 30px;
     margin: auto;
+}
+.big-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 68px;
+    line-height: 117%;
+    color: #FFFFFF;
+}
+.title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 117%;
+    color: #FFFFFF;
+}
+.text{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 137.5%;
+    color: #FFFFFF;
+}
+.input{
+    background: #FFFFFF;
+    border-radius: 15px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 135%;
+    border: none;
+    padding: 16px 36px;
+}
+.link{
+    font-family: 'Nunito';
+    text-decoration: none;
+    color: #fff;
+    transition: color .2s ease-in-out;
+}
+.link:hover{
+    color: var(--primary-hover-color);
 }
