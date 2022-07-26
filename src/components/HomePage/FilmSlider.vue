@@ -3,14 +3,17 @@
         <div class="container">
             <h2 class="title filter__title">{{title}}</h2>
             <div class="filter__carousel-wrapper">
-                <Carousel :items-to-show="4.3" :ref="refer">
-                    <Slide v-for="slide in slidesCount" :key="slide">
+                <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'">
+                    <Slide v-for="slide in slidesData" :key="slide.id">
                         <div class="filter__item">
-                            <img :src="getImageUrl(slide)" alt="img" class="carousel__img">
+                            <img :src="getImageUrl(slide.imgName)" alt="img" class="filter__img">
+                            <p class="text filter__film-name">{{slide.filmName}}</p>
+                            <p class="text filter__film-type">{{slide.filmType}}</p>
                         </div>
                     </Slide>
                 </Carousel>
-                <div class="filter__arrow arrow-right">
+                <img src="@/assets/blur.png" class="filter__blur">
+                <div class="filter__arrow arrow-right" @click="nextClick">
                     <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -38,8 +41,8 @@ export default {
             type: String,
             required: true
         },
-        slidesCount: {
-            type: Number,
+        slidesData: {
+            type: Array,
             required: true
         },
         sliderDataFolder: {
@@ -73,6 +76,17 @@ export default {
 .filter__item{
     border-radius: 18px;
 }
+.filter__film-name{
+    text-align: left;
+}
+.filter__film-type{
+    text-align: left;
+    font-size: 22px;
+    opacity: 0.5;
+}
+.filter__img{
+    margin-bottom: 16px;
+}
 .filter__carousel-wrapper{
     position: relative;
 }
@@ -102,5 +116,13 @@ export default {
 }
 .arrow-right svg{
     transform: translate(4px, 0);
+}
+.filter__blur{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -3px;
+    width: 80px;
+    height: 100%;
 }
 </style>

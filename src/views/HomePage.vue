@@ -3,13 +3,30 @@
   <main>
       <MainSlider />
       <FilterSection />
-      <FilmSlider :title="'Сложный Английский'"  :refer="'hard-carousel'" :slidesCount="5" :sliderDataFolder="'hard'"/>
+      <div class="sliders-wrapper">
+        <FilmSlider :title="'Сложный Английский'"
+                    :refer="'hard-carousel'" 
+                    :sliderDataFolder="hardSliderList.folderName"
+                    :slidesData="hardSliderList.slides" 
+        />
+        <FilmSlider :title="'Понятный Английский'"
+                    :refer="'understand-carousel'" 
+                    :sliderDataFolder="understandSliderList.folderName"
+                    :slidesData="understandSliderList.slides" 
+        />
+        <FilmSlider :title="'Интересный Сюжет'"
+                    :refer="'hard-carousel'" 
+                    :sliderDataFolder="interestingSliderList.folderName"
+                    :slidesData="interestingSliderList.slides" 
+        />
+      </div>
       <AboutUsSection />
   </main>
   <FooterDefault />
 </template>
 
 <script>
+import { slidersDataList } from '@/data/data.js';
 import HeaderDefault from '@/components/HeaderDefault.vue';
 import FooterDefault from '@/components/FooterDefault.vue';
 import AboutUsSection from '@/components/HomePage/AboutUsSection.vue'
@@ -23,10 +40,25 @@ export default {
     AboutUsSection, MainSlider,
     FilterSection,
     FilmSlider
+  },
+  data(){
+    return{
+      slidersDataList,
+      hardSliderList: [],
+      understandSliderList: [],
+      interestingSliderList: []
+    }
+  }, 
+  mounted(){
+    this.hardSliderList = this.slidersDataList?.hardSlider;
+    this.understandSliderList = this.slidersDataList?.undestandSlider;
+    this.interestingSliderList = this.slidersDataList?.interestingSlider;
   }
 }
 </script>
 
 <style scoped>
-
+.sliders-wrapper{
+  margin-bottom: 50px;
+}
 </style>

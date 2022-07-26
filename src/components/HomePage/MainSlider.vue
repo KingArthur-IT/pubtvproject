@@ -48,9 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.carousel__slide {
-    /* padding-right: 50px !important; */
-}
 .main-carousel{
     margin-top: 50px;
     margin-bottom: 58px;
