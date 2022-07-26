@@ -3,38 +3,29 @@
         <h2 class="container title filter__title">Фильтры</h2>
         <div class="filter__wrapper">
             <div class="container filter__hero">
-                <div class="text filter__item">
-                    <span>Все жанры</span>
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="text filter__item">
-                    <span>Все годы</span>
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="text filter__item">
-                    <span>Все страны</span>
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="text filter__item">
-                    <span>Уровень Английского</span>
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
+                <CustomDropdown :list="genres" :notselectedValue="'Все жанры'" />
+                <CustomDropdown :list="years" :notselectedValue="'Все годы'" />
+                <CustomDropdown :list="countries" :notselectedValue="'Все страны'" />
+                <CustomDropdown :list="engLevel" :notselectedValue="'Уровень Английского'" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import CustomDropdown from '@/components/UIKit/CustomDropdown.vue';
 export default {
-
+    components:{
+        CustomDropdown
+    },
+    data(){
+        return{
+            genres: ['Фантастика', 'Комедия', 'Ужасы'],
+            years: ['2022', '2021', '2020', '2019'],
+            countries: ['США', 'Англия'],
+            engLevel: ['Высокий', 'Средний', 'Низкий']
+        }
+    }
 }
 </script>
 
@@ -50,13 +41,5 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.filter__item{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.filter__item span{
-    margin-right: 15px;
 }
 </style>
