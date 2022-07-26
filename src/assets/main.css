@@ -94,9 +94,18 @@ a{
     color: var(--primary-hover-color);
 }
 
+
+@media screen and (max-width: 1024px) {
+    .title{
+        font-size: 48px;
+    }
+}
 @media screen and (max-width: 768px) {
     .big-title{
         font-size: 58px;
+    }
+    .title{
+        font-size: 42px;
     }
     .text{
         font-size: 18px;
@@ -105,6 +114,9 @@ a{
 @media screen and (max-width: 600px) {
     .big-title{
         font-size: 46px;
+    }
+    .title{
+        font-size: 30px;
     }
     .input{
         font-size: 18px;
@@ -118,6 +130,9 @@ a{
 @media screen and (max-width: 425px) {
     .big-title{
         font-size: 32px;
+    }
+    .title{
+        font-size: 20px;
     }
     .container{
         padding: 0 15px;

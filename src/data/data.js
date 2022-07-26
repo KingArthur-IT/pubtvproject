@@ -1,4 +1,18 @@
 export const slidersDataList = {
+    mainSlider: {
+        folderName: 'main-slider',
+        slides: [
+            {id: 0, imgName: 1, tags: ['Драма', '18+', 'Сложный Английский']},
+            {id: 1, imgName: 2, tags: ['Драма', '18+', 'Интересный Английский']},
+            {id: 2, imgName: 3, tags: ['Фентези', '18+', 'Сложный Английский']},
+            {id: 3, imgName: 4, tags: ['18+', 'Сложный Английский']},
+            {id: 4, imgName: 5, tags: ['18+', 'Сложный Английский']},
+            {id: 5, imgName: 6, tags: ['18+', 'Сложный Английский']},
+            {id: 6, imgName: 7, tags: ['18+', 'Сложный Английский']},
+            {id: 7, imgName: 8, tags: ['18+', 'Сложный Английский']},
+            {id: 8, imgName: 9, tags: ['18+', 'Сложный Английский']},
+        ]
+    },
     hardSlider: {
         folderName: 'hard',
         slides: [

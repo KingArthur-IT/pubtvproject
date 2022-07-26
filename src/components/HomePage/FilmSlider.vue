@@ -3,7 +3,7 @@
         <div class="container">
             <h2 class="title filter__title">{{title}}</h2>
             <div class="filter__carousel-wrapper">
-                <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'">
+                <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
                         <div class="filter__item">
                             <img :src="getImageUrl(slide.imgName)" alt="img" class="filter__img">
@@ -48,6 +48,20 @@ export default {
         sliderDataFolder: {
             type: String,
             required: true
+        }
+    },
+    data(){
+        return{
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 3.7,
+                },
+                // 1024 and up
+                1240: {
+                    itemsToShow: 4.3,
+                },
+            },
         }
     },
     methods:{
@@ -111,7 +125,7 @@ export default {
     opacity: 0.5;
 }
 .arrow-right{
-    transform: translate(50%, -50%);
+    transform: translate(50%, -80%);
     right: 0;
 }
 .arrow-right svg{
@@ -124,5 +138,11 @@ export default {
     right: -3px;
     width: 80px;
     height: 100%;
+}
+
+@media screen and (max-width: 1275px) {
+    .arrow-right{
+        right: 20px;
+    }
 }
 </style>

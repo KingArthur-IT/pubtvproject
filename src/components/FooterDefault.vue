@@ -3,10 +3,10 @@
     <div class="container">
         <div class="footer__item footer__top-item">
             <div class="footer__socials d-flex justify-space-between align-center">
-                <InstagramIcon  class="footer__insta" />
-                <TelegramIcon />
+                <a href="#"><InstagramIcon  class="footer__insta" /></a>
+                <a href="#"><TelegramIcon /></a>
             </div>
-            <Logo />
+            <router-link to="/"><Logo /></router-link>
             <a href="mailto:support@pubtv.online" class="footer__link">support@pubtv.online</a>
         </div>
         <div class="footer__line"></div>

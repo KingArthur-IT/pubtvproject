@@ -2,11 +2,9 @@
   <header class="header">
     <div class="container header__hero">
         <div>
-            <a href="#">
-                <Logo />
-            </a>
+            <router-link to="/"><Logo /></router-link>
         </div>
-        <ul class="header__list">
+        <ul v-if="!isSearchInputVisible" class="header__list">
             <li class="header__item">Главная</li>
             <li class="header__item">О Нас</li>
             <li class="header__item">Сериалы</li>
@@ -14,10 +12,18 @@
             <li class="header__item">Мультфильмы</li>
         </ul>
         <div class="header__controls">
-            <div class="header__icon">
+            <div v-if="!isSearchInputVisible" class="header__icon" @click="isSearchInputVisible = true">
                 <SearchIcon />
             </div>
-            <CustomButton class="header__enter-btn">Войти</CustomButton>
+            <div v-else class="header__search-wrap">
+                <input type="text" class="input header__search" placeholder="Поиск">
+                <div class="header__search-icon">
+                    <SearchIcon :color="'black'" @clickEvent="isSearchInputVisible = false" />
+                </div>
+            </div>
+            <router-link to="/login">
+                <CustomButton class="header__enter-btn">Войти</CustomButton>
+            </router-link>
         </div>
     </div>
   </header>
@@ -29,8 +35,13 @@ import Logo from '@/components/UIKit/Logo.vue';
 import SearchIcon from '@/components/Icons/SearchIcon.vue';
 
 export default {
-    components:{
+    components: {
         CustomButton, Logo, SearchIcon
+    },
+    data(){
+        return{
+            isSearchInputVisible: false
+        }
     }
 }
 </script>
@@ -73,6 +84,20 @@ export default {
 .header__icon{
     margin-right: 36px;
 }
+.header__search-wrap{
+    position: relative;
+    margin-right: 36px;
+}
+.header__search{
+    padding: 11px 36px;
+    min-width: 500px;
+}
+.header__search-icon{
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 @media screen and (max-width: 1024px){
     .header{
@@ -81,6 +106,9 @@ export default {
     }
     .header__list{
         display: none;
+    }
+    .header__search{
+        min-width: 350px;
     }
 }
 @media screen and (max-width: 768px){
@@ -96,6 +124,21 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .header__search-wrap{
+        margin-right: 0px;
+    }
+    .header__search{
+        padding: 8px 36px;
+    }
+    .header__search-icon{
+        right: 16px;
+    }
+}
+@media screen and (max-width: 600px){
+    .header__search{
+        min-width: auto;
+        width: 100%;
     }
 }
 </style>

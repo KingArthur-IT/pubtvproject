@@ -2,9 +2,12 @@
   <div class="main-carousel">
     <div class="main-carousel__hero">
         <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel">
-            <Slide v-for="slide in 9" :key="slide">
-                <div class="carousel__item">
-                    <img :src="getImageUrl(slide)" alt="img" class="carousel__img">
+            <Slide v-for="slide in mainSliderList?.slides" :key="slide.id">
+                <div class="carousel__item main-carousel__item">
+                    <img :src="getImageUrl(slide.imgName)" alt="img" class="carousel__img">
+                    <div class="main-carousel__tag-list">
+                        <div v-for="(tag, i) in slide.tags" :key="i" class="main-carousel__tag">{{tag}}</div>
+                    </div>
                 </div>
             </Slide>
         </Carousel>
@@ -23,6 +26,7 @@
 </template>
 
 <script>
+import { slidersDataList } from '@/data/data.js';
 import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
@@ -30,6 +34,15 @@ export default {
     components: {
         Carousel,
         Slide,
+    },
+    data(){
+        return{
+            slidersDataList,
+            mainSliderList: [],
+        }
+    }, 
+    mounted(){
+        this.mainSliderList = this.slidersDataList?.mainSlider;
     },
     methods:{
         getImageUrl(imgName){
@@ -58,8 +71,22 @@ export default {
     position: relative;
 }
 .main-carousel__item{
-    width: 100%;
-    border-radius: 16px;
+    position: relative;
+}
+.main-carousel__tag-list{
+    display: flex;
+    position: absolute;
+    bottom: 37px;
+    left: 47px;
+}
+.main-carousel__tag{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 130%;
+    color: rgba(255, 255, 255, 0.64);
+    margin-right: 63px;
 }
 .carousel__img{
     width: 100%;
