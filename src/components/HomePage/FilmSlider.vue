@@ -5,8 +5,11 @@
             <div class="filter__carousel-wrapper">
                 <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
-                        <div class="filter__item">
-                            <img :src="getImageUrl(slide.imgName)" alt="img" class="filter__img">
+                        <div class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
+                            <div class="filter__img">
+                                <img :src="getImageUrl(slide.imgName)" alt="img">
+                                <FilmHoverInfo :isVisible="hoverSlideId === slide.id" :markList="slide.markList" :mark="slide.mark" :filmInfo="slide.filmInfo" :seasons="slide.seasons" />
+                            </div>
                             <p class="text filter__film-name">{{slide.filmName}}</p>
                             <p class="text filter__film-type">{{slide.filmType}}</p>
                         </div>
@@ -25,12 +28,14 @@
 
 <script>
 import { Carousel, Slide } from 'vue3-carousel';
+import FilmHoverInfo from '@/components/UIKit/FilmHoverInfo.vue'
 import 'vue3-carousel/dist/carousel.css';
 
 export default {
     components: {
         Carousel,
         Slide,
+        FilmHoverInfo
     },
     props:{
         title:{
@@ -52,6 +57,7 @@ export default {
     },
     data(){
         return{
+            hoverSlideId: -1,
             breakpoints: {
                 // 700px and up
                 700: {
@@ -100,6 +106,9 @@ export default {
 }
 .filter__img{
     margin-bottom: 16px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
 }
 .filter__carousel-wrapper{
     position: relative;
