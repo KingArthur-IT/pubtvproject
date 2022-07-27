@@ -11,9 +11,9 @@
         </div>
         <div class="footer__line"></div>
         <div class="footer__item">
-            <a href="#" class="footer__link footer__private-policy">Privacy Policy</a>
+            <a href="#" class="footer__link footer__private-policy">Политика конфиденциальности</a>
             <p class="footer__text">© 2022 PubTV. Все права защищены.</p>
-            <p class="footer__text footer__developer">Designed by Mark Levchenko</p>
+            <a href="#" class="footer__link footer__developer">Пользовательское соглашение</a>
         </div>
     </div>
   </footer>
@@ -79,5 +79,6 @@ export default {
     .footer__developer{
         text-align: right;
         flex-basis: 25%;
+        text-decoration: underline;
     }
 </style>

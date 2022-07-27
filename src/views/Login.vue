@@ -51,10 +51,10 @@ export default {
 .login{
     background: var(--main-bg-color);
     width: 100%;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 50px 0;
 }
 .login__hero{
 

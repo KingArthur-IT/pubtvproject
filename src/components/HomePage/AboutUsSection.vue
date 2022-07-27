@@ -1,9 +1,9 @@
 <template>
   <section class="section about">
       <div class="container">
+          <h2 class="title about__title">О нас</h2>
           <div class="about__hero">
             <div class="about__content">
-                <h2 class="title about__title">О нас</h2>
                 <p class="text">
                     <b>Pub TV</b> был создан для тех, кто хочет повысить свой уровень английского и в тот же момент не умереть со скуки, а наоборот получить от этого удовольствие. Здесь будут публиковаться фильмы, сериалы и мультфильмы на английском языке с двойными субтитрами(русскими и английскими), а также присутствует возможность добавления важных слов или фраз из просмотренного вами кино в личный кабинет с возможностью дальнейшего их запоминания.
                 </p>
@@ -31,7 +31,7 @@ export default {
 .about__hero{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 }
 .about__content{
     flex-basis: 50%;

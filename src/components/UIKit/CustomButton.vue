@@ -1,7 +1,7 @@
 <template>
     <button class="button" 
             :class="{'outlined': isOutlined}"
-            :style="`padding-top: ${paddingY}px; padding-bottom: ${paddingY}px;`"
+            :style="`padding-top: ${paddingY}px; padding-bottom: ${paddingY}px; min-width: ${minWidth}px`"
     >
         <slot></slot>
     </button>
@@ -17,6 +17,10 @@ export default {
         isOutlined: {
             type: Boolean,
             default: false
+        },
+        minWidth:{
+            type: Number,
+            default: 0
         }
     }
 }
@@ -37,6 +41,7 @@ export default {
     padding-right: 38px;
     border-radius: 17px;
     transition: background .2s ease-in-out;
+    font-size: 23px;
 }
 .button.outlined{
     border: 1px solid var(--primary-color);

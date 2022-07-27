@@ -1,7 +1,7 @@
 <template>
     <section class="section filter">
         <div class="container">
-            <h2 class="title filter__title">{{title}}</h2>
+            <h2 class="section-title filter__title">{{title}}</h2>
             <div class="filter__carousel-wrapper">
                 <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">

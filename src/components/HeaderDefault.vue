@@ -4,7 +4,7 @@
         <div>
             <router-link to="/"><Logo /></router-link>
         </div>
-        <ul v-if="!isSearchInputVisible" class="header__list">
+        <ul v-if="!isSearchInputShow" class="header__list">
             <li class="header__item">Главная</li>
             <li class="header__item">О Нас</li>
             <li class="header__item">Сериалы</li>
@@ -12,17 +12,17 @@
             <li class="header__item">Мультфильмы</li>
         </ul>
         <div class="header__controls">
-            <div v-if="!isSearchInputVisible" class="header__icon" @click="isSearchInputVisible = true">
+            <div v-if="!isSearchInputShow" class="header__icon" @click="openSearch">
                 <SearchIcon />
             </div>
             <div v-else class="header__search-wrap">
-                <input type="text" class="input header__search" placeholder="Поиск">
+                <input type="text" class="input header__search" :class="{'opened': isSearchInputVisible}" placeholder="Поиск">
                 <div class="header__search-icon">
-                    <SearchIcon :color="'black'" @clickEvent="isSearchInputVisible = false" />
+                    <SearchIcon :color="'black'" @clickEvent="closeSearch" />
                 </div>
             </div>
             <router-link to="/login">
-                <CustomButton class="header__enter-btn">Войти</CustomButton>
+                <CustomButton :paddingY="8" :minWidth="144" class="header__enter-btn">Войти</CustomButton>
             </router-link>
         </div>
     </div>
@@ -40,7 +40,22 @@ export default {
     },
     data(){
         return{
+            isSearchInputShow: false,
             isSearchInputVisible: false
+        }
+    },
+    methods:{
+        openSearch(){
+            this.isSearchInputShow = true;
+            setTimeout(() => {
+                this.isSearchInputVisible = true;
+            }, 200);
+        },
+        closeSearch(){
+            this.isSearchInputVisible = false;
+            setTimeout(() => {
+                this.isSearchInputShow = false;
+            }, 200);
         }
     }
 }
@@ -63,8 +78,8 @@ export default {
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-basis: 70%;
+    justify-content: space-evenly;
+    flex-basis: 65%;
 }
 .header__item{
     color: #fff;
@@ -86,11 +101,15 @@ export default {
 }
 .header__search-wrap{
     position: relative;
-    margin-right: 36px;
+    margin: 2px 36px 2px 0;
 }
 .header__search{
     padding: 11px 36px;
-    min-width: 500px;
+    width: 0px;
+    transition: width .3s ease-in-out;
+}
+.header__search.opened{
+    width: 500px;
 }
 .header__search-icon{
     position: absolute;
@@ -107,8 +126,8 @@ export default {
     .header__list{
         display: none;
     }
-    .header__search{
-        min-width: 350px;
+    .header__search.opened{
+        width: 350px;
     }
 }
 @media screen and (max-width: 768px){
@@ -135,10 +154,14 @@ export default {
         right: 16px;
     }
 }
-@media screen and (max-width: 600px){
-    .header__search{
-        min-width: auto;
-        width: 100%;
+@media screen and (max-width: 615px){
+    .header__search.opened{
+        width: 300px;
+    }
+}
+@media screen and (max-width: 540px){
+    .header__search.opened{
+        width: 200px;
     }
 }
 </style>

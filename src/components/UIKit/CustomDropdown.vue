@@ -70,7 +70,7 @@ export default {
     list-style: none;
     margin: 0;
     left: 0;
-    top: 40px;
+    top: 70px;
     z-index: 5;
     min-width: 250px;
     display: none;

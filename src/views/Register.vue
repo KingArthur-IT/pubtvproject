@@ -62,13 +62,14 @@ export default {
 .login{
     background: var(--main-bg-color);
     width: 100%;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 50px 0;
+
 }
 .login__hero{
-
+    min-width: 640px;
 }
 .login__title{
     text-align: center;
@@ -155,12 +156,18 @@ export default {
         display: block;
     }
 }
+@media screen and (max-width: 640px) {
+    .login__hero{
+        min-width: auto;
+        width: 100%;
+    }
+}
 @media screen and (max-width: 600px) {
     .login__title{
         text-align: left;
         margin-bottom: 42px;
     }
-    .login__input:first-child{
+    .login__input{
         margin-bottom: 18px;
     }
     .login__btn-text{
@@ -172,7 +179,7 @@ export default {
     .login__title{
         margin-bottom: 24px;
     }
-    .login__input:first-child{
+    .login__input{
         margin-bottom: 15px;
     }
     .login__forgot-link{
