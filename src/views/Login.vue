@@ -8,7 +8,7 @@
             <input type="password" class="input login__input" placeholder="Пароль">
             <a href="#" class="link login__forgot-link">Забыли пароль?</a>
             <div class="login__btns">
-                <CustomButton class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
+                <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
             </div>
             <p class="text login__text">ИЛИ</p>

@@ -5,8 +5,13 @@
         <h1 class="big-title login__title">Регистрация</h1>
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
+            <InputDropdown class="login__input" :list="maleList" />
             <input type="password" class="input login__input" placeholder="Пароль">
-            <a href="#" class="link login__forgot-link">Есть аккаунт? <span>Войти</span></a>
+            <router-link to="/login">
+                <div class="link login__forgot-link">
+                    Есть аккаунт? <span>Войти</span>
+                </div>
+            </router-link>
             <div class="login__btns">
                 <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
@@ -32,13 +37,20 @@ import HeaderDefault from '@/components/HeaderDefault.vue';
 import FooterLogin from '@/components/FooterLogin.vue';
 import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
+import InputDropdown from '@/components/UIKit/InputDropdown.vue';
 
 export default {
     components:{
         HeaderDefault,
         FooterLogin,
         CustomButton,
-        FooterMobileMenu
+        FooterMobileMenu,
+        InputDropdown
+    },
+    data(){
+        return{
+            maleList:['Мужской','Женский','Другое']
+        }
     }
 }
 </script>
@@ -67,10 +79,10 @@ export default {
 }
 .login__input{
     width: 100%;
-    margin-bottom: 11px;
-}
-.login__input:first-child{
     margin-bottom: 27px;
+}
+.login__input:last-child{
+    margin-bottom: 11px;
 }
 .login__forgot-link{
     display: block;
