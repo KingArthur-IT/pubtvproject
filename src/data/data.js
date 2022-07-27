@@ -59,3 +59,19 @@ export const slidersDataList = {
         ]
     },
 } 
+
+export const favouritesListData = {
+    folderName: 'favourites',
+    items: [
+        {id: 0, imgName: 1, filmName: 'Острые Козырьки', filmType: 'Сериал', markList: [5, 9.9, 10, 8.5, 9], mark: 8, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 1, imgName: 2, filmName: 'Ведьмак', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 2, imgName: 3, filmName: 'Жизнь после смерти', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 3, imgName: 4, filmName: 'Ривердэйл', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 4, imgName: 5, filmName: 'Карточный домик', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 5, imgName: 6, filmName: 'Острые Козырьки', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 6, imgName: 7, filmName: 'Ведьмак', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 7, imgName: 8, filmName: 'Жизнь после смерти', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 8, imgName: 9, filmName: 'Ривердэйл', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+        {id: 9, imgName: 10, filmName: 'Карточный домик', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов'},
+    ]
+} 

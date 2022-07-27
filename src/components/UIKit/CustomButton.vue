@@ -32,7 +32,9 @@ export default {
     outline: none;
     appearance: none;
     cursor: pointer;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Nunito', sans-serif;
     font-weight: bold;
     background: var(--primary-color);

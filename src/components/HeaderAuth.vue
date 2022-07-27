@@ -21,8 +21,8 @@
                     <SearchIcon :color="'black'" @clickEvent="closeSearch" />
                 </div>
             </div>
-            <router-link to="/login">
-                <CustomButton :paddingY="8" :minWidth="144" class="header__enter-btn">Войти</CustomButton>
+            <router-link to="/profile">
+                <UserIcon />
             </router-link>
         </div>
     </div>
@@ -33,10 +33,11 @@
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import Logo from '@/components/UIKit/Logo.vue';
 import SearchIcon from '@/components/Icons/SearchIcon.vue';
+import UserIcon from '@/components/Icons/UserIcon.vue';
 
 export default {
     components: {
-        CustomButton, Logo, SearchIcon
+        CustomButton, Logo, SearchIcon, UserIcon
     },
     data(){
         return{
