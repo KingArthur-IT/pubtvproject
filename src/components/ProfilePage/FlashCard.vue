@@ -3,8 +3,8 @@
       <InformationIcon class="flash__info-icon" />
       <CustomButton class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
       <div class="flash__wrap">
-          <div v-for="item in 10" :key="item" class="flash__item">
-            <FlashCard />
+          <div v-for="(item, i) in phrases" :key="i" class="flash__item">
+            <FlashCard :phrase="item.phrase" :translation="item.translation" />
         </div>
       </div>
   </div>
@@ -19,6 +19,18 @@ export default {
     components:{
         CustomButton, FlashCard, InformationIcon
     },
+    data(){
+        return{
+            phrases:[
+                {phrase: 'Alright', translation: 'Привет'},
+                {phrase: 'Cheers mate!', translation: 'Спасибо'},
+                {phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.'},
+                {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник'},
+                {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
+                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
+            ]
+        }
+    }
 }
 </script>
 
