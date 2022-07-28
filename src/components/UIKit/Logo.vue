@@ -16,10 +16,9 @@ export default {
 
 <style scoped>
 .logo{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: #fff;
-    /* height: 63px; */
     min-width: 170px;
     cursor: pointer;
     transition: color .2s ease-in-out;
@@ -40,7 +39,7 @@ export default {
     letter-spacing: 1px;
 }
 .logo__title-tv{
-    letter-spacing: -3px;
+    letter-spacing: 0px;
 }
 
 @media screen and (max-width: 768px) {

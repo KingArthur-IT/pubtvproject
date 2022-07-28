@@ -6,7 +6,7 @@
                 <img :class="{'visible': isLeftArrowShow}" src="@/assets/blur-left.png" class="filter__blur-left">
                 <div :class="{'visible': isLeftArrowShow}" class="filter__arrow arrow-left" @click="prevClick">
                     <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 28L2 15L15 2" stroke="black" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
