@@ -1,8 +1,8 @@
 <template>
-    <div class="input-wrap" @click="toggleDropdown">
-        <input v-model="value" type="text" class="input input-wrap__input" placeholder="Пол">
+    <div class="input-wrap" @click.stop="toggleDropdown">
+        <input v-model="value" type="text" class="input input-wrap__input" placeholder="Пол" readonly>
         <div class="input-wrap__icon">
-            <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="input-arrow" :class="{'opened': isDisplay}" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 1L6 6L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
@@ -26,6 +26,11 @@ export default {
             isVisible: false,
             value: ''
         }
+    },
+    mounted(){
+        document.addEventListener('click', () => {
+            this.closeDropdown();
+        });
     },
     methods:{
         openDropdown(){
@@ -83,7 +88,7 @@ export default {
     list-style: none;
     margin: 0;
     left: 0;
-    top: 40px;
+    top: 70px;
     z-index: 5;
     min-width: 250px;
     display: none;
@@ -115,5 +120,12 @@ export default {
 }
 .visible{
     opacity: 1 !important;
+}
+.input-arrow{
+    transform: rotate(0);
+    transition: transform .3s ease-in-out;
+}
+.input-arrow.opened{
+    transform: rotate(180deg);
 }
 </style>

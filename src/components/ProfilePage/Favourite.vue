@@ -55,7 +55,7 @@ export default {
 }
 .favourites__item{
     border-radius: 18px;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     padding-right: 20px;
     flex-basis: 25%;
 }

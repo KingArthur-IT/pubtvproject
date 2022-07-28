@@ -20,7 +20,7 @@
                 <a class="login__social">
                     <img src="@/assets/google-logo.png" alt="Google">
                 </a>
-                <a class="login__social">
+                <a class="login__social login__social-fb">
                     <img src="@/assets/facebook-logo.png" alt="FB">
                 </a>
             </div>
@@ -141,6 +141,10 @@ export default {
     width: 26px;
     height: 26px;
 }
+.login__social-fb img{
+    width: 20px;
+    height: 20px;
+}
 
 @media screen and (max-width: 768px) {
     .login__title{
@@ -197,6 +201,14 @@ export default {
     }
     .login__social:first-child{
         margin-right: 20px;
+    }
+    .login__social img{
+        width: 34px;
+        height: 34px;
+    }
+    .login__social-fb img{
+        width: 26px;
+        height: 26px;
     }
 }
 </style>

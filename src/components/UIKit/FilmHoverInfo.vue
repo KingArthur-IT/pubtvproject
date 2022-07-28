@@ -61,11 +61,12 @@ export default {
     right: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 99%;
     background: rgba(0, 0, 0, 0.7);
     padding: 28px 20px;
     opacity: 0;
     transition: opacity var(--transition-time) ease-in-out;
+    border-radius: 18px;
 }
 .visible{
     opacity: 1;

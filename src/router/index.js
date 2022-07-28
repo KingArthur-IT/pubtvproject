@@ -37,7 +37,6 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'settings',
           redirect: {name: 'settings'}
         },
         {

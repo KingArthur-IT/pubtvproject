@@ -3,6 +3,12 @@
         <div class="container">
             <h2 class="section-title filter__title">{{title}}</h2>
             <div class="filter__carousel-wrapper">
+                <img :class="{'visible': isLeftArrowShow}" src="@/assets/blur-left.png" class="filter__blur-left">
+                <div :class="{'visible': isLeftArrowShow}" class="filter__arrow arrow-left" @click="prevClick">
+                    <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 28L2 15L15 2" stroke="black" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
                         <div class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
@@ -15,7 +21,7 @@
                         </div>
                     </Slide>
                 </Carousel>
-                <img src="@/assets/blur.png" class="filter__blur">
+                <img src="@/assets/blur-right.png" class="filter__blur-right">
                 <div class="filter__arrow arrow-right" @click="nextClick">
                     <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -58,6 +64,8 @@ export default {
     data(){
         return{
             hoverSlideId: -1,
+            isLeftArrowShow: false,
+            slideIndex: 1,
             breakpoints: {
                 // 700px and up
                 700: {
@@ -75,12 +83,23 @@ export default {
             return new URL(`../../assets/img/${this.sliderDataFolder}/${imgName}.png`, import.meta.url).href
         },
         prevClick(){
-            this.$refs[this.refer].prev();
-            this.$refs[this.refer].updateSlideWidth();
+            if (this.slideIndex > 1){
+                this.$refs[this.refer].prev();
+                this.$refs[this.refer].updateSlideWidth();
+                this.slideIndex --;
+            }
         },
         nextClick(){
             this.$refs[this.refer].next();
             this.$refs[this.refer].updateSlideWidth();
+            this.slideIndex ++;
+        }
+    },
+    watch:{
+        slideIndex: function(){
+            if (this.slideIndex > 1)
+                this.isLeftArrowShow = true;
+            else this.isLeftArrowShow = false;
         }
     }
 }
@@ -124,7 +143,7 @@ export default {
     justify-content: center;
     align-items: center;
     top: 50%;
-    transition: background var(--transition-time) ease-in-out;
+    transition: background var(--transition-time) ease-in-out, opacity .2s ease-in-out;
 }
 .filter__arrow:hover{
     background: #fff;
@@ -137,16 +156,36 @@ export default {
     transform: translate(50%, -80%);
     right: 0;
 }
+.arrow-left{
+    transform: translate(-50%, -80%);
+    left: 10px;
+    z-index: 2;
+    opacity: 0;
+}
 .arrow-right svg{
     transform: translate(4px, 0);
 }
-.filter__blur{
+.filter__blur-right{
     position: absolute;
     top: 0;
     bottom: 0;
     right: -3px;
     width: 80px;
     height: 100%;
+}
+.filter__blur-left{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -3px;
+    width: 100px;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+.visible{
+    opacity: 1;
 }
 
 @media screen and (max-width: 1275px) {

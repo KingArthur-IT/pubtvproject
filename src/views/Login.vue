@@ -8,7 +8,7 @@
             <a href="#" class="link login__forgot-link">Забыли пароль?</a>
             <div class="login__btns">
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
-                <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
+                <CustomButton @click="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
             </div>
             <p class="text login__text">ИЛИ</p>
             <p class="text login__mobile-text">Войти через:</p>
@@ -16,7 +16,7 @@
                 <a class="login__social">
                     <img src="@/assets/google-logo.png" alt="Google">
                 </a>
-                <a class="login__social">
+                <a class="login__social login__social-fb">
                     <img src="@/assets/facebook-logo.png" alt="FB">
                 </a>
             </div>
@@ -37,6 +37,11 @@ export default {
         FooterLogin,
         CustomButton,
         FooterMobileMenu
+    },
+    methods:{
+        loginEvent(){
+            this.$router.push({path: '/profile'});
+        }
     }
 }
 </script>
@@ -130,6 +135,10 @@ export default {
     width: 26px;
     height: 26px;
 }
+.login__social-fb img{
+    width: 20px;
+    height: 20px;
+}
 
 @media screen and (max-width: 768px) {
     .login__title{
@@ -183,6 +192,14 @@ export default {
     }
     .login__social:first-child{
         margin-right: 20px;
+    }
+    .login__social img{
+        width: 34px;
+        height: 34px;
+    }
+    .login__social-fb img{
+        width: 26px;
+        height: 26px;
     }
 }
 </style>
