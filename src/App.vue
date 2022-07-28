@@ -1,11 +1,23 @@
-<template>
-  <RouterView />
+<template> 
+  <component :is="layout">
+  </component>
 </template>
 
 <script>
-export default {
+import DefaultLayout from '@/layouts/default.vue'
+import AuthLayout from '@/layouts/authorized.vue'
 
-}
+export default {
+ components:{
+    DefaultLayout, AuthLayout
+ },
+  computed: {
+    layout () {
+      return this.$route.meta.auth ? 'AuthLayout' : 'DefaultLayout'
+    }
+  },
+} 
+
 </script>
 
 <style>

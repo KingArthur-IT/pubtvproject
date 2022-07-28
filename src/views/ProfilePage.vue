@@ -1,5 +1,4 @@
 <template>
-    <HeaderAuth />
     <div class="container user">
         <p class="big-title user__name">{{userName}}</p>
         <p class="user__mail">{{userMail}}</p>
@@ -23,11 +22,9 @@
 </template>
 
 <script>
-import HeaderAuth from '@/components/HeaderAuth.vue';
-
 export default {
     components:{
-        HeaderAuth
+
     },
     data(){
         return{

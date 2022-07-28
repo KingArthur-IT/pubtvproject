@@ -21,8 +21,11 @@
                     <SearchIcon :color="'black'" @clickEvent="closeSearch" />
                 </div>
             </div>
-            <router-link to="/login">
+            <router-link v-if="$route.meta.auth === false" to="/login">
                 <CustomButton :paddingY="8" :minWidth="144" class="header__enter-btn">Войти</CustomButton>
+            </router-link>
+            <router-link v-else to="/profile">
+                <UserIcon />
             </router-link>
         </div>
     </div>
@@ -30,13 +33,14 @@
 </template>
 
 <script>
-import CustomButton from '@/components/UIKit/CustomButton.vue';
 import Logo from '@/components/UIKit/Logo.vue';
 import SearchIcon from '@/components/Icons/SearchIcon.vue';
+import CustomButton from '@/components/UIKit/CustomButton.vue';
+import UserIcon from '@/components/Icons/UserIcon.vue';
 
 export default {
     components: {
-        CustomButton, Logo, SearchIcon
+        Logo, SearchIcon, CustomButton, UserIcon
     },
     data(){
         return{
@@ -65,8 +69,8 @@ export default {
 .header{
     background-color: var(--section-bg-color);
     width: 100%;
-    min-height: 181px;
-    padding: 60px 0;
+    min-height: 135px;
+    padding: 36px 0;
 }
 .header__hero{
     display: flex;
@@ -105,7 +109,7 @@ export default {
     margin: 2px 36px 2px 0;
 }
 .header__search{
-    padding: 11px 36px;
+    padding: 11px 50px 11px 36px;
     width: 0px;
     transition: width .3s ease-in-out;
 }

@@ -1,5 +1,5 @@
 <template>
-    <button class="button" 
+    <button class="button"
             :class="{'outlined': isOutlined}"
             :style="`padding-top: ${paddingY}px; padding-bottom: ${paddingY}px; min-width: ${minWidth}px`"
     >

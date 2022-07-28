@@ -1,6 +1,9 @@
 <template>
   <div class="logo">
-      <p class="logo__title">Pub TV</p>
+      <p class="logo__title">
+          <span class="logo__title-pub">Pub</span>
+          <span class="logo__title-tv">TV</span>
+        </p>
       <p class="logo__description">Учи английский по фильмам!</p>
   </div>
 </template>
@@ -32,6 +35,12 @@ export default {
 .logo__description{
     margin: 0;   
     font-size: 11px;
+}
+.logo__title-pub{
+    letter-spacing: 1px;
+}
+.logo__title-tv{
+    letter-spacing: -3px;
 }
 
 @media screen and (max-width: 768px) {

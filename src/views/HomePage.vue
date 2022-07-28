@@ -1,5 +1,4 @@
 <template>
-  <HeaderDefault />
   <main>
       <MainSlider />
       <FilterSection />
@@ -27,7 +26,6 @@
 
 <script>
 import { slidersDataList } from '@/data/data.js';
-import HeaderDefault from '@/components/HeaderDefault.vue';
 import FooterDefault from '@/components/FooterDefault.vue';
 import AboutUsSection from '@/components/HomePage/AboutUsSection.vue'
 import MainSlider from '@/components/HomePage/MainSlider.vue'
@@ -36,7 +34,7 @@ import FilmSlider from '@/components/HomePage/FilmSlider.vue'
 
 export default {
   components:{
-    HeaderDefault, FooterDefault,
+    FooterDefault,
     AboutUsSection, MainSlider,
     FilterSection,
     FilmSlider
@@ -44,9 +42,18 @@ export default {
   data(){
     return{
       slidersDataList,
-      hardSliderList: [],
-      understandSliderList: [],
-      interestingSliderList: []
+      hardSliderList:  {
+        folderName: 'hard',
+        slides: []
+      },
+      understandSliderList: {
+        folderName: 'understand',
+        slides: []
+      },
+      interestingSliderList: {
+        folderName: 'interesting',
+        slides: []
+      },
     }
   }, 
   mounted(){

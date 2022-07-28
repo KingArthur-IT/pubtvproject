@@ -41,5 +41,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all var(--transition-time) ease-in-out;
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <HeaderDefault />
   <div class="login">
       <div class="container login__hero">
         <h1 class="big-title login__title">Вход</h1>
@@ -29,14 +28,12 @@
 </template>
 
 <script>
-import HeaderDefault from '@/components/HeaderDefault.vue';
 import FooterLogin from '@/components/FooterLogin.vue';
 import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 
 export default {
     components:{
-        HeaderDefault,
         FooterLogin,
         CustomButton,
         FooterMobileMenu

@@ -14,25 +14,30 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomePage
+      component: HomePage,
+      meta: { auth: false }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { auth: false }
     },
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: Register,
+      meta: { auth: false }
     },
     {
       path: '/profile',
       name: 'profile',
       component: ProfilePage,
+      meta: { auth: true },
       children: [
         {
           path: '',
+          name: 'settings',
           redirect: {name: 'settings'}
         },
         {

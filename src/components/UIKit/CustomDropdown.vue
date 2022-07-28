@@ -1,11 +1,12 @@
 <template>
-    <div class="text dropdown__item" @click="toggleDropdown">
+    <div class="text dropdown__item" @click.stop="toggleDropdown">
         <span>{{selectedValue === '' ? notselectedValue : selectedValue}}</span>
-        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="dropdown__arrow" :class="{'rotated': isDisplay}" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <ul class="dropdown-list" :class="{'show': isDisplay, 'visible': isVisible}">
-            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click="selectedValue = item">{{item}}</li>
+            <li class="dropdown-item" @click.stop="selectedValue = notselectedValue">{{notselectedValue}}</li>
+            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click.stop="selectedValue = item">{{item}}</li>
         </ul>
     </div>
 </template>
@@ -28,6 +29,11 @@ export default {
             isDisplay: false,
             isVisible: false
         }
+    },
+    mounted(){
+        document.addEventListener('click', () => {
+            this.closeDropdown();
+        });
     },
     methods:{
         openDropdown(){
@@ -64,18 +70,20 @@ export default {
 }
 .dropdown-list{
     background: #fff;
-    border-radius: 27px;
+    border-radius: 13px;
     padding: 11px 37px;
     position: absolute;
     list-style: none;
     margin: 0;
     left: 0;
-    top: 70px;
+    top: 40px;
     z-index: 5;
-    min-width: 250px;
+    min-width: 280px;
+    max-height: 279px;
     display: none;
     opacity: 0;
     transition: opacity var(--transition-time) ease-in-out;
+    overflow-y: scroll;
 }
 .dropdown-item{
     width: 100%;
@@ -100,5 +108,12 @@ export default {
 }
 .visible{
     opacity: 1 !important;
+}
+.dropdown__arrow{
+    transform: rotate(0);
+    transition: transform .3s ease-in-out;
+}
+.rotated{
+    transform: rotate(180deg);
 }
 </style>
