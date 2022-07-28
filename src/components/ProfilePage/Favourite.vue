@@ -56,13 +56,11 @@ export default {
 .favourites__item{
     border-radius: 18px;
     margin-bottom: 40px;
-    padding-right: 20px;
+    padding: 0 10px;
     flex-basis: 25%;
 }
-.favourites__item:nth-child(4n){
-    padding-right: 0;
-}
 .favourites__film-name{
+    font-weight: 700;
     text-align: left;
 }
 .favourites__film-type{
