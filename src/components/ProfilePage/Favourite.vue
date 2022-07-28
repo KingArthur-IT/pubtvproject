@@ -56,7 +56,11 @@ export default {
 .favourites__item{
     border-radius: 18px;
     margin-bottom: 70px;
+    padding-right: 20px;
     flex-basis: 25%;
+}
+.favourites__item:nth-child(4n){
+    padding-right: 0;
 }
 .favourites__film-name{
     text-align: left;
@@ -71,5 +75,9 @@ export default {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
+}
+
+.favourites__img img{
+    width: 100%;
 }
 </style>

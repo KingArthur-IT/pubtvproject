@@ -2,7 +2,10 @@
     <div class="card">
         <SoundIcon class="card__icon" />
         <p class="card__word">Alright</p>
-        <p class="card__translate">bchjsdvhd</p>
+        <div class="card__translate">
+            <span>bchjsdvhd</span>
+            <div class="card__blur"></div>
+        </div>
         <div class="card__btns">
             <CustomButton :isOutlined="true" class="card__btn" :paddingY="13"><span class="card__btn-text">Забыл</span></CustomButton>
             <CustomButton class="card__btn" :paddingY="13"><span class="card__btn-text">Запомнил</span></CustomButton>
@@ -18,6 +21,9 @@ export default {
     components:{
         SoundIcon,
         CustomButton
+    },
+    props:{
+
     }
 }
 </script>
@@ -55,6 +61,20 @@ export default {
     text-align: center;
     color: rgba(255, 255, 255, 0.46);
     margin-bottom: 130px;
+    position: relative;
+}
+.card__blur{
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+    background: rgba(42, 42, 42, 0.12);
+    transition: backdrop-filter var(--transition-time) ease-in-out;
+}
+.card__blur:hover{
+    backdrop-filter: blur(0px);
 }
 .card__btns{
     display: flex;

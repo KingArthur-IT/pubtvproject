@@ -41,7 +41,8 @@ export default {
 
 <style scoped>
 .user{
-    margin: 94px 0 83px;
+    margin-top: 94px;
+    margin-bottom: 83px;
     text-align: center;
 }
 .user__mail{
@@ -51,6 +52,7 @@ export default {
     font-size: 15px;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.55);
+    text-align: center;
 }
 .tabs{
     display: flex;
