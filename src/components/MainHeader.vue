@@ -12,10 +12,10 @@
             <li class="header__item">Мультфильмы</li>
         </ul>
         <div class="header__controls">
-            <div v-if="!isSearchInputShow" class="header__icon" @click="openSearch">
+            <div v-if="!isSearchInputShow" class="header__icon" @click.stop="openSearch">
                 <SearchIcon />
             </div>
-            <div v-else class="header__search-wrap">
+            <div v-else class="header__search-wrap" @click.stop>
                 <input type="text" class="input header__search" :class="{'opened': isSearchInputVisible}" placeholder="Поиск">
                 <div class="header__search-icon">
                     <SearchIcon :color="'black'" @clickEvent="closeSearch" />
@@ -47,6 +47,11 @@ export default {
             isSearchInputShow: false,
             isSearchInputVisible: false
         }
+    },
+    mounted(){
+        document.addEventListener('click', () => {
+            this.closeSearch();
+        });
     },
     methods:{
         openSearch(){

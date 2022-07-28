@@ -116,6 +116,7 @@ export default {
     border-radius: 18px;
 }
 .filter__film-name{
+    font-weight: 700;
     text-align: left;
 }
 .filter__film-type{
@@ -164,6 +165,9 @@ export default {
 }
 .arrow-right svg{
     transform: translate(4px, 0);
+}
+.arrow-left svg{
+    transform: translate(-2px, 0);
 }
 .filter__blur-right{
     position: absolute;

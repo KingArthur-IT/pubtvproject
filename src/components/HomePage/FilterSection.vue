@@ -3,10 +3,10 @@
         <h2 class="container title filter__title">Фильтры</h2>
         <div class="filter__wrapper">
             <div class="container filter__hero">
-                <CustomDropdown :list="genres" :notselectedValue="'Все жанры'" />
-                <CustomDropdown :list="years" :notselectedValue="'Все годы'" />
-                <CustomDropdown :list="countries" :notselectedValue="'Все страны'" />
-                <CustomDropdown :list="engLevel" :notselectedValue="'Уровень Английского'" />
+                <CustomDropdown class="filter__item" :list="genres" :notselectedValue="'Все жанры'" />
+                <CustomDropdown class="filter__item" :list="years" :notselectedValue="'Все годы'" />
+                <CustomDropdown class="filter__item" :list="countries" :notselectedValue="'Все страны'" />
+                <CustomDropdown class="filter__item" :list="engLevel" :notselectedValue="'Уровень Английского'" />
             </div>
         </div>
     </div>
@@ -42,5 +42,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     transition: all var(--transition-time) ease-in-out;
+}
+.filter__item{
+    flex-basis: 25%;
 }
 </style>
