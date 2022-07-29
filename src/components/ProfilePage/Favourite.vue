@@ -3,7 +3,14 @@
     <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
         <div class="favourites__img">
             <img :src="getImageUrl(item.imgName)" alt="img">
-            <FilmHoverInfo :isVisible="hoverId === item.id" :markList="item.markList" :mark="item.mark" :filmInfo="item.filmInfo" :seasons="item.seasons" />
+            <FilmHoverInfo  @toggleFavourite="item.isFavourite = !item.isFavourite" 
+                            :isVisible="hoverId === item.id" 
+                            :markList="item.markList" 
+                            :mark="item.mark" 
+                            :filmInfo="item.filmInfo" 
+                            :seasons="item.seasons" 
+                            :isFavourite="item.isFavourite"
+            />
         </div>
         <p class="text favourites__film-name">{{item.filmName}}</p>
         <p class="text favourites__film-type">{{item.filmType}}</p>
@@ -18,16 +25,6 @@ import FilmHoverInfo from '@/components/UIKit/FilmHoverInfo.vue'
 export default {
     components:{
         FilmHoverInfo
-    },
-    props:{
-        favouritesListData: {
-            type: Array,
-            required: true
-        },
-        favouritesDataFolder: {
-            type: String,
-            required: true
-        }
     },
     data(){
         return{

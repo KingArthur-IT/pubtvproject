@@ -5,8 +5,8 @@
             <path d="M11 1L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <ul class="dropdown-list" :class="{'show': isDisplay, 'visible': isVisible}">
-            <li class="dropdown-item" @click.stop="selectedValue = notselectedValue">{{notselectedValue}}</li>
-            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click.stop="selectedValue = item">{{item}}</li>
+            <li class="dropdown-item" @click="selectedValue = notselectedValue">{{notselectedValue}}</li>
+            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click="selectedValue = item">{{item}}</li>
         </ul>
     </div>
 </template>

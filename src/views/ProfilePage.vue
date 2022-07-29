@@ -78,9 +78,10 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -4px;
+    bottom: -6px;
     height: 5px;
     background: var(--primary-color);
+    border-radius: 3px;
 }
 .tab-hero{
     background: #272727;

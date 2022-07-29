@@ -43,9 +43,15 @@ export default {
 .about__img{
     flex-basis: 45%;
     filter: drop-shadow(0px 13px 25px rgba(0, 0, 0, 0.16));
+    border-radius: 17px;
+    overflow: hidden;
 }
 .about__img img{
     width: 100%;
-    border-radius: 17px;
+    transform: scale(1);
+    transition: transform .3s ease-in-out;
+}
+.about__img:hover img{
+    transform: scale(1.1);
 }
 </style>

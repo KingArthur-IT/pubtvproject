@@ -1,6 +1,6 @@
 <template>
   <div class="film-info" :class="{'visible': isVisible}">
-      <FavoriteIcon class="film-info__fav-icon" />
+      <FavoriteIcon :isSelected="isFavourite" @click="$emit('toggleFavourite')" class="film-info__fav-icon" />
       <div class="film-info__hero">
             <span class="film-info-text">{{mark}}</span>
             <div class="film-info__hero-list">
@@ -41,6 +41,10 @@ export default {
             default: ''
         },
         isVisible:{
+            type: Boolean,
+            default: false
+        },
+        isFavourite:{
             type: Boolean,
             default: false
         }

@@ -40,6 +40,7 @@ export default {
                 {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник'},
                 {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
                 {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
+                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
             ]
         }
     },
@@ -75,7 +76,8 @@ export default {
 .flash__btn{
     margin: auto;
     margin-bottom: 76px;
-    width: 380px;
+    /* width: 380px; */
+    width: 31.6%;
 }
 .flash__btn-text{
     font-size: 23px;
@@ -85,7 +87,7 @@ export default {
     flex-wrap: wrap;
 }
 .flash__item{
-    flex-basis: 31%;
+    flex-basis: 31.63%;
     margin: 0 10px 28px 10px;
     /* margin-bottom: 28px; */
 }

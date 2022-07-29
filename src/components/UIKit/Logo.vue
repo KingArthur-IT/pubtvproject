@@ -33,7 +33,7 @@ export default {
 }
 .logo__description{
     margin: 0;   
-    font-size: 11px;
+    font-size: 10px;
 }
 .logo__title-pub{
     letter-spacing: 1px;
@@ -47,7 +47,7 @@ export default {
         font-size: 42px;
     }
     .logo__description{
-        font-size: 11px;
+        font-size: 9px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -55,7 +55,7 @@ export default {
         font-size: 36px;
     }
     .logo__description{
-        font-size: 10px;
+        font-size: 8px;
     }
 }
 @media screen and (max-width: 425px) {
@@ -63,7 +63,7 @@ export default {
         font-size: 32px;
     }
     .logo__description{
-        font-size: 8px;
+        font-size: 7px;
     }
 }
 </style>

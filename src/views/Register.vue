@@ -14,7 +14,7 @@
             <div class="login__btns">
                 <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
-            <p class="text login__text">ИЛИ</p>
+            <p class="text login__text">или</p>
             <p class="text login__mobile-text">Регистрация через:</p>
             <div class="login__socials">
                 <a class="login__social">
@@ -105,6 +105,7 @@ export default {
     font-size: 23px;
 }
 .login__text{
+    font-weight: bold;
     color: rgba(255, 255, 255, 0.4);
     text-align: center;
     margin-bottom: 13px;
