@@ -50,12 +50,14 @@ export default {
     watch:{
         isShown: function(){
             if (this.isShown){
+                document.querySelector('body').classList.add('overflow-hidden');
                 this.isDisplay = this.isShown;
                 setTimeout(() => {
                     this.isVisible = this.isShown;
                 }, 100);
             }
             else {
+                document.querySelector('body').classList.remove('overflow-hidden');
                 this.isVisible = this.isShown;
                 setTimeout(() => {
                     this.isDisplay = this.isShown;
@@ -65,6 +67,7 @@ export default {
     },
     methods:{
         closeModal(){
+            document.querySelector('body').classList.remove('overflow-hidden');
             this.isVisible = false;
             setTimeout(() => {
                 this.$emit('closeModal');

@@ -1,7 +1,10 @@
 <template>
-    <div class="container user">
-        <p class="big-title user__name">{{userName}}</p>
-        <p class="user__mail">{{userMail}}</p>
+    <div class="container">
+        <div class="user">
+            <LogoutButton @click="logout" class="user__logout" />
+            <p class="big-title user__name">{{userName}}</p>
+            <p class="user__mail">{{userMail}}</p>
+        </div>
     </div>
     <div class="container tabs">
         <router-link class="tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
@@ -16,15 +19,20 @@
     </div>
     <div class="tab-hero">
         <div class="container">
-            <router-view></router-view>
+            <router-view v-slot="{ Component }">
+                <transition name="fade" mode="out-in">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
         </div>
     </div>
 </template>
 
 <script>
+import LogoutButton from '@/components/UIKit/LogoutButton.vue'
 export default {
     components:{
-
+        LogoutButton
     },
     data(){
         return{
@@ -32,15 +40,25 @@ export default {
             userMail: 'support@pubtv.online'
         }
     },
-
+    methods:{
+        logout(){
+            this.$router.push({path: '/'})
+        }
+    }
 }
 </script>
 
 <style scoped>
 .user{
-    margin-top: 94px;
+    position: relative;
+    padding-top: 94px;
     margin-bottom: 83px;
     text-align: center;
+}
+.user__logout{
+    position: absolute;
+    right: 0;
+    top: 25px;
 }
 .user__mail{
     font-family: 'Nunito';
@@ -86,5 +104,14 @@ export default {
 .tab-hero{
     background: #272727;
     width: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

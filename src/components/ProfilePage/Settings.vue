@@ -4,16 +4,16 @@
         <CustomButton @click="changePasswordModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
         <h2 class="section-title settings__title">Админ Панель</h2>
         <CustomButton @click="addMovieModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
-    </div>
     <ModalWrapper 
-        :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
-        :lineWidth="progressStep * 50"
-        :isShown="isModalShown" 
-        @closeModal="closeModal"
-    >
-    <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
-    <addMovie v-else @addEvent="addMovie" />
-  </ModalWrapper>
+            :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
+            :lineWidth="progressStep * 50"
+            :isShown="isModalShown" 
+            @closeModal="closeModal"
+        >
+        <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
+        <addMovie v-else @addEvent="addMovie" />
+    </ModalWrapper>
+    </div>
 </template>
 
 <script>

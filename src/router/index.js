@@ -42,17 +42,17 @@ const router = createRouter({
         {
           path: 'favourite',
           name: 'favourite',
-          component: Favourite
+          component: Favourite,
         },
         {
           path: 'flash-card',
           name: 'flashcard',
-          component: FlashCard
+          component: FlashCard,
         },
         {
           path: 'settings',
           name: 'settings',
-          component: Settings
+          component: Settings,
         },
       ]
     },

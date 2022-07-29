@@ -5,7 +5,14 @@
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
             <input type="password" class="input login__input" placeholder="Пароль">
-            <div @click="forgotPassword" class="link login__forgot-link">Забыли пароль?</div>
+            <div class="login__link-wrapper">
+                <div @click="forgotPassword" class="link login__forgot-link">Забыли пароль?</div>
+                <div class="login__remember">
+                    <CustomCheckbox v-model="isRememberMe">
+                        <div class="login__remember-text">Запомнить меня</div>
+                    </CustomCheckbox>
+                </div>
+            </div>
             <div class="login__btns">
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton @click="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
@@ -42,6 +49,7 @@
 import FooterLogin from '@/components/FooterLogin.vue';
 import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
+import CustomCheckbox from '@/components/UIKit/CustomCheckbox.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePassword from '@/components/Modals/RestorePassword.vue';
 import RestorePasswordCode from '@/components/Modals/RestorePasswordCode.vue';
@@ -55,12 +63,14 @@ export default {
         ModalWrapper,
         RestorePassword,
         RestorePasswordCode,
-        RestorePasswordSetNew
+        RestorePasswordSetNew, 
+        CustomCheckbox
     },
     data(){
         return{
             isModalShown: false,
-            restoreStep: 1
+            restoreStep: 1,
+            isRememberMe: false
         }
     },
     methods:{
@@ -105,18 +115,36 @@ export default {
 }
 .login__input{
     width: 100%;
-    margin-bottom: 11px;
+    margin-bottom: 14px;
 }
 .login__input:first-child{
     margin-bottom: 27px;
+}
+.login__link-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.login__remember{
+    display: flex;
+    align-items: center;
+}
+.login__remember-text{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 133%;
+    color: #FFFFFF;
+    margin-left: 8px;
 }
 .login__forgot-link{
     cursor: pointer;
     display: block;
     width: fit-content;
-    margin-left: auto;
     font-size: 15px;
-    margin-bottom: 17px;
     text-decoration: underline;
 }
 .login__btns{

@@ -7,15 +7,15 @@
             <FlashCard :phrase="item.phrase" :translation="item.translation" />
         </div>
       </div>
+      <ModalWrapper 
+            :title="'Добавить Флэш-карту'" 
+            :lineWidth="progressStep * 50"
+            :isShown="isModalShown" 
+            @closeModal="closeModal"
+    >
+        <AddFlashCard @addEvent="addFlashCard" />
+    </ModalWrapper>
   </div>
-  <ModalWrapper 
-        :title="'Добавить Флэш-карту'" 
-        :lineWidth="progressStep * 50"
-        :isShown="isModalShown" 
-        @closeModal="closeModal"
-  >
-    <AddFlashCard @addEvent="addFlashCard" />
-  </ModalWrapper>
 </template>
 
 <script>
