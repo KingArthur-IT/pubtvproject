@@ -4,7 +4,7 @@
         <h1 class="big-title login__title">Регистрация</h1>
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
-            <InputDropdown class="login__input" :list="maleList" />
+            <InputDropdown class="login__input" :list="maleList" :placeholder="'Пол'" />
             <input type="password" class="input login__input" placeholder="Пароль">
             <router-link to="/login">
                 <div class="link login__forgot-link">

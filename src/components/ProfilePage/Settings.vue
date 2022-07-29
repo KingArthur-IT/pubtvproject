@@ -1,19 +1,65 @@
 <template>
-  <div class="settings">
-      <h2 class="section-title settings__title">Учётная Запись</h2>
-      <CustomButton class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
-      <h2 class="section-title settings__title">Админ Панель</h2>
-      <CustomButton class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
-  </div>
+    <div class="settings">
+        <h2 class="section-title settings__title">Учётная Запись</h2>
+        <CustomButton @click="changePasswordModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
+        <h2 class="section-title settings__title">Админ Панель</h2>
+        <CustomButton @click="addMovieModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
+    </div>
+    <ModalWrapper 
+        :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
+        :lineWidth="progressStep * 50"
+        :isShown="isModalShown" 
+        @closeModal="closeModal"
+    >
+    <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
+    <addMovie v-else @addEvent="addMovie" />
+  </ModalWrapper>
 </template>
 
 <script>
 import CustomButton from '@/components/UIKit/CustomButton.vue';
+import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
+import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
+import addMovie from '@/components/Modals/addMovie.vue';
 
 export default {
     components:{
-        CustomButton
+        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie
     },
+    data(){
+        return{
+            isModalShown: false,
+            progressStep: 1,
+            isChangePassword: true
+        }
+    },
+    methods:{
+        changePasswordModal(){
+            this.isChangePassword = true;
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        closeModal(){
+            this.isModalShown = false;
+        },
+        changePassword(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        },
+        addMovieModal(){
+            this.isChangePassword = false;
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        addMovie(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        }
+    }
 }
 </script>
 

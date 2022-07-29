@@ -65,9 +65,7 @@ export default {
     },
     methods:{
         closeModal(){
-            setTimeout(() => {
-                this.isVisible = false;
-            }, 200);
+            this.isVisible = false;
             setTimeout(() => {
                 this.$emit('closeModal');
             }, 200);
@@ -80,13 +78,16 @@ export default {
 .modal{
     position: fixed;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     background: #000000e8;
     transition: opacity .2s ease-in-out;
     display: none;
     opacity: 0;
+    overflow-y: auto;
 }
 .visible{
     opacity: 1;

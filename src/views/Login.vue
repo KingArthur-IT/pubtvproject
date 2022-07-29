@@ -5,7 +5,7 @@
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
             <input type="password" class="input login__input" placeholder="Пароль">
-            <div @click="isModalShown = true" class="link login__forgot-link">Забыли пароль?</div>
+            <div @click="forgotPassword" class="link login__forgot-link">Забыли пароль?</div>
             <div class="login__btns">
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton @click="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
@@ -28,13 +28,13 @@
 
   <ModalWrapper 
         :title="'Восстановление Пароля'" 
-        :lineWidth="restoreStep * 33.33"
+        :lineWidth="(restoreStep - 1) * 33.33"
         :isShown="isModalShown" 
         @closeModal="isModalShown = false"
     >
     <RestorePassword v-if="restoreStep == 1" @nextRestore="restoreStep = 2" />
     <RestorePasswordCode v-if="restoreStep == 2" @nextRestore="restoreStep = 3" />
-    <RestorePasswordSetNew v-if="restoreStep == 3" @nextRestore="isModalShown = false"/>
+    <RestorePasswordSetNew v-if="restoreStep == 3" @nextRestore="closeModal"/>
   </ModalWrapper>
 </template>
 
@@ -66,6 +66,16 @@ export default {
     methods:{
         loginEvent(){
             this.$router.push({path: '/profile'});
+        },
+        forgotPassword(){
+            this.isModalShown = true;
+            this.restoreStep = 1;
+        },
+        closeModal(){
+            this.restoreStep = 4;
+            setTimeout(() => {
+                this.isModalShown = false
+            }, 200);
         }
     }
 }

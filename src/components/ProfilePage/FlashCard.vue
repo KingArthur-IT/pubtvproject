@@ -1,26 +1,38 @@
 <template>
   <div class="flash">
       <InformationIcon class="flash__info-icon" />
-      <CustomButton class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
+      <CustomButton @click="openAddFlashCardModal" class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
       <div class="flash__wrap">
           <div v-for="(item, i) in phrases" :key="i" class="flash__item">
             <FlashCard :phrase="item.phrase" :translation="item.translation" />
         </div>
       </div>
   </div>
+  <ModalWrapper 
+        :title="'Добавить Флэш-карту'" 
+        :lineWidth="progressStep * 50"
+        :isShown="isModalShown" 
+        @closeModal="closeModal"
+  >
+    <AddFlashCard @addEvent="addFlashCard" />
+  </ModalWrapper>
 </template>
 
 <script>
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import FlashCard from '@/components/UIKit/FlashCard.vue';
 import InformationIcon from '@/components/Icons/InformationIcon.vue';
+import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
+import AddFlashCard from '@/components/Modals/AddFlashCard.vue';
 
 export default {
     components:{
-        CustomButton, FlashCard, InformationIcon
+        CustomButton, FlashCard, InformationIcon, ModalWrapper, AddFlashCard
     },
     data(){
         return{
+            isModalShown: false,
+            progressStep: 1,
             phrases:[
                 {phrase: 'Alright', translation: 'Привет'},
                 {phrase: 'Cheers mate!', translation: 'Спасибо'},
@@ -29,6 +41,21 @@ export default {
                 {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
                 {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
             ]
+        }
+    },
+    methods:{
+        closeModal(){
+            this.isModalShown = false;
+        },
+        openAddFlashCardModal(){
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        addFlashCard(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
         }
     }
 }

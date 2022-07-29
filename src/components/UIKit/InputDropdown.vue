@@ -1,6 +1,6 @@
 <template>
     <div class="input-wrap" @click.stop="toggleDropdown">
-        <input v-model="value" type="text" class="input input-wrap__input" placeholder="Пол" readonly>
+        <input v-model="value" type="text" class="input input-wrap__input" :placeholder="placeholder" readonly>
         <div class="input-wrap__icon">
             <svg class="input-arrow" :class="{'opened': isDisplay}" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 1L6 6L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,6 +19,10 @@ export default {
             type: Array,
             required: true
         },
+        placeholder:{
+            type: String,
+            default: ''
+        }
     },
     data(){
         return{
