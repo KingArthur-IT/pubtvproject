@@ -5,7 +5,7 @@
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
             <input type="password" class="input login__input" placeholder="Пароль">
-            <a href="#" class="link login__forgot-link">Забыли пароль?</a>
+            <div @click="isModalShown = true" class="link login__forgot-link">Забыли пароль?</div>
             <div class="login__btns">
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton @click="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
@@ -25,18 +25,43 @@
   </div>
   <FooterLogin />
   <FooterMobileMenu />
+
+  <ModalWrapper 
+        :title="'Восстановление Пароля'" 
+        :lineWidth="restoreStep * 33.33"
+        :isShown="isModalShown" 
+        @closeModal="isModalShown = false"
+    >
+    <RestorePassword v-if="restoreStep == 1" @nextRestore="restoreStep = 2" />
+    <RestorePasswordCode v-if="restoreStep == 2" @nextRestore="restoreStep = 3" />
+    <RestorePasswordSetNew v-if="restoreStep == 3" @nextRestore="isModalShown = false"/>
+  </ModalWrapper>
 </template>
 
 <script>
 import FooterLogin from '@/components/FooterLogin.vue';
 import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
+import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
+import RestorePassword from '@/components/Modals/RestorePassword.vue';
+import RestorePasswordCode from '@/components/Modals/RestorePasswordCode.vue';
+import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
 
 export default {
     components:{
         FooterLogin,
         CustomButton,
-        FooterMobileMenu
+        FooterMobileMenu,
+        ModalWrapper,
+        RestorePassword,
+        RestorePasswordCode,
+        RestorePasswordSetNew
+    },
+    data(){
+        return{
+            isModalShown: false,
+            restoreStep: 1
+        }
     },
     methods:{
         loginEvent(){
@@ -76,6 +101,7 @@ export default {
     margin-bottom: 27px;
 }
 .login__forgot-link{
+    cursor: pointer;
     display: block;
     width: fit-content;
     margin-left: auto;
