@@ -91,6 +91,7 @@ export default {
 .carousel__img{
     width: 100%;
     border-radius: 16px;
+    pointer-events: none;
 }
 .main-carousel__arrow{
     cursor: pointer;
