@@ -1,5 +1,5 @@
 <template>
-  <div class="favourites">
+  <div v-if="favouritesMountedList && favouritesMountedList.length" class="favourites">
     <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
         <div class="favourites__img">
             <img :src="getImageUrl(item.imgName)" alt="img">
@@ -16,15 +16,21 @@
         <p class="text favourites__film-type">{{item.filmType}}</p>
     </div>
   </div>
+  <div v-else class="favourites">
+      <FilmSkeleton v-for="item in 10" :key="item" class="favourites__item" />
+  </div>
+  
 </template>
 
 <script>
 import { favouritesListData } from '@/data/data.js';
 import FilmHoverInfo from '@/components/UIKit/FilmHoverInfo.vue'
+import FilmSkeleton from '@/components/UIKit/Skeletons/FilmSkeleton.vue'
 
 export default {
     components:{
-        FilmHoverInfo
+        FilmHoverInfo,
+        FilmSkeleton
     },
     data(){
         return{
@@ -34,7 +40,9 @@ export default {
         }
     },
     mounted(){
-        this.favouritesMountedList = this.favouritesListData?.items;
+        setTimeout(() => {
+            this.favouritesMountedList = this.favouritesListData?.items;
+        }, 3000);
     },
     methods:{
         getImageUrl(imgName){

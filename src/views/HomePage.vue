@@ -57,9 +57,11 @@ export default {
     }
   }, 
   mounted(){
-    this.hardSliderList = this.slidersDataList?.hardSlider;
-    this.understandSliderList = this.slidersDataList?.undestandSlider;
-    this.interestingSliderList = this.slidersDataList?.interestingSlider;
+    setTimeout(() => {
+      this.hardSliderList = this.slidersDataList?.hardSlider;
+      this.understandSliderList = this.slidersDataList?.undestandSlider;
+      this.interestingSliderList = this.slidersDataList?.interestingSlider;
+    }, 3000);
   }
 }
 </script>

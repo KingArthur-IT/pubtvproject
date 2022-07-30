@@ -9,7 +9,7 @@
                         <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <Carousel :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
+                <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
                         <div class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
                             <div class="filter__img">
@@ -21,8 +21,13 @@
                         </div>
                     </Slide>
                 </Carousel>
-                <img src="@/assets/blur-right.png" class="filter__blur-right">
-                <div class="filter__arrow arrow-right" @click="nextClick">
+                 <Carousel v-else :items-to-show="4" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
+                    <Slide v-for="slide in 4" :key="slide">
+                        <FilmSkeleton />
+                    </Slide>
+                </Carousel>
+                <img v-if="slidesData && slidesData.length" src="@/assets/blur-right.png" class="filter__blur-right">
+                <div v-if="slidesData && slidesData.length" class="filter__arrow arrow-right" @click="nextClick">
                     <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -35,13 +40,15 @@
 <script>
 import { Carousel, Slide } from 'vue3-carousel';
 import FilmHoverInfo from '@/components/UIKit/FilmHoverInfo.vue'
+import FilmSkeleton from '@/components/UIKit/Skeletons/FilmSkeleton.vue'
 import 'vue3-carousel/dist/carousel.css';
 
 export default {
     components: {
         Carousel,
         Slide,
-        FilmHoverInfo
+        FilmHoverInfo,
+        FilmSkeleton
     },
     props:{
         title:{
