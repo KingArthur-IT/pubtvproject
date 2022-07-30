@@ -3,8 +3,14 @@
       <div class="container login__hero">
         <h1 class="big-title login__title">Вход</h1>
         <form class="login__form">
-            <input type="email" class="input login__input" placeholder="Email">
-            <input type="password" class="input login__input" placeholder="Пароль">
+            <input  v-model="email" 
+                    type="email" 
+                    class="input login__input" 
+                    placeholder="Email" 
+                    :class="{'input-error': !isEmailValid}"
+                    @input="isEmailValid = true"
+            >
+            <input v-model="password" type="password" class="input login__input" placeholder="Пароль">
             <div class="login__link-wrapper">
                 <div @click="forgotPassword" class="link login__forgot-link">Забыли пароль?</div>
                 <div class="login__remember">
@@ -15,7 +21,7 @@
             </div>
             <div class="login__btns">
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
-                <CustomButton @click="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
+                <CustomButton @click.prevent="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
             </div>
             <p class="text login__text">или</p>
             <p class="text login__mobile-text">Войти через:</p>
@@ -70,12 +76,19 @@ export default {
         return{
             isModalShown: false,
             restoreStep: 1,
-            isRememberMe: false
+            isRememberMe: false,
+            email: '',
+            password: '',
+            isEmailValid: true
         }
     },
     methods:{
         loginEvent(){
-            this.$router.push({path: '/profile'});
+            if (this.email && this.validateEmail(this.email))
+                this.$router.push({path: '/profile'});
+            else{
+                this.isEmailValid = false;
+            }
         },
         forgotPassword(){
             this.isModalShown = true;
@@ -86,6 +99,10 @@ export default {
             setTimeout(() => {
                 this.isModalShown = false
             }, 200);
+        },
+        validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
         }
     }
 }

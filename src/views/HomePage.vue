@@ -7,16 +7,19 @@
                     :refer="'hard-carousel'" 
                     :sliderDataFolder="hardSliderList.folderName"
                     :slidesData="hardSliderList.slides" 
+                    @toggleFavourite="toggleFavouriteInHardFilms"
         />
         <FilmSlider :title="'Понятный Английский'"
                     :refer="'understand-carousel'" 
                     :sliderDataFolder="understandSliderList.folderName"
                     :slidesData="understandSliderList.slides" 
+                    @toggleFavourite="toggleFavouriteInUnderstandFilms"
         />
         <FilmSlider :title="'Интересный Сюжет'"
-                    :refer="'hard-carousel'" 
+                    :refer="'interesting-carousel'" 
                     :sliderDataFolder="interestingSliderList.folderName"
                     :slidesData="interestingSliderList.slides" 
+                    @toggleFavourite="toggleFavouriteInInterestingFilms"
         />
       </div>
       <AboutUsSection />
@@ -62,6 +65,20 @@ export default {
       this.understandSliderList = this.slidersDataList?.undestandSlider;
       this.interestingSliderList = this.slidersDataList?.interestingSlider;
     }, 3000);
+  },
+  methods:{
+    toggleFavouriteInHardFilms(id){
+      var arrItem = this.hardSliderList.slides.find(el => el.id === id);
+      arrItem.isFavourite = !arrItem.isFavourite;
+    },
+    toggleFavouriteInUnderstandFilms(id){
+      var arrItem = this.understandSliderList.slides.find(el => el.id === id);
+      arrItem.isFavourite = !arrItem.isFavourite;
+    },
+    toggleFavouriteInInterestingFilms(id){
+      var arrItem = this.interestingSliderList.slides.find(el => el.id === id);
+      arrItem.isFavourite = !arrItem.isFavourite;
+    }
   }
 }
 </script>

@@ -7,7 +7,7 @@
             </svg>
         </div>
         <ul class="dropdown-list" :class="{'show': isDisplay, 'visible': isVisible}">
-            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click="value = item">{{item}}</li>
+            <li v-for="(item, i) in list" :key="i" class="dropdown-item" @click="selectClick(item)">{{item}}</li>
         </ul>
     </div>
 </template>
@@ -22,7 +22,11 @@ export default {
         placeholder:{
             type: String,
             default: ''
-        }
+        },
+        modelValue: {
+            type: String,
+            default: ''
+        },
     },
     data(){
         return{
@@ -32,6 +36,7 @@ export default {
         }
     },
     mounted(){
+        this.value = this.modelValue;
         document.addEventListener('click', () => {
             this.closeDropdown();
         });
@@ -54,6 +59,10 @@ export default {
                 this.closeDropdown();
             else
                 this.openDropdown();
+        },
+        selectClick(newVal){
+            this.value = newVal;
+            this.$emit('update:modelValue', newVal)
         }
     }
 }

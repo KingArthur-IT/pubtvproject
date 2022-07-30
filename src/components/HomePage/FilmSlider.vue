@@ -14,7 +14,14 @@
                         <div class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
                             <div class="filter__img">
                                 <img :src="getImageUrl(slide.imgName)" alt="img">
-                                <FilmHoverInfo :isVisible="hoverSlideId === slide.id" :markList="slide.markList" :mark="slide.mark" :filmInfo="slide.filmInfo" :seasons="slide.seasons" />
+                                <FilmHoverInfo  @toggleFavourite="$emit('toggleFavourite', slide.id)" 
+                                                :isVisible="hoverSlideId === slide.id" 
+                                                :markList="slide.markList" 
+                                                :mark="slide.mark" 
+                                                :filmInfo="slide.filmInfo" 
+                                                :seasons="slide.seasons" 
+                                                :isFavourite="slide.isFavourite"
+                                />
                             </div>
                             <p class="text filter__film-name">{{slide.filmName}}</p>
                             <p class="text filter__film-type">{{slide.filmType}}</p>
@@ -117,7 +124,7 @@ export default {
     margin-top: 73px;
 }
 .filter__title{
-    margin-bottom: 19px;
+    margin-bottom: 40px;
 }
 .filter__item{
     border-radius: 18px;

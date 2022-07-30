@@ -3,8 +3,18 @@
       <div class="container login__hero">
         <h1 class="big-title login__title">Регистрация</h1>
         <form class="login__form">
-            <input type="email" class="input login__input" placeholder="Email">
-            <InputDropdown class="login__input" :list="maleList" :placeholder="'Пол'" />
+            <input  v-model="email"
+                    type="email" 
+                    class="input login__input" 
+                    placeholder="Email"
+                    :class="{'input-error': !isEmailValid}"
+                    @input="isEmailValid = true"
+            >
+            <InputDropdown  v-model="gender"
+                            class="login__input" 
+                            :list="genderList" 
+                            :placeholder="'Пол'" 
+            />
             <input type="password" class="input login__input last-input" placeholder="Пароль">
             <router-link to="/login">
                 <div class="link login__forgot-link">
@@ -12,7 +22,7 @@
                 </div>
             </router-link>
             <div class="login__btns">
-                <CustomButton class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
+                <CustomButton @click.prevent="register" class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
             <p class="text login__text">или</p>
             <p class="text login__mobile-text">Регистрация через:</p>
@@ -46,7 +56,25 @@ export default {
     },
     data(){
         return{
-            maleList:['Мужской','Женский','Другое']
+            email: '',
+            gender: '',
+            password: '',
+            isEmailValid: true,
+            genderList:['Мужской','Женский','Другое']
+        }
+    },
+    methods:{
+        register(){
+            if (this.email && this.validateEmail(this.email)){
+                console.log('register success')
+            }
+            else{
+                this.isEmailValid = false;
+            }
+        },
+        validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
         }
     }
 }

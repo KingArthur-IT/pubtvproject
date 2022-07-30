@@ -27,7 +27,7 @@ import { favouritesListData } from '@/data/data.js';
 import FilmHoverInfo from '@/components/UIKit/FilmHoverInfo.vue'
 import FilmSkeleton from '@/components/UIKit/Skeletons/FilmSkeleton.vue'
 
-export default {
+export default { 
     components:{
         FilmHoverInfo,
         FilmSkeleton
