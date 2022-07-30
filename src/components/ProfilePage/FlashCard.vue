@@ -1,6 +1,6 @@
 <template>
   <div class="flash">
-      <InformationIcon class="flash__info-icon" />
+      <InformationIcon @click="isInfoModalShown = true" class="flash__info-icon" />
       <CustomButton @click="openAddFlashCardModal" class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
       <div class="flash__wrap">
           <div v-for="(item, i) in phrases" :key="i" class="flash__item">
@@ -15,6 +15,11 @@
     >
         <AddFlashCard @addEvent="addFlashCard" />
     </ModalWrapper>
+    <InfoPopup  :isShown="isInfoModalShown" 
+                @closeModal="isInfoModalShown = false"
+                :title="'Как использовать Флэш - Карты'" 
+                :text="' На странице Флэш-карты отображаются все те слова и фразы, которые вы добавили с просмотренного вами кино. Также имеется возможность добавлять свои личные слова. Если вы запомнили перевод слова, тогда нажмите я запомнил(а). Если вы хотите посмотреть перевод слова на компьютерной версии сайта, то наведите курсор мыши на заблюренную часть под словом на карточке, а на мобильной версии просто нажмите на заблюренную часть. Если хотите прочитать про систему изучения слов, которая используется на данном сайте, то перейдите по ссылке.'" 
+    />
   </div>
 </template>
 
@@ -24,14 +29,21 @@ import FlashCard from '@/components/UIKit/FlashCard.vue';
 import InformationIcon from '@/components/Icons/InformationIcon.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import AddFlashCard from '@/components/Modals/AddFlashCard.vue';
+import InfoPopup from '@/components/Modals/InfoPopup.vue'
 
 export default {
     components:{
-        CustomButton, FlashCard, InformationIcon, ModalWrapper, AddFlashCard
+        CustomButton, 
+        FlashCard, 
+        InformationIcon, 
+        ModalWrapper, 
+        AddFlashCard,
+        InfoPopup
     },
     data(){
         return{
             isModalShown: false,
+            isInfoModalShown: false,
             progressStep: 1,
             phrases:[
                 {phrase: 'Alright', translation: 'Привет'},

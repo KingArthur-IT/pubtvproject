@@ -5,7 +5,7 @@
         <form class="login__form">
             <input type="email" class="input login__input" placeholder="Email">
             <InputDropdown class="login__input" :list="maleList" :placeholder="'Пол'" />
-            <input type="password" class="input login__input" placeholder="Пароль">
+            <input type="password" class="input login__input last-input" placeholder="Пароль">
             <router-link to="/login">
                 <div class="link login__forgot-link">
                     Есть аккаунт? <span>Войти</span>
@@ -79,7 +79,7 @@ export default {
     width: 100%;
     margin-bottom: 27px;
 }
-.login__input:last-child{
+.last-input{
     margin-bottom: 11px;
 }
 .login__forgot-link{

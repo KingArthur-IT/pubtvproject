@@ -30,6 +30,7 @@
 
 <script>
 import LogoutButton from '@/components/UIKit/LogoutButton.vue'
+
 export default {
     components:{
         LogoutButton
@@ -37,7 +38,7 @@ export default {
     data(){
         return{
             userName: 'Yan Levchenko',
-            userMail: 'support@pubtv.online'
+            userMail: 'support@pubtv.online',
         }
     },
     methods:{

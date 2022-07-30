@@ -34,6 +34,7 @@ export default {
 .logo__description{
     margin: 0;   
     font-size: 10px;
+    font-weight: 500;
 }
 .logo__title-pub{
     letter-spacing: 1px;
