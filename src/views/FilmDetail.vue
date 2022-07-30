@@ -27,7 +27,7 @@
                 <h1 class="title">{{filmName}}</h1>
                 <div class="title-wrap__icons">
                     <EditIcon class="edit-icon" />
-                    <HeartIcon />
+                    <HeartIcon :isSelected="isFavourite" @click="isFavourite = !isFavourite" />
                 </div>
             </div>
             <div class="player-wrapper">
@@ -42,6 +42,16 @@
                     </Carousel>
                 </div>
                 <CustomButton class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
+            </div>
+            <div class="seasons-hero">
+                <Carousel :items-to-show="4" :snapAlign="'start'">
+                    <Slide v-for="slide in 2" :key="slide">
+                        <div class="seasons-hero__item">
+                            <!-- <img :src="getImageUrl(slide)" alt="series"> -->
+                            <img src="@/assets/img/series/1.png" alt="series">
+                        </div>
+                    </Slide>
+                </Carousel>
             </div>
         </div>
     </div>
@@ -74,17 +84,17 @@ export default {
     return{
       filmListData,
       filmList: [],
-      currentSeason: 1
+      currentSeason: 1,
+      isFavourite: false
     }
   }, 
   mounted(){
     this.filmList = this.filmListData;
   },
   methods:{
-    // toggleFavouriteFilm(id){
-    //   var arrItem = this.filmList.find(el => el.id === id);
-    //   arrItem.isFavourite = !arrItem.isFavourite;
-    // },
+    getImageUrl(imgName){
+        return new URL(`../../assets/img/series/${imgName}.png`, import.meta.url).href
+    },
   },
   computed:{
       filmName(){
@@ -145,6 +155,7 @@ export default {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    margin-bottom: 28px;
 }
 .seasons__list{
     flex-basis: 80%;
@@ -180,5 +191,11 @@ export default {
     font-size: 16px;
     line-height: 137%;
     color: #FFFFFF;
+}
+.seasons-hero{
+    width: 100%;
+}
+.seasons-hero__item{
+    position: relative;
 }
 </style>
