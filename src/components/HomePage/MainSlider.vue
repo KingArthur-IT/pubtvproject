@@ -2,8 +2,8 @@
   <div class="main-carousel">
     <div class="main-carousel__hero">
         <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel">
-            <Slide v-for="slide in mainSliderList?.slides" :key="slide.id">
-                <div class="carousel__item main-carousel__item">
+            <Slide v-for="slide in mainSliderList" :key="slide.id">
+                <div @click="goToDetailPage" class="carousel__item main-carousel__item">
                     <img :src="getImageUrl(slide.imgName)" alt="img" class="carousel__img">
                     <div class="main-carousel__tag-list">
                         <div v-for="(tag, i) in slide.tags" :key="i" class="main-carousel__tag">{{tag}}</div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { slidersDataList } from '@/data/data.js';
+import { mainSliderData } from '@/data/data.js';
 import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
@@ -37,12 +37,12 @@ export default {
     },
     data(){
         return{
-            slidersDataList,
+            mainSliderData,
             mainSliderList: [],
         }
     }, 
     mounted(){
-        this.mainSliderList = this.slidersDataList?.mainSlider;
+        this.mainSliderList = this.mainSliderData;
     },
     methods:{
         getImageUrl(imgName){
@@ -55,6 +55,9 @@ export default {
         nextClick(){
             this.$refs.mainCarousel.next();
             this.$refs.mainCarousel.updateSlideWidth();
+        },
+        goToDetailPage(){
+            this.$router.push({name: 'detail', params: {filmId: 0}})
         }
     }
 }
@@ -71,6 +74,7 @@ export default {
     position: relative;
 }
 .main-carousel__item{
+    cursor: pointer;
     position: relative;
 }
 .main-carousel__tag-list{

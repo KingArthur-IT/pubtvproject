@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
+import FilmDetail from '@/views/FilmDetail.vue'
 import ProfilePage from '@/views/ProfilePage.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
@@ -15,6 +16,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage,
+      meta: { auth: false }
+    },
+    {
+      path: '/detail/:filmId',
+      name: 'detail',
+      component: FilmDetail,
       meta: { auth: false }
     },
     {

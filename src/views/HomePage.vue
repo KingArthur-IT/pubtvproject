@@ -5,21 +5,21 @@
       <div class="sliders-wrapper">
         <FilmSlider :title="'Сложный Английский'"
                     :refer="'hard-carousel'" 
-                    :sliderDataFolder="hardSliderList.folderName"
-                    :slidesData="hardSliderList.slides" 
-                    @toggleFavourite="toggleFavouriteInHardFilms"
+                    :sliderDataFolder="'films'"
+                    :slidesData="hardEnglishFilms" 
+                    @toggleFavourite="toggleFavouriteFilm"
         />
         <FilmSlider :title="'Понятный Английский'"
                     :refer="'understand-carousel'" 
-                    :sliderDataFolder="understandSliderList.folderName"
-                    :slidesData="understandSliderList.slides" 
-                    @toggleFavourite="toggleFavouriteInUnderstandFilms"
+                    :sliderDataFolder="'films'"
+                    :slidesData="undestandableEnglishFilms" 
+                    @toggleFavourite="toggleFavouriteFilm"
         />
         <FilmSlider :title="'Интересный Сюжет'"
                     :refer="'interesting-carousel'" 
-                    :sliderDataFolder="interestingSliderList.folderName"
-                    :slidesData="interestingSliderList.slides" 
-                    @toggleFavourite="toggleFavouriteInInterestingFilms"
+                    :sliderDataFolder="'films'"
+                    :slidesData="interestingEnglishFilms" 
+                    @toggleFavourite="toggleFavouriteFilm"
         />
       </div>
       <AboutUsSection />
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { slidersDataList } from '@/data/data.js';
+import { filmListData } from '@/data/data.js';
 import FooterDefault from '@/components/FooterDefault.vue';
 import AboutUsSection from '@/components/HomePage/AboutUsSection.vue'
 import MainSlider from '@/components/HomePage/MainSlider.vue'
@@ -44,41 +44,31 @@ export default {
   },
   data(){
     return{
-      slidersDataList,
-      hardSliderList:  {
-        folderName: 'hard',
-        slides: []
-      },
-      understandSliderList: {
-        folderName: 'understand',
-        slides: []
-      },
-      interestingSliderList: {
-        folderName: 'interesting',
-        slides: []
-      },
+      filmListData,
+      filmList: [],
     }
   }, 
   mounted(){
     setTimeout(() => {
-      this.hardSliderList = this.slidersDataList?.hardSlider;
-      this.understandSliderList = this.slidersDataList?.undestandSlider;
-      this.interestingSliderList = this.slidersDataList?.interestingSlider;
+      this.filmList = this.filmListData;
     }, 3000);
   },
   methods:{
-    toggleFavouriteInHardFilms(id){
-      var arrItem = this.hardSliderList.slides.find(el => el.id === id);
+    toggleFavouriteFilm(id){
+      var arrItem = this.filmList.find(el => el.id === id);
       arrItem.isFavourite = !arrItem.isFavourite;
     },
-    toggleFavouriteInUnderstandFilms(id){
-      var arrItem = this.understandSliderList.slides.find(el => el.id === id);
-      arrItem.isFavourite = !arrItem.isFavourite;
+  },
+  computed:{
+    hardEnglishFilms(){
+      return this.filmList.filter(film => film.category === 'hardEnglish')
     },
-    toggleFavouriteInInterestingFilms(id){
-      var arrItem = this.interestingSliderList.slides.find(el => el.id === id);
-      arrItem.isFavourite = !arrItem.isFavourite;
-    }
+    interestingEnglishFilms(){
+      return this.filmList.filter(film => film.category === 'interestingEnglish')
+    },
+    undestandableEnglishFilms(){
+      return this.filmList.filter(film => film.category === 'understandableEnglish')
+    },
   }
 }
 </script>

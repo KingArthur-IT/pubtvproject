@@ -1,6 +1,6 @@
 <template>
   <div class="film-info" :class="{'visible': isVisible}">
-      <FavoriteIcon :isSelected="isFavourite" @click="$emit('toggleFavourite')" class="film-info__fav-icon" />
+      <FavoriteIcon :isSelected="isFavourite" @click.stop="$emit('toggleFavourite')" class="film-info__fav-icon" />
       <div class="film-info__hero">
             <span class="film-info-text">{{mark}}</span>
             <div class="film-info__hero-list">
@@ -20,6 +20,7 @@
 
 <script>
 import FavoriteIcon from '@/components/Icons/FavoriteIcon.vue'
+
 export default {
     components:{
         FavoriteIcon

@@ -1,7 +1,7 @@
 <template>
   <div v-if="favouritesMountedList && favouritesMountedList.length" class="favourites">
-    <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
-        <div class="favourites__img">
+    <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @click="goToDetailPage(item.id)">
+        <div class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
             <img :src="getImageUrl(item.imgName)" alt="img">
             <FilmHoverInfo  @toggleFavourite="item.isFavourite = !item.isFavourite" 
                             :isVisible="hoverId === item.id" 
@@ -41,13 +41,16 @@ export default {
     },
     mounted(){
         setTimeout(() => {
-            this.favouritesMountedList = this.favouritesListData?.items;
+            this.favouritesMountedList = this.favouritesListData;
         }, 3000);
     },
     methods:{
         getImageUrl(imgName){
             return new URL(`../../assets/img/favourites/${imgName}.png`, import.meta.url).href
         },
+        goToDetailPage(filmId){
+            this.$router.push({name: 'detail', params: {filmId: filmId}})
+        }
     }
 }
 </script>
@@ -59,6 +62,7 @@ export default {
     padding: 45px 0 50px;
 }
 .favourites__item{
+    cursor: pointer;
     border-radius: 18px;
     margin-bottom: 40px;
     padding: 0 10px;

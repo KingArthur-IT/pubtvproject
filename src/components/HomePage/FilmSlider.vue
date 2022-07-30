@@ -11,8 +11,8 @@
                 </div>
                 <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
-                        <div class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
-                            <div class="filter__img">
+                        <div @click="goToDetailPage(slide.id)" class="filter__item">
+                            <div class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
                                 <img :src="getImageUrl(slide.imgName)" alt="img">
                                 <FilmHoverInfo  @toggleFavourite="$emit('toggleFavourite', slide.id)" 
                                                 :isVisible="hoverSlideId === slide.id" 
@@ -107,6 +107,9 @@ export default {
             this.$refs[this.refer].next();
             this.$refs[this.refer].updateSlideWidth();
             this.slideIndex ++;
+        },
+        goToDetailPage(filmId){
+            this.$router.push({name: 'detail', params: {filmId: filmId}})
         }
     },
     watch:{
@@ -127,6 +130,7 @@ export default {
     margin-bottom: 40px;
 }
 .filter__item{
+    cursor: pointer;
     border-radius: 18px;
 }
 .filter__film-name{
@@ -190,6 +194,7 @@ export default {
     right: -3px;
     width: 80px;
     height: 100%;
+    pointer-events: none;
 }
 .filter__blur-left{
     position: absolute;
@@ -201,6 +206,7 @@ export default {
     z-index: 1;
     opacity: 0;
     transition: opacity .2s ease-in-out;
+    pointer-events: none;
 }
 .visible{
     opacity: 1;

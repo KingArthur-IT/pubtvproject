@@ -34,7 +34,7 @@ export default {
     },
     data(){
         return{
-            englishLevelList: ['Легкий', 'Средний', 'Сложный'],
+            englishLevelList: ['Высокий', 'Средний', 'Низкий'],
             serialslList: ['Сериал', 'Фильм', 'Мультсериал']
         }
     },
