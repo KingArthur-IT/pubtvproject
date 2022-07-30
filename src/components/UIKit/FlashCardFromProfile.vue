@@ -44,13 +44,14 @@ export default {
     background: var(--section-bg-color);
     box-shadow: 5px 18px 26px rgba(0, 0, 0, 0.01);
     border-radius: 36px;
-    padding: 18px 12px;
+    padding: 23px 12px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .card__icon{
     align-self: flex-end;
+    margin-right: 14px;
 }
 .card__word{
     font-family: 'Nunito';

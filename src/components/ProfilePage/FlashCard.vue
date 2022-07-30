@@ -4,7 +4,7 @@
       <CustomButton @click="openAddFlashCardModal" class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
       <div class="flash__wrap">
           <div v-for="(item, i) in phrases" :key="i" class="flash__item">
-            <FlashCard :phrase="item.phrase" :translation="item.translation" />
+            <FlashCardFromProfile :phrase="item.phrase" :translation="item.translation" />
         </div>
       </div>
       <ModalWrapper 
@@ -25,7 +25,7 @@
 
 <script>
 import CustomButton from '@/components/UIKit/CustomButton.vue';
-import FlashCard from '@/components/UIKit/FlashCard.vue';
+import FlashCardFromProfile from '@/components/UIKit/FlashCardFromProfile.vue';
 import InformationIcon from '@/components/Icons/InformationIcon.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import AddFlashCard from '@/components/Modals/AddFlashCard.vue';
@@ -34,7 +34,7 @@ import InfoPopup from '@/components/Modals/InfoPopup.vue'
 export default {
     components:{
         CustomButton, 
-        FlashCard, 
+        FlashCardFromProfile, 
         InformationIcon, 
         ModalWrapper, 
         AddFlashCard,
