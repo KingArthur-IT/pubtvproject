@@ -123,6 +123,9 @@ export default {
 </script>
 
 <style scoped>
+.carousel__slide{
+    justify-content: flex-start !important;
+}
 .filter{
     margin-top: 73px;
 }

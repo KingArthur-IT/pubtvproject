@@ -34,5 +34,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background var(--transition-time) ease-in-out;
+}
+.add-btn:hover{
+    background: #CACACA;
 }
 </style>
