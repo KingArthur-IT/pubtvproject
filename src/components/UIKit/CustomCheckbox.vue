@@ -48,8 +48,8 @@ export default {
   margin: 0;
   font: inherit;
   color: var(--primary-color);
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border: 1px solid var(--primary-color);
   background-color: var(--background-color);
   cursor: pointer;
@@ -60,12 +60,13 @@ export default {
 .custom-checkbox.checked::after{
   content: '';
   position: absolute;
-  top: 3px;
+  top: 1px;
   bottom: 0;
-  left: 2px;
+  left: 1px;
   right: 0;
   background-color: var(--primary-color);
   background: url('@/assets/img/check.svg') no-repeat;
+  transform: scale(0.8);
 }
 </style>
 

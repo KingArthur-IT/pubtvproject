@@ -30,6 +30,7 @@ export default {
     margin: 0;
     font-size: 46px;
     line-height: 100%;
+    margin-left: -3px;
 }
 .logo__description{
     margin: 0;   

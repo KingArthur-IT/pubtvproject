@@ -35,24 +35,32 @@
             </div>
             <div class="seasons">
                 <div class="seasons__list">
-                    <Carousel :items-to-show="6.1" :snapAlign="'start'">
+                    <Carousel :items-to-show="6.2" :snapAlign="'start'">
                         <Slide v-for="slide in 8" :key="slide">
                             <div @click="currentSeason = slide" class="seasons__item" :class="{'active': slide === currentSeason}">{{slide}} сезон</div>
                         </Slide>
                     </Carousel>
+                    <img src="@/assets/blur-right-small.png" class="blur-right">
                 </div>
                 <CustomButton class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
             <div class="seasons-hero">
-                <Carousel :items-to-show="4" :snapAlign="'start'">
-                    <Slide v-for="slide in 2" :key="slide">
+                <Carousel :items-to-show="3.9" :snapAlign="'start'">
+                    <Slide v-for="(slide, i) in seriesList" :key="slide.id">
                         <div class="seasons-hero__item">
-                            <!-- <img :src="getImageUrl(slide)" alt="series"> -->
-                            <img src="@/assets/img/series/1.png" alt="series">
+                            <div v-if="i < seriesList.length - 1" class="seasons-hero__content">
+                                <div class="seasons-hero__img">
+                                    <img :src="getImageUrl(slide.imgName)" alt="series">
+                                    <div class="seasons-hero__label">{{slide.timeValue}} минут</div>
+                                </div>
+                                <p class="seasons-hero__text">{{currentSeason}} сезон {{i + 1}} серия</p>
+                            </div>
+                            <AddFilmArea v-else class="seasons-hero__add-area"/>
                         </div>
                     </Slide>
                 </Carousel>
             </div>
+            <FilmTextDescription />
         </div>
     </div>
     <FlashCards />
@@ -69,6 +77,8 @@ import HeartIcon from '@/components/Icons/HeartIcon.vue';
 import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
+import AddFilmArea from '@/components/Icons/AddFilmArea.vue';
+import FilmTextDescription from '@/components/FilmDetailPage/FilmTextDescription.vue';
 
 export default {
   components:{
@@ -78,14 +88,21 @@ export default {
     HeartIcon,
     Carousel,
     Slide,
-    CustomButton
+    CustomButton,
+    AddFilmArea,
+    FilmTextDescription
   },
   data(){
     return{
       filmListData,
       filmList: [],
       currentSeason: 1,
-      isFavourite: false
+      isFavourite: false,
+      seriesList: [
+          {id: 0, imgName: 1, timeValue: 60},
+          {id: 1, imgName: 2, timeValue: 63},
+          {}
+        ]
     }
   }, 
   mounted(){
@@ -93,7 +110,7 @@ export default {
   },
   methods:{
     getImageUrl(imgName){
-        return new URL(`../../assets/img/series/${imgName}.png`, import.meta.url).href
+        return new URL(`../../src/assets/img/series/${imgName}.png`, import.meta.url).href
     },
   },
   computed:{
@@ -158,6 +175,7 @@ export default {
     margin-bottom: 28px;
 }
 .seasons__list{
+    position: relative;
     flex-basis: 80%;
 }
 .seasons__item{
@@ -194,8 +212,57 @@ export default {
 }
 .seasons-hero{
     width: 100%;
+    margin-bottom: 65px;
 }
 .seasons-hero__item{
     position: relative;
+}
+.seasons-hero__content{
+    position: relative;
+}
+.seasons-hero__img{
+    position: relative;
+}
+.seasons-hero__img img{
+    height: 153px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+.seasons-hero__label{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 11px;
+    color: #FFFFFF;
+    padding: 5px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    border-radius: 7px;
+    position: absolute;
+    bottom: 16px;
+    right: 21px;
+}
+.seasons-hero__text{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 135%;
+    color: #FFFFFF;
+    margin-top: 12px;
+    text-align: left;
+}
+.seasons-hero__add-area{
+    margin-bottom: 35px;
+}
+.blur-right{
+    position: absolute;
+    top: -5px;
+    bottom: 0;
+    right: 0px;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
 }
 </style>
