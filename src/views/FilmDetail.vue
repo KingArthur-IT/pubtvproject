@@ -31,7 +31,14 @@
                 </div>
             </div>
             <div class="player-wrapper">
-                <img src="@/assets/img/player.png" alt="">
+                <!-- <img id="player" src="@/assets/img/player.png" alt=""> -->
+                <video id="player" playsinline controls data-poster="/path/to/poster.jpg">
+                    <source src="@/assets/video/sample.mp4" type="video/mp4" />
+                    <!-- <source src="/path/to/video.webm" type="video/webm" /> -->
+
+                    <!-- Captions are optional -->
+                    <!-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> -->
+                </video>
             </div>
             <div class="seasons">
                 <div class="seasons__list">
@@ -69,6 +76,7 @@
 </template>
 
 <script>
+import Plyr from 'plyr';
 import { filmListData } from '@/data/data.js';
 import FooterDefault from '@/components/FooterDefault.vue';
 import FlashCards from '@/components/FilmDetailPage/FlashCards.vue';
@@ -102,11 +110,13 @@ export default {
           {id: 0, imgName: 1, timeValue: 60},
           {id: 1, imgName: 2, timeValue: 63},
           {}
-        ]
+        ],
+      player: null
     }
   }, 
   mounted(){
     this.filmList = this.filmListData;
+    this.player = new Plyr('#player');
   },
   methods:{
     getImageUrl(imgName){

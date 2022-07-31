@@ -3,8 +3,8 @@
     <div class="container">
         <div class="footer__item footer__top-item">
             <div class="footer__socials d-flex justify-space-between align-center">
-                <a href="#"><InstagramIcon  class="footer__insta" /></a>
-                <a href="#"><TelegramIcon /></a>
+                <a href="https://www.instagram.com/pubtv_official/" target="_blank"><InstagramIcon  class="footer__insta" /></a>
+                <a href="https://t.me/pubtv_official" target="_blank"><TelegramIcon /></a>
             </div>
             <router-link to="/"><Logo /></router-link>
             <a href="mailto:support@pubtv.online" class="footer__link">support@pubtv.online</a>
