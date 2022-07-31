@@ -236,4 +236,7 @@ export default {
     height: 100%;
     pointer-events: none;
 }
+#player{
+    --plyr-color-main: #7E4EFA
+}
 </style>
