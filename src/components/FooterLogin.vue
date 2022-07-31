@@ -24,6 +24,7 @@ export default {
     text-align: center;
     color: #FFFFFF;
     padding-bottom: 15px;
+    margin-bottom: 62px;
 }
 .footer__link{
     text-decoration: underline;

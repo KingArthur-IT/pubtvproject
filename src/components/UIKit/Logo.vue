@@ -59,6 +59,9 @@ export default {
     .logo__description{
         font-size: 8px;
     }
+    .logo{
+        min-width: 150px;
+    }
 }
 @media screen and (max-width: 425px) {
     .logo__title{

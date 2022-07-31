@@ -23,6 +23,11 @@
                 <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton @click.prevent="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
             </div>
+            <div class="login__remember-mobile">
+                <CustomCheckbox v-model="isRememberMe" class="login__mobile-checkbox">
+                    <div class="login__remember-text">Запомнить меня</div>
+                </CustomCheckbox>
+            </div>
             <p class="text login__text">или</p>
             <p class="text login__mobile-text">Войти через:</p>
             <div class="login__socials">
@@ -148,6 +153,9 @@ export default {
     display: flex;
     align-items: center;
 }
+.login__remember-mobile{
+    display: none;
+}
 .login__remember-text{
     font-family: 'Nunito';
     font-style: normal;
@@ -234,6 +242,9 @@ export default {
     }
 }
 @media screen and (max-width: 600px) {
+    .login{
+        margin-bottom: 82px;
+    }
     .login__title{
         text-align: left;
         margin-bottom: 42px;
@@ -255,17 +266,34 @@ export default {
     }
     .login__forgot-link{
         font-size: 12px;
+        margin-left: auto;
+    }
+    .login__link-wrapper{
         margin-bottom: 22px;
+    }
+    .login__remember{
+        display: none;
+    }
+    .login__remember-mobile{
+        display: flex;
+        margin-bottom: 23px;
+    }
+    .login__mobile-checkbox{
+        margin: auto;
     }
     .login__btns{
         flex-direction: column-reverse;
     }
     .login__btn:first-child{
         margin-right: 0px;
+        margin-bottom: 15px;
     }
     .login__btn:last-child{
         margin-right: 0px;
         margin-bottom: 18px;
+    }
+    .login__mobile-text{
+        margin-bottom: 11px;
     }
     .login__social{
         width: 100%;

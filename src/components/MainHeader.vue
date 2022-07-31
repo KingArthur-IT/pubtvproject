@@ -169,9 +169,14 @@ export default {
         width: 300px;
     }
 }
-@media screen and (max-width: 540px){
+@media screen and (max-width: 515px){
     .header__search.opened{
-        width: 200px;
+        width: calc(100vw - 150px - 60px - 30px)
+    }
+}
+@media screen and (max-width: 425px){
+    .header__search.opened{
+        width: calc(100vw - 150px - 30px)
     }
 }
 </style>
