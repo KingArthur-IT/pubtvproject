@@ -12,7 +12,7 @@
             </div>
             <div class="player-wrapper">
                 <!-- <img id="player" src="@/assets/img/player.png" alt=""> -->
-                <video id="player" playsinline controls data-poster="./assets/img/main-slider/1.png">
+                <video id="player" playsinline controls :data-poster="'@/assets/img/main-slider/1.png'">
                     <source src="@/assets/video/sample.mp4" type="video/mp4" />
                     <!-- <source src="/path/to/video.webm" type="video/webm" /> -->
 
