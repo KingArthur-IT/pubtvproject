@@ -83,7 +83,6 @@ export default {
     cursor: pointer;
 }
 
-
 .dropdown__item{
     position: relative;
     display: flex;
@@ -95,7 +94,7 @@ export default {
 }
 .dropdown-list{
     background: #fff;
-    border-radius: 27px;
+    border-radius: 15px;
     position: absolute;
     list-style: none;
     margin: 0;
@@ -144,5 +143,11 @@ export default {
 }
 .input-arrow.opened{
     transform: rotate(180deg);
+}
+
+@media screen and (max-width: 425px) {
+    .dropdown-list{
+        border-radius: 10px;
+    }
 }
 </style>

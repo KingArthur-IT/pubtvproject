@@ -16,7 +16,7 @@
                             :placeholder="'Пол'" 
             />
             <input type="password" class="input login__input last-input" placeholder="Пароль">
-            <router-link to="/login">
+            <router-link to="/login" class="login__forgot-link-desc">
                 <div class="link login__forgot-link">
                     Есть аккаунт? <span>Войти</span>
                 </div>
@@ -24,6 +24,11 @@
             <div class="login__btns">
                 <CustomButton @click.prevent="register" class="login__btn" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
+            <router-link to="/login" class="login__forgot-link-mobile">
+                <div class="link login__forgot-link">
+                    Есть аккаунт? <span>Войти</span>
+                </div>
+            </router-link>
             <p class="text login__text">или</p>
             <p class="text login__mobile-text">Регистрация через:</p>
             <div class="login__socials">
@@ -109,6 +114,9 @@ export default {
 }
 .last-input{
     margin-bottom: 11px;
+}
+.login__forgot-link-mobile{
+    display: none;
 }
 .login__forgot-link{
     display: block;
@@ -212,16 +220,25 @@ export default {
     .login__input{
         margin-bottom: 15px;
     }
+    .last-input{
+        margin-bottom: 37px;
+    }
+    .login__forgot-link-desc{
+        display: none;
+    }
+    .login__forgot-link-mobile{
+        display: block;
+    }
     .login__forgot-link{
         font-size: 12px;
-        margin-bottom: 22px;
-    }
-    .login__btns{
-        flex-direction: column-reverse;
+        margin-bottom: 30px;
     }
     .login__btn{
         margin-right: 0px;
-        margin-bottom: 18px;
+        margin-bottom: 15px;
+    }
+    .login__mobile-text{
+        margin-bottom: 9px;
     }
     .login__social{
         width: 100%;
