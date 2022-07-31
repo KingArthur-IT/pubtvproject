@@ -46,6 +46,7 @@
 
   <ModalWrapper 
         :title="'Восстановление Пароля'" 
+        :description="resporePasswordDescription"
         :lineWidth="(restoreStep - 1) * 33.33"
         :isShown="isModalShown" 
         @closeModal="isModalShown = false"
@@ -84,7 +85,7 @@ export default {
             isRememberMe: false,
             email: '',
             password: '',
-            isEmailValid: true
+            isEmailValid: true,
         }
     },
     methods:{
@@ -108,6 +109,13 @@ export default {
         validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
+        }
+    },
+    computed:{
+        resporePasswordDescription(){
+            if (this.restoreStep == 1) return 'Введите Email на который зарегистрирован аккаунт.'
+            if (this.restoreStep == 2) return 'Мы отправили код на ваш Email, проверьте почту и введите код.'
+            if (this.restoreStep == 3) return ''
         }
     }
 }

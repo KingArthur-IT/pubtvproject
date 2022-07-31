@@ -1,17 +1,18 @@
 <template>
     <div class="modal" :class="{'show': isDisplay, 'visible': isVisible}">
         <div class="modal__header">
-            <div class="container">
-                <div class="modal__header-hero">
-                    <h2 class="modal__title">{{title}}</h2>
-                    <CloseIcon class="modal__close" @click="closeModal"/>
-                </div>
+            <div class="container modal__header-hero">
+                <Logo class="modal__logo" />
+                <h2 class="modal__title">{{title}}</h2>
+                <CloseIcon class="modal__close" @click="closeModal"/>
             </div>
         </div>
         <div class="modal__line-wrap">
             <div class="modal__line" :style="`width: ${lineWidth}%`"></div>
         </div>
         <div class="container modal__hero">
+            <h2 class="modal__title mob-title">{{title}}</h2>
+            <p class="modal__description">{{description}}</p>
             <slot></slot>
         </div>
     </div>
@@ -19,13 +20,19 @@
 
 <script>
 import CloseIcon from '@/components/Icons/CloseIcon.vue'
+import Logo from '@/components/UIKit/Logo.vue';
 
 export default {
     components:{
-        CloseIcon
+        CloseIcon,
+        Logo
     },
     props:{
         title:{
+            type: String,
+            required: true
+        },
+        description:{
             type: String,
             required: true
         },
@@ -111,7 +118,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1180px;
+    width: 100%;
 }
 .modal__title{
     font-family: 'Roboto';
@@ -121,6 +128,12 @@ export default {
     line-height: 116%;
     color: #FFFFFF;
     text-align: center;
+}
+.mob-title{
+    display: none;
+}
+.modal__description{
+    display: none;
 }
 .modal__close{
     position: absolute;
@@ -148,5 +161,75 @@ export default {
     align-items: center;
     margin-top: 200px;
     max-width: 640px;
+}
+.modal__logo{
+    display: none;
+}
+
+@media screen and (max-width: 1330px) {
+    .modal__close{
+        right: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal__header{
+        background: transparent;
+    }
+    .modal__title{
+        display: none;
+    }
+    .modal__line-wrap{
+        display: none;
+    }
+    .modal__logo{
+        display: block;
+    }
+    .modal__close{
+        position: relative;
+        right: 0;
+        transform: scale(1.2);
+        margin-top: 5px;
+    }
+    .modal__header-hero{
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 25px;
+    }
+    .mob-title{
+        display: block;
+        margin-bottom: 7px;
+    }
+    .modal__description{
+        display: block;
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin-bottom: 27px;
+    }
+    .modal__hero{
+        margin-top: 100px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .modal__description{
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+    .modal__title{
+        font-size: 27px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .modal__title{
+        text-align: left;
+    }
 }
 </style>
