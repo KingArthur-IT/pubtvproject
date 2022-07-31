@@ -12,7 +12,7 @@
             </div>
             <div class="player-wrapper">
                 <!-- <img id="player" src="@/assets/img/player.png" alt=""> -->
-                <video id="player" playsinline controls data-poster="../assets/img/main-slider/1.png">
+                <video id="player" playsinline controls :data-poster="getImageUrl(slide.imgName)">
                     <source src="@/assets/video/sample.mp4" type="video/mp4" />
                     <!-- <source src="/path/to/video.webm" type="video/webm" /> -->
 
@@ -41,7 +41,6 @@
                                     <div class="seasons-hero__label">{{slide.timeValue}} минут</div>
                                 </div>
                                 <p class="seasons-hero__text">{{currentSeason}} сезон {{i + 1}} серия</p>
-                                <p style="font-size: 9px" class="seasons-hero__text">{{getImageUrl(slide.imgName)}}</p>
                             </div>
                             <AddFilmArea v-else class="seasons-hero__add-area"/>
                         </div>
