@@ -41,6 +41,7 @@
                                     <div class="seasons-hero__label">{{slide.timeValue}} минут</div>
                                 </div>
                                 <p class="seasons-hero__text">{{currentSeason}} сезон {{i + 1}} серия</p>
+                                <p style="font-size: 9px" class="seasons-hero__text">{{getImageUrl(slide.imgName)}}</p>
                             </div>
                             <AddFilmArea v-else class="seasons-hero__add-area"/>
                         </div>
@@ -102,7 +103,7 @@ export default {
   },
   methods:{
     getImageUrl(imgName){
-        return new URL(`../../../src/assets/img/series/${imgName}.png`, import.meta.url).href
+        return new URL(`../../src/assets/img/series/${imgName}.png`, import.meta.url).href
     },
   },
   computed:{
