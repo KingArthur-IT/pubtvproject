@@ -2,27 +2,7 @@
 <main>
     <div class="details">
         <div class="container">
-            <div class="bradcrumbs">
-                <div class="bradcrumb__item">
-                    <router-link to="/" class="bradcrumbs__link">Главная</router-link>
-                </div>
-                <div class="bradcrumb__item">
-                    <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L4 4L1 7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="bradcrumb__item">
-                    Сериалы
-                </div>
-                <div class="bradcrumb__item">
-                    <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L4 4L1 7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="bradcrumb__item">
-                    Драма
-                </div>
-            </div>
+            <Bradcrumbs />
             <div class="title-wrap">
                 <h1 class="title">{{filmName}}</h1>
                 <div class="title-wrap__icons">
@@ -32,7 +12,7 @@
             </div>
             <div class="player-wrapper">
                 <!-- <img id="player" src="@/assets/img/player.png" alt=""> -->
-                <video id="player" playsinline controls data-poster="@/img/main-slider/1.png">
+                <video id="player" playsinline controls data-poster="../img/main-slider/1.png">
                     <source src="@/assets/video/sample.mp4" type="video/mp4" />
                     <!-- <source src="/path/to/video.webm" type="video/webm" /> -->
 
@@ -87,6 +67,7 @@ import 'vue3-carousel/dist/carousel.css';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import AddFilmArea from '@/components/Icons/AddFilmArea.vue';
 import FilmTextDescription from '@/components/FilmDetailPage/FilmTextDescription.vue';
+import Bradcrumbs from '@/components/UIKit/Bradcrumbs.vue';
 
 export default {
   components:{
@@ -98,7 +79,8 @@ export default {
     Slide,
     CustomButton,
     AddFilmArea,
-    FilmTextDescription
+    FilmTextDescription,
+    Bradcrumbs
   },
   data(){
     return{
@@ -139,27 +121,6 @@ export default {
     background: #272727;
     padding-top: 52px;
     padding-bottom: 22px;
-}
-.bradcrumbs{
-    display: flex;
-    align-items: center;
-    margin-bottom: 21px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 135%;
-    color: #FFFFFF;
-}
-.bradcrumb__item{
-    margin-right: 14px;
-}
-.bradcrumbs__link{
-    color: #fff;
-    transition: color var(--transition-time) ease-in-out;
-}
-.bradcrumbs__link:hover{
-    color: var(--primary-hover-color);
 }
 .title-wrap{
     margin-bottom: 33px;
