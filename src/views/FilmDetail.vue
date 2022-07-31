@@ -120,7 +120,7 @@ export default {
   },
   methods:{
     getImageUrl(imgName){
-        return new URL(`../../assets/img/series/${imgName}.png`, import.meta.url).href
+        return new URL(`../../../src/assets/img/series/${imgName}.png`, import.meta.url).href
     },
   },
   computed:{
