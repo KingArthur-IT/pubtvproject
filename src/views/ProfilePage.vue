@@ -17,6 +17,20 @@
             <div>Флэш-карты</div>
         </router-link>
     </div>
+    <div class="container mobile-tabs">
+        <router-link class="mobile-tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
+            <ProfileHeartIcon class="mobile-tabs__icon" />
+            <div class="mobile-tabs__text">Избранное</div>
+        </router-link>
+        <router-link class="mobile-tabs__item" to="/profile/settings" :class="{'active-link': $route.path.includes('settings')}">
+            <SettingsIcon class="mobile-tabs__icon" />
+            <div class="mobile-tabs__text">Настройки</div>
+        </router-link>
+        <router-link class="mobile-tabs__item" to="/profile/flash-card" :class="{'active-link': $route.path.includes('flash-card')}">
+            <FlashCardIcon class="mobile-tabs__flash-icon" />
+            <div class="mobile-tabs__text">Флэш-карты</div>
+        </router-link>
+    </div>
     <div class="tab-hero">
         <div class="container">
             <router-view v-slot="{ Component }">
@@ -30,10 +44,16 @@
 
 <script>
 import LogoutButton from '@/components/UIKit/LogoutButton.vue'
+import FlashCardIcon from '@/components/Icons/FlashCardIcon.vue'
+import ProfileHeartIcon from '@/components/Icons/ProfileHeartIcon.vue'
+import SettingsIcon from '@/components/Icons/SettingsIcon.vue'
 
 export default {
     components:{
-        LogoutButton
+        LogoutButton,
+        FlashCardIcon,
+        ProfileHeartIcon,
+        SettingsIcon
     },
     data(){
         return{
@@ -76,6 +96,9 @@ export default {
     align-items: center;
     margin-bottom: 6px;
 }
+.mobile-tabs{
+    display: none;
+}
 .tabs__item{
     position: relative;
     font-family: 'Nunito';
@@ -114,5 +137,53 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .tabs__item:nth-child(2){
+        margin: 0 170px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user{
+        margin-bottom: 27px;
+    }
+    .tabs{
+        display: none;
+    }
+    .mobile-tabs{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .mobile-tabs__item{
+        display: flex;
+        flex-basis: 48%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 158px;
+        background: rgba(255, 255, 255, 0.14);
+        border-radius: 11px;
+    }
+    .active-link.mobile-tabs__item{
+        display: none;
+    }
+    .mobile-tabs__text{
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 133%;
+        color: rgba(255, 255, 255, 0.44);
+    }
+    .mobile-tabs__icon{
+        margin-bottom: 10px;
+    }
+    .mobile-tabs__flash-icon{
+        margin-bottom: 6px;
+    }
 }
 </style>

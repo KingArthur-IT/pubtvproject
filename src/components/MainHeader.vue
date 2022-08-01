@@ -24,7 +24,7 @@
             <router-link v-if="$route.meta.auth === false" to="/login">
                 <CustomButton :paddingY="8" :minWidth="144" class="header__enter-btn">Войти</CustomButton>
             </router-link>
-            <router-link v-else to="/profile">
+            <router-link v-else to="/profile" class="header__profile-btn">
                 <UserIcon />
             </router-link>
         </div>
@@ -141,6 +141,7 @@ export default {
     }
 }
 @media screen and (max-width: 768px){
+    .header__profile-btn,
     .header__enter-btn{
         display: none;
     }
