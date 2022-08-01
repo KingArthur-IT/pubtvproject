@@ -12,7 +12,7 @@
         </div>
         <div class="container modal__hero">
             <h2 class="modal__title mob-title">{{title}}</h2>
-            <p class="modal__description">{{description}}</p>
+            <p v-if="description !== ''" class="modal__description">{{description}}</p>
             <slot></slot>
         </div>
     </div>

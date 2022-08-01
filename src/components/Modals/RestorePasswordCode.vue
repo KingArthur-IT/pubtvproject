@@ -54,4 +54,13 @@ export default {
     color: #FFFFFF;
     text-align: center;
 }
+
+@media screen and (max-width: 425px) {
+    .modal__input{
+        margin-bottom: 16px;
+    }
+    .modal__btn{
+        margin-bottom: 16px;
+    }
+}
 </style>

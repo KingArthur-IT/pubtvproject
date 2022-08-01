@@ -41,4 +41,11 @@ export default {
     line-height: 135%;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 425px) {
+    .modal__input{
+        margin-bottom: 16px;
+    }
+}
+
 </style>

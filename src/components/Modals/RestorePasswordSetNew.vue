@@ -45,4 +45,17 @@ export default {
     line-height: 135%;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 600px) {
+    .modal__input:first-child{
+        margin-top: 15px;
+    }
+    .modal__input{
+        margin-bottom: 16px;
+    }
+    .modal__input:nth-child(2){
+        margin-bottom: 32px;
+    }
+}
+
 </style>

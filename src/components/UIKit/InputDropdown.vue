@@ -149,5 +149,8 @@ export default {
     .dropdown-list{
         border-radius: 10px;
     }
+    .dropdown-item{
+        font-size: 15px;
+    }
 }
 </style>
