@@ -43,12 +43,10 @@
     </div>
   </div>
   <FooterLogin />
-  <FooterMobileMenu />
 </template>
 
 <script>
 import FooterLogin from '@/components/FooterLogin.vue';
-import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import InputDropdown from '@/components/UIKit/InputDropdown.vue';
 
@@ -56,7 +54,6 @@ export default {
     components:{
         FooterLogin,
         CustomButton,
-        FooterMobileMenu,
         InputDropdown
     },
     data(){

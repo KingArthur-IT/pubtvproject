@@ -18,19 +18,16 @@
         </router-link>
     </div>
     <div class="container mobile-tabs">
-        <router-link class="mobile-tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
+        <div class="mobile-tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
             <ProfileHeartIcon class="mobile-tabs__icon" />
             <div class="mobile-tabs__text">Избранное</div>
-        </router-link>
-        <router-link class="mobile-tabs__item" to="/profile/settings" :class="{'active-link': $route.path.includes('settings')}">
-            <SettingsIcon class="mobile-tabs__icon" />
-            <div class="mobile-tabs__text">Настройки</div>
-        </router-link>
-        <router-link class="mobile-tabs__item" to="/profile/flash-card" :class="{'active-link': $route.path.includes('flash-card')}">
+        </div>
+        <div class="mobile-tabs__item" to="/profile/flash-card" :class="{'active-link': $route.path.includes('flash-card')}">
             <FlashCardIcon class="mobile-tabs__flash-icon" />
             <div class="mobile-tabs__text">Флэш-карты</div>
-        </router-link>
+        </div>
     </div>
+    <MobileSettings class="mobile-settings" />
     <div class="tab-hero">
         <div class="container">
             <router-view v-slot="{ Component }">
@@ -46,14 +43,14 @@
 import LogoutButton from '@/components/UIKit/LogoutButton.vue'
 import FlashCardIcon from '@/components/Icons/FlashCardIcon.vue'
 import ProfileHeartIcon from '@/components/Icons/ProfileHeartIcon.vue'
-import SettingsIcon from '@/components/Icons/SettingsIcon.vue'
+import MobileSettings from '@/components/ProfilePage/MobileSettings.vue'
 
 export default {
     components:{
         LogoutButton,
         FlashCardIcon,
         ProfileHeartIcon,
-        SettingsIcon
+        MobileSettings
     },
     data(){
         return{
@@ -125,6 +122,9 @@ export default {
     background: var(--primary-color);
     border-radius: 3px;
 }
+.mobile-settings{
+    display: none;
+}
 .tab-hero{
     background: #272727;
     width: 100%;
@@ -184,6 +184,12 @@ export default {
     }
     .mobile-tabs__flash-icon{
         margin-bottom: 6px;
+    }
+    .tab-hero{
+        display: none;
+    }
+    .mobile-settings{
+        display: block;
     }
 }
 </style>

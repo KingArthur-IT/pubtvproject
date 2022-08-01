@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" :class="{'show': isDisplay, 'visible': isVisible}">
+    <div class="modal" :class="{'show': isDisplay, 'visible': isVisible, 'long': isLongModal}">
         <div class="modal__header">
             <div class="container modal__header-hero">
                 <Logo class="modal__logo" />
@@ -34,7 +34,7 @@ export default {
         },
         description:{
             type: String,
-            required: true
+            default: ''
         },
         isShown:{
             type: Boolean,
@@ -43,6 +43,10 @@ export default {
         lineWidth: {
             type: Number,
             default: 35
+        },
+        isLongModal:{
+            type: Boolean,
+            default: false
         }
     },
     data(){
@@ -214,6 +218,23 @@ export default {
         margin-top: 100px;
         flex-direction: column;
         align-items: flex-start;
+    }
+    .long .modal__hero{
+        margin-top: 0px;
+    }
+    .long .mob-title{
+        margin: auto;
+        margin-bottom: 32px;
+    }
+    .long .modal__logo{
+        display: none;
+    }
+    .long .modal__header{
+        min-height: 26px;
+        margin-bottom: 26px;
+    }
+    .long .modal__header-hero{
+        justify-content: flex-end;
     }
 }
 

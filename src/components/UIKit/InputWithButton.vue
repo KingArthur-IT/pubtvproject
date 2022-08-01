@@ -41,4 +41,10 @@ export default {
         justify-content: center;
         align-items: center;
     }
+
+@media screen and (max-width: 425px) {
+    .modal__input-btn{
+        width: 100%;
+    }
+}
 </style>

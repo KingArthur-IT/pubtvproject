@@ -1,15 +1,26 @@
 <template>
     <div class="settings">
-        <h2 class="section-title settings__title">Учётная Запись</h2>
-        <CustomButton @click="changePasswordModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
-        <h2 class="section-title settings__title">Админ Панель</h2>
-        <CustomButton @click="addMovieModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
-        
+        <div class="settings__title">Учётная Запись</div>
+        <div @click="changePasswordModal" class="container settings__link-wrap">
+            <div class="settings__link-text">Изменить пароль</div>
+            <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="settings__title">Админ Панель</div>
+        <div @click="addMovieModal" class="container settings__link-wrap">
+            <div class="settings__link-text">Добавить кино</div>
+            <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
         <ModalWrapper 
                 :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
                 :lineWidth="progressStep * 50"
                 :isShown="isModalShown" 
                 @closeModal="closeModal"
+                :isLongModal="!isChangePassword"
             >
             <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
             <addMovie v-else @addEvent="addMovie" />
@@ -18,20 +29,21 @@
 </template>
 
 <script>
-import CustomButton from '@/components/UIKit/CustomButton.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
 import addMovie from '@/components/Modals/addMovie.vue';
 
 export default {
     components:{
-        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie
+        ModalWrapper,
+        RestorePasswordSetNew,
+        addMovie
     },
     data(){
         return{
+            isChangePassword: true,
             isModalShown: false,
             progressStep: 1,
-            isChangePassword: true
         }
     },
     methods:{
@@ -66,19 +78,34 @@ export default {
 
 <style scoped>
 .settings{
-    margin: auto;
-    max-width: 380px;
-    padding: 87px 0;
+    margin-bottom: 65px;
 }
 .settings__title{
-    margin-bottom: 33px;
-    text-align: center;
-}
-.settings__btn{
-    margin-bottom: 83px;
+    background: #272727;
+    padding: 18px 0;
     width: 100%;
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 119%;
+    color: #FFFFFF;
 }
-.settings__btn-text{
+.settings__link-wrap{
+    cursor: pointer;
+    padding-top: 32px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.settings__link-text{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
     font-size: 20px;
+    line-height: 135%;
+    color: #FFFFFF;
 }
 </style>

@@ -2,19 +2,31 @@
     <div class="modal">
         <input type="text" class="input modal__input" placeholder="Название">
         <InputDropdown class="modal__input" :list="englishLevelList" :placeholder="'Уровень Английского'" />
-        <textarea class="modal__input" cols="30" rows="15"></textarea>
+        <textarea class="modal__input" cols="30" rows="10"></textarea>
         <InputDropdown class="modal__input" :list="serialslList" :placeholder="'Сериал'" />
         <InputWithButton class="modal__input" :placeholder="'Постер'" >
-            <LoadIcon />
+            <div class="modal__input-btn-wrap">
+                <span class="modal__btn-text">Постер</span>
+                <LoadIcon />
+            </div>
         </InputWithButton>
         <InputWithButton class="modal__input" :placeholder="'Видео'" >
-            <LoadIcon />
+            <div class="modal__input-btn-wrap">
+                <span class="modal__btn-text">Видео</span>
+                <LoadIcon />
+            </div>
         </InputWithButton>
         <InputWithButton class="modal__input" :placeholder="'Субтитры'" >
-            <LoadIcon />
+            <div class="modal__input-btn-wrap">
+                <span class="modal__btn-text">Субтитры</span>
+                <LoadIcon />
+            </div>
         </InputWithButton>
         <InputWithButton class="modal__input" :placeholder="'Слово'" >
-            <span class="modal__btn-text">Добавить</span>
+            <div class="modal__input-btn-wrap">
+                <span class="modal__btn-text">Добавить слово</span>
+            </div>
+            <span class="modal__btn-text btn-desc-text">Добавить</span>
         </InputWithButton>
         <CustomButton @click="addEvent" class="modal__btn" :paddingY="12">
             <span class="modal__btn-text">Загрузить</span>
@@ -68,8 +80,30 @@ export default {
     line-height: 135%;
     color: #FFFFFF;
 }
+.modal__input-btn-wrap{
+    display: flex;
+    align-items: center;
+}
+.modal__input-btn-wrap span{
+    display: none;
+    margin-right: 19px;
+}
 textarea {
   resize: none;
   outline: none;
+  padding: 15px;
+}
+
+@media screen and (max-width: 425px) {
+    .modal__input{
+        margin-bottom: 16px;
+        border-radius: 11px;
+    }
+    .modal__input-btn-wrap span{
+        display: block;
+    }
+    .btn-desc-text{
+        display: none;
+    }
 }
 </style>

@@ -42,7 +42,7 @@
     </div>
   </div>
   <FooterLogin />
-  <FooterMobileMenu />
+  
 
   <ModalWrapper 
         :title="'Восстановление Пароля'" 
@@ -59,7 +59,6 @@
 
 <script>
 import FooterLogin from '@/components/FooterLogin.vue';
-import FooterMobileMenu from '@/components/FooterMobileMenu.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import CustomCheckbox from '@/components/UIKit/CustomCheckbox.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
@@ -71,7 +70,6 @@ export default {
     components:{
         FooterLogin,
         CustomButton,
-        FooterMobileMenu,
         ModalWrapper,
         RestorePassword,
         RestorePasswordCode,
