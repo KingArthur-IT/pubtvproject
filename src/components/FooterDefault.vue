@@ -7,7 +7,7 @@
                 <a href="https://t.me/pubtv_official" target="_blank"><TelegramIcon /></a>
             </div>
             <router-link to="/"><Logo /></router-link>
-            <a href="mailto:support@pubtv.online" class="footer__link">support@pubtv.online</a>
+            <a href="mailto:support@pubtv.online" class="footer__link footer__email">support@pubtv.online</a>
         </div>
         <div class="footer__line"></div>
         <div class="footer__item">
@@ -41,6 +41,13 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    .footer__socials{
+        flex-basis: 25%;
+    }
+    .footer__email{
+        flex-basis: 25%;
+        text-align: right;
     }
     .footer__top-item{
         margin-bottom: 40px;

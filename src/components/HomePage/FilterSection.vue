@@ -3,10 +3,34 @@
         <h2 class="container title filter__title">Фильтры</h2>
         <div class="filter__wrapper">
             <div class="container filter__hero">
-                <CustomDropdown class="filter__item" :list="genres" :notselectedValue="'Все жанры'" />
-                <CustomDropdown class="filter__item" :list="years" :notselectedValue="'Все годы'" />
-                <CustomDropdown class="filter__item" :list="countries" :notselectedValue="'Все страны'" />
-                <CustomDropdown class="filter__item" :list="engLevel" :notselectedValue="'Уровень Английского'" />
+                <CustomDropdown     :id="'genres-dropdown'"
+                                    class="filter__item" 
+                                    :list="genres" 
+                                    :notselectedValue="'Все жанры'" 
+                                    :openedDropdownId="openedDropdownId"
+                                    @openDropdown="(e) => {openedDropdownId = e}"
+                />
+                <CustomDropdown     :id="'years-dropdowm'"
+                                    class="filter__item" 
+                                    :list="years" 
+                                    :notselectedValue="'Все годы'" 
+                                    :openedDropdownId="openedDropdownId"
+                                    @openDropdown="(e) => {openedDropdownId = e}"
+                />
+                <CustomDropdown     :id="'countries-dropdown'"
+                                    class="filter__item" 
+                                    :list="countries" 
+                                    :notselectedValue="'Все страны'" 
+                                    :openedDropdownId="openedDropdownId"
+                                    @openDropdown="(e) => {openedDropdownId = e}"
+                />
+                <CustomDropdown     :id="'level-dropdown'"
+                                    class="filter__item" 
+                                    :list="engLevel" 
+                                    :notselectedValue="'Уровень Английского'" 
+                                    :openedDropdownId="openedDropdownId"
+                                    @openDropdown="(e) => {openedDropdownId = e}"
+                />
             </div>
         </div>
     </div>
@@ -20,6 +44,7 @@ export default {
     },
     data(){
         return{
+            openedDropdownId: '',
             genres: ['Фантастика', 'Комедия', 'Ужасы'],
             years: ['2022', '2021', '2020', '2019'],
             countries: ['США', 'Англия'],

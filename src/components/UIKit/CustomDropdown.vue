@@ -14,6 +14,14 @@
 <script>
 export default {
     props:{
+        id:{
+            type: String,
+            default: 'dropdown'
+        },
+        openedDropdownId:{
+            type: String,
+            default: ''
+        },
         list:{
             type: Array,
             required: true
@@ -38,6 +46,7 @@ export default {
     methods:{
         openDropdown(){
             this.isDisplay = true;
+            this.$emit('openDropdown', this.id);
             setTimeout(() => {
                 this.isVisible = true;
             }, 200);
@@ -53,6 +62,12 @@ export default {
                 this.closeDropdown();
             else
                 this.openDropdown();
+        }
+    },
+    watch:{
+        openedDropdownId: function(){
+            if (this.openedDropdownId !== '' && this.openedDropdownId !== this.id)
+                this.closeDropdown();
         }
     }
 }

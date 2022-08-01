@@ -99,6 +99,7 @@ export default {
   mounted(){
     this.filmList = this.filmListData;
     this.player = new Plyr('#player');
+    window.scrollTo(0, 0);
   },
   methods:{
     getImageUrl(imgName){
