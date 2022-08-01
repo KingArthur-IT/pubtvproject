@@ -6,6 +6,7 @@
             <p class="user__mail">{{userMail}}</p>
         </div>
     </div>
+    
     <div class="container tabs">
         <router-link class="tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
             <div>Избранное</div>
@@ -17,17 +18,18 @@
             <div>Флэш-карты</div>
         </router-link>
     </div>
+
     <div class="container mobile-tabs">
-        <div class="mobile-tabs__item" to="/profile/favourite" :class="{'active-link': $route.path.includes('favourite')}">
+        <MobileProfileTab :title="'Избранное'">
             <ProfileHeartIcon class="mobile-tabs__icon" />
-            <div class="mobile-tabs__text">Избранное</div>
-        </div>
-        <div class="mobile-tabs__item" to="/profile/flash-card" :class="{'active-link': $route.path.includes('flash-card')}">
+        </MobileProfileTab>
+        <MobileProfileTab :title="'Флэш-карты'">
             <FlashCardIcon class="mobile-tabs__flash-icon" />
-            <div class="mobile-tabs__text">Флэш-карты</div>
-        </div>
+        </MobileProfileTab>
     </div>
+
     <MobileSettings class="mobile-settings" />
+
     <div class="tab-hero">
         <div class="container">
             <router-view v-slot="{ Component }">
@@ -44,13 +46,15 @@ import LogoutButton from '@/components/UIKit/LogoutButton.vue'
 import FlashCardIcon from '@/components/Icons/FlashCardIcon.vue'
 import ProfileHeartIcon from '@/components/Icons/ProfileHeartIcon.vue'
 import MobileSettings from '@/components/ProfilePage/MobileSettings.vue'
+import MobileProfileTab from '@/components/UIKit/MobileProfileTab.vue'
 
 export default {
     components:{
         LogoutButton,
         FlashCardIcon,
         ProfileHeartIcon,
-        MobileSettings
+        MobileSettings,
+        MobileProfileTab
     },
     data(){
         return{
@@ -157,27 +161,6 @@ export default {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 50px;
-    }
-    .mobile-tabs__item{
-        display: flex;
-        flex-basis: 48%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 158px;
-        background: rgba(255, 255, 255, 0.14);
-        border-radius: 11px;
-    }
-    .active-link.mobile-tabs__item{
-        display: none;
-    }
-    .mobile-tabs__text{
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 133%;
-        color: rgba(255, 255, 255, 0.44);
     }
     .mobile-tabs__icon{
         margin-bottom: 10px;

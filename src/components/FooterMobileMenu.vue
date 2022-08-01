@@ -9,6 +9,7 @@
                 <p class="text footer-mobile__text">Главная</p>
             </div>
           </router-link>
+
           <div class="footer-mobile__item">
             <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.1875 24.75L26.8125 24.75C27.9516 24.75 28.875 23.8266 28.875 22.6875L28.875 8.25C28.875 7.11091 27.9516 6.1875 26.8125 6.1875L6.1875 6.1875C5.04841 6.1875 4.125 7.11091 4.125 8.25L4.125 22.6875C4.125 23.8266 5.04841 24.75 6.1875 24.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,14 +18,17 @@
             </svg>
             <p class="text footer-mobile__text">Каталог</p>
           </div>
-          <div class="footer-mobile__item">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 26.25C21.2132 26.25 26.25 21.2132 26.25 15C26.25 8.7868 21.2132 3.75 15 3.75C8.7868 3.75 3.75 8.7868 3.75 15C3.75 21.2132 8.7868 26.25 15 26.25Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15 18.75C17.5888 18.75 19.6875 16.6513 19.6875 14.0625C19.6875 11.4737 17.5888 9.375 15 9.375C12.4112 9.375 10.3125 11.4737 10.3125 14.0625C10.3125 16.6513 12.4112 18.75 15 18.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M7.47656 23.3672C8.18193 21.9779 9.25823 20.811 10.5862 19.9959C11.9141 19.1808 13.4418 18.7493 15 18.7493C16.5582 18.7493 18.0859 19.1808 19.4138 19.9959C20.7418 20.811 21.8181 21.9779 22.5234 23.3672" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <p class="text footer-mobile__text">Профиль</p>
-          </div>
+
+          <router-link to="/profile">
+            <div class="footer-mobile__item">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 26.25C21.2132 26.25 26.25 21.2132 26.25 15C26.25 8.7868 21.2132 3.75 15 3.75C8.7868 3.75 3.75 8.7868 3.75 15C3.75 21.2132 8.7868 26.25 15 26.25Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 18.75C17.5888 18.75 19.6875 16.6513 19.6875 14.0625C19.6875 11.4737 17.5888 9.375 15 9.375C12.4112 9.375 10.3125 11.4737 10.3125 14.0625C10.3125 16.6513 12.4112 18.75 15 18.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.47656 23.3672C8.18193 21.9779 9.25823 20.811 10.5862 19.9959C11.9141 19.1808 13.4418 18.7493 15 18.7493C16.5582 18.7493 18.0859 19.1808 19.4138 19.9959C20.7418 20.811 21.8181 21.9779 22.5234 23.3672" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p class="text footer-mobile__text">Профиль</p>
+            </div>
+          </router-link>
       </div>
   </div>
 </template>
@@ -78,7 +82,7 @@ export default {
     color: #fff;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
     .footer-mobile{
         display: block;
     }

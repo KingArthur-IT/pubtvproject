@@ -1,8 +1,8 @@
 <template>
-    <div class="modal" :class="{'show': isDisplay, 'visible': isVisible, 'long': isLongModal}">
-        <div class="modal__header">
-            <div class="container modal__header-hero">
-                <Logo class="modal__logo" />
+    <div class="modal" :class="{'show': isDisplay, 'visible': isVisible}">
+        <div class="modal__header" :class="{'long': isLongModal}">
+            <div class="container modal__header-hero" :class="{'long': isLongModal}">
+                <Logo class="modal__logo" :class="{'long': isLongModal}"/>
                 <h2 class="modal__title">{{title}}</h2>
                 <CloseIcon class="modal__close" @click="closeModal"/>
             </div>
@@ -10,8 +10,11 @@
         <div class="modal__line-wrap">
             <div class="modal__line" :style="`width: ${lineWidth}%`"></div>
         </div>
-        <div class="container modal__hero">
-            <h2 class="modal__title mob-title">{{title}}</h2>
+        <div class="container modal__hero" :class="{'long': isLongModal}">
+            <div class="mob-title-wrap" :class="{'long': isLongModal}">
+                <h2 class="modal__title mob-title">{{title}}</h2>
+                <MobileInfoIcon @click="$emit('showModalInfoPopup')" v-if="isShowInfoIconOnModal" class="mob-title-icon"/>
+            </div>
             <p v-if="description !== ''" class="modal__description">{{description}}</p>
             <slot></slot>
         </div>
@@ -21,11 +24,13 @@
 <script>
 import CloseIcon from '@/components/Icons/CloseIcon.vue'
 import Logo from '@/components/UIKit/Logo.vue';
+import MobileInfoIcon from '@/components/Icons/MobileInfoIcon.vue';
 
 export default {
     components:{
         CloseIcon,
-        Logo
+        Logo,
+        MobileInfoIcon
     },
     props:{
         title:{
@@ -45,6 +50,10 @@ export default {
             default: 35
         },
         isLongModal:{
+            type: Boolean,
+            default: false
+        },
+        isShowInfoIconOnModal:{
             type: Boolean,
             default: false
         }
@@ -133,6 +142,10 @@ export default {
     color: #FFFFFF;
     text-align: center;
 }
+.modal__mob-title-wrap{
+    display: flex;
+    align-items: center;
+}
 .mob-title{
     display: none;
 }
@@ -169,6 +182,15 @@ export default {
 .modal__logo{
     display: none;
 }
+.mob-title-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mob-title-icon{
+    margin-left: 18px;
+}
 
 @media screen and (max-width: 1330px) {
     .modal__close{
@@ -176,7 +198,7 @@ export default {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .modal__header{
         background: transparent;
     }
@@ -204,6 +226,9 @@ export default {
         display: block;
         margin-bottom: 7px;
     }
+    .mob-title-icon{
+        margin-bottom: 7px;
+    }
     .modal__description{
         display: block;
         font-family: 'Nunito';
@@ -219,21 +244,21 @@ export default {
         flex-direction: column;
         align-items: flex-start;
     }
-    .long .modal__hero{
+    .long.modal__hero{
         margin-top: 0px;
     }
-    .long .mob-title{
+    .long.mob-title-wrap{
         margin: auto;
         margin-bottom: 32px;
     }
-    .long .modal__logo{
+    .long.modal__logo{
         display: none;
     }
-    .long .modal__header{
+    .long.modal__header{
         min-height: 26px;
         margin-bottom: 26px;
     }
-    .long .modal__header-hero{
+    .long.modal__header-hero{
         justify-content: flex-end;
     }
 }

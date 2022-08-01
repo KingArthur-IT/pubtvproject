@@ -1,7 +1,7 @@
 <template>
   <div v-if="favouritesMountedList && favouritesMountedList.length" class="favourites">
     <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @click="goToDetailPage(item.id)">
-        <div class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
+        <div @click="posterClick" class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
             <img :src="getImageUrl(item.imgName)" alt="img">
             <FilmHoverInfo  @toggleFavourite="item.isFavourite = !item.isFavourite" 
                             :isVisible="hoverId === item.id" 
@@ -50,6 +50,10 @@ export default {
         },
         goToDetailPage(filmId){
             this.$router.push({name: 'detail', params: {filmId: filmId}})
+        },
+        posterClick(e){
+            if (window.innerWidth < 1024)
+                e.stopPropagation();
         }
     }
 }
@@ -86,5 +90,48 @@ export default {
 
 .favourites__img img{
     width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    .favourites__film-name{
+        font-size: 20px;
+    }
+    .favourites__film-type{
+        font-size: 18px;
+    }
+    .favourites__img{
+        margin-bottom: 5px;
+    }
+    .favourites__item{
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .favourites{
+        padding-top: 0;
+    }
+    .favourites__item{
+        flex-basis: 33%;
+    }
+    .favourites__film-name{
+        font-size: 16px;
+    }
+    .favourites__film-type{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .favourites__item{
+        flex-basis: 50%;
+    }
+}
+@media screen and (max-width: 425px) {
+    .favourites__film-name{
+        font-size: 11px;
+    }
+    .favourites__film-type{
+        font-size: 9px;
+    }
 }
 </style>

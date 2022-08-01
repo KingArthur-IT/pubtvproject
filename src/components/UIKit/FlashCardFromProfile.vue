@@ -98,4 +98,11 @@ export default {
 .card__btn{
     flex-basis: 47%;
 }
+
+@media screen and (max-width: 768px) {
+    .card{
+        min-height: 392px;
+    }
+}
+
 </style>

@@ -12,6 +12,7 @@
             :lineWidth="progressStep * 50"
             :isShown="isModalShown" 
             @closeModal="closeModal"
+            :isLongModal="false"
     >
         <AddFlashCard @addEvent="addFlashCard" />
     </ModalWrapper>
@@ -88,7 +89,6 @@ export default {
 .flash__btn{
     margin: auto;
     margin-bottom: 76px;
-    /* width: 380px; */
     width: 31.6%;
 }
 .flash__btn-text{
@@ -101,6 +101,55 @@ export default {
 .flash__item{
     flex-basis: 31.63%;
     margin: 0 10px 28px 10px;
-    /* margin-bottom: 28px; */
+}
+
+@media screen and (max-width: 1240px) {
+    .flash__btn{
+        width: 31%;
+    }
+    .flash__item{
+        flex-basis: 31%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .flash__btn{
+        width: 47%;
+    }
+    .flash__item{
+        flex-basis: 47%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .flash{
+        margin: auto;
+        padding-top: 0;
+    }
+    .flash__btn{
+        width: 360px;
+        margin-bottom: 64px;
+    }
+    .flash__wrap{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .flash__item{
+        flex-basis: auto;
+        width: 360px;
+        margin-bottom: 40px;
+    }
+    .flash__info-icon{
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 425px) {
+    .flash__btn{
+        width: 100%;
+    }
+    .flash__item{
+        width: 100%;
+        margin: 0 0px 40px 0px;
+    }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="modal">
         <input type="text" class="input modal__input" placeholder="Оригинал слова">
-        <input type="text" class="input modal__input" placeholder="Перевод слова">
+        <input type="text" class="input modal__input last-input" placeholder="Перевод слова">
         <CustomButton @click="addEvent" class="modal__btn" :paddingY="12">
             <span class="modal__btn-text">Добавить</span>
         </CustomButton>
@@ -41,5 +41,17 @@ export default {
     font-size: 23px;
     line-height: 135%;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .modal{
+        margin-top: 11px;
+    }
+    .modal__input{
+        margin-bottom: 16px;
+    }
+    .last-input{
+        margin-bottom: 34px;
+    }
 }
 </style>

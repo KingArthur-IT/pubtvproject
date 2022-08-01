@@ -63,4 +63,29 @@ export default {
         left: 500px
     }
 }
+
+
+@media screen and (max-width: 1024px) {
+    .skeleton__img{
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .skeleton__img{
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .skeleton__img{
+        height: 220px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .skeleton__img{
+        height: 180px;
+    }
+}
 </style>
