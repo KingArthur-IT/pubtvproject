@@ -11,7 +11,7 @@
             <br><br>
             <b>О первой серии.</b> Гангстерская телевизионная сага «Острые козырьки» переносит зрителя в начало двадцатого века. В центре сюжетного повествования «Острых козырьков» — молодежная цыганская банда из Бирмингема. Ею руководят братья Шелби, едва вернувшиеся с первой мировой войны, ожесточившей многих.
         </div>
-        <div v-if="!isContentVisible" @click="open" class="description__more-btn"><b>Больше о сериале</b></div>
+        <div @click="toggleDescription" class="description__more-btn"><b>{{isContentVisible ? 'Свернуть описание' : 'Больше о сериале'}}</b></div>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
         }
     },
     methods: {
-        open() {
+        toggleDescription() {
             this.isContentVisible = !this.isContentVisible;
             if (this.isContentVisible)
                 this.contentHeight = this.$refs.fullcontent.scrollHeight;

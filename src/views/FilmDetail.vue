@@ -22,12 +22,24 @@
             </div>
             <div class="seasons">
                 <div class="seasons__list">
-                    <Carousel :items-to-show="6.2" :snapAlign="'start'">
+                    <Carousel :items-to-show="6.2" :snapAlign="'start'" ref="seasonsHeadSlider">
                         <Slide v-for="slide in 8" :key="slide">
                             <div @click="currentSeason = slide" class="seasons__item" :class="{'active': slide === currentSeason}">{{slide}} сезон</div>
                         </Slide>
                     </Carousel>
                     <img src="@/assets/blur-right-small.png" class="blur-right">
+                </div>
+                <div class="seasons__arrows">
+                    <div class="seasons__arrow arrow-left" @click="prevSeasonsHeadClick">
+                        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="seasons__arrow arrow-right" @click="nextSeasonsHeadClick">
+                        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
                 <CustomButton class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
@@ -93,7 +105,8 @@ export default {
           {id: 1, imgName: 2, timeValue: 63},
           {}
         ],
-      player: null
+      player: null,
+      seasonsHeadSliderIndex: 1
     }
   }, 
   mounted(){
@@ -104,6 +117,18 @@ export default {
   methods:{
     getImageUrl(imgName){
         return new URL(`../assets/img/series/${imgName}.png`, import.meta.url).href
+    },
+    prevSeasonsHeadClick(){
+        if (this.seasonsHeadSliderIndex > 1){
+            this.$refs.seasonsHeadSlider.prev();
+            this.$refs.seasonsHeadSlider.updateSlideWidth();
+            this.seasonsHeadSliderIndex --;
+        }
+    },
+    nextSeasonsHeadClick(){
+        this.$refs.seasonsHeadSlider.next();
+        this.$refs.seasonsHeadSlider.updateSlideWidth();
+        this.seasonsHeadSliderIndex ++;
     },
   },
   computed:{
@@ -148,7 +173,7 @@ export default {
 }
 .seasons__list{
     position: relative;
-    flex-basis: 80%;
+    flex-basis: 75%;
 }
 .seasons__item{
     font-family: 'Nunito';
@@ -232,12 +257,50 @@ export default {
     position: absolute;
     top: -5px;
     bottom: 0;
-    right: 0px;
+    right: -2px;
     width: 80px;
     height: 100%;
     pointer-events: none;
 }
 #player{
     --plyr-color-main: #7E4EFA
+}
+
+.seasons-hero__item .seasons-hero__img{
+  transform: scale(0.97);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.seasons-hero__item:hover .seasons-hero__img{
+  transform: scale(1.0);
+}
+.seasons__arrows{
+    display: flex;
+    align-items: center;
+}
+.seasons__arrow{
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: #595959;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background var(--transition-time) ease-in-out, opacity .2s ease-in-out;
+}
+.seasons__arrow:first-child{
+    margin-right: 4px;
+}
+.seasons__arrow:hover{
+    background: #fff;
+}
+.seasons__arrow:hover path{
+    stroke: #000;
+    opacity: 0.5;
+}
+.seasons__arrow svg{
+    width: 6px;
+    height: 12px;
 }
 </style>

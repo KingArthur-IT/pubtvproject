@@ -87,7 +87,7 @@ export default {
                 },
                 // 1024 and up
                 1240: {
-                    itemsToShow: 4.3,
+                    itemsToShow: 4.4,
                 },
             },
         }
@@ -220,4 +220,14 @@ export default {
         right: 20px;
     }
 }
+
+.filter__item .filter__img{
+  transform: scale(0.97);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.filter__item:hover .filter__img{
+  transform: scale(1.0);
+}
+
 </style>
