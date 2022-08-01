@@ -12,7 +12,7 @@
         </div>
         <div class="container modal__hero" :class="{'long': isLongModal}">
             <div class="mob-title-wrap" :class="{'long': isLongModal}">
-                <h2 class="modal__title mob-title">{{title}}</h2>
+                <h2 class="modal__title mob-title" :class="{'long': isLongModal}">{{title}}</h2>
                 <MobileInfoIcon @click="$emit('showModalInfoPopup')" v-if="isShowInfoIconOnModal" class="mob-title-icon"/>
             </div>
             <p v-if="description !== ''" class="modal__description">{{description}}</p>
@@ -142,10 +142,6 @@ export default {
     color: #FFFFFF;
     text-align: center;
 }
-.modal__mob-title-wrap{
-    display: flex;
-    align-items: center;
-}
 .mob-title{
     display: none;
 }
@@ -183,10 +179,11 @@ export default {
     display: none;
 }
 .mob-title-wrap{
-    width: 100%;
-    display: flex;
+    width: fit-content;
+    display: none;
     justify-content: center;
     align-items: center;
+    margin-right: auto;
 }
 .mob-title-icon{
     margin-left: 18px;
@@ -199,6 +196,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+    .mob-title-wrap{
+        display: flex;
+        margin-bottom: 12px;
+    }
     .modal__header{
         background: transparent;
     }
@@ -262,7 +263,12 @@ export default {
         justify-content: flex-end;
     }
 }
+@media screen and (max-width: 600px) {
+    .mob-title-wrap{
+        margin-bottom: 10px;
+    }
 
+}
 @media screen and (max-width: 425px) {
     .modal__description{
         font-size: 14px;
@@ -270,6 +276,9 @@ export default {
     }
     .modal__title{
         font-size: 27px;
+    }
+    .mob-title-wrap{
+        margin-bottom: 0px;
     }
 }
 

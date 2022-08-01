@@ -41,7 +41,7 @@
                         </svg>
                     </div>
                 </div>
-                <CustomButton class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
+                <CustomButton @click="openNewSeasonModal" class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
             <div class="seasons-hero">
                 <Carousel :items-to-show="3.9" :snapAlign="'start'">
@@ -54,7 +54,7 @@
                                 </div>
                                 <p class="seasons-hero__text">{{currentSeason}} сезон {{i + 1}} серия</p>
                             </div>
-                            <AddFilmArea v-else class="seasons-hero__add-area"/>
+                            <AddFilmArea @click="openNewSeriesModal" v-else class="seasons-hero__add-area"/>
                         </div>
                     </Slide>
                 </Carousel>
@@ -63,6 +63,15 @@
         </div>
     </div>
     <FlashCards />
+    <ModalWrapper 
+            :title="isNewSeason ? 'Добавить сезон' : 'Добавить Серию'" 
+            :lineWidth="progressStep * 50"
+            :isShown="isModalShown" 
+            @closeModal="closeModal"
+        >
+        <AddNewSeason v-if="isNewSeason" @addEvent="finishAddNewSeason"/>
+        <AddNewSeries v-else @addEvent="finishAddNewSeries" />
+    </ModalWrapper>
 </main>
 <FooterDefault />
 </template>
@@ -80,6 +89,9 @@ import CustomButton from '@/components/UIKit/CustomButton.vue';
 import AddFilmArea from '@/components/Icons/AddFilmArea.vue';
 import FilmTextDescription from '@/components/FilmDetailPage/FilmTextDescription.vue';
 import Bradcrumbs from '@/components/UIKit/Bradcrumbs.vue';
+import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
+import AddNewSeason from '@/components/Modals/AddNewSeason.vue';
+import AddNewSeries from '@/components/Modals/AddNewSeries.vue';
 
 export default {
   components:{
@@ -92,7 +104,10 @@ export default {
     CustomButton,
     AddFilmArea,
     FilmTextDescription,
-    Bradcrumbs
+    Bradcrumbs,
+    ModalWrapper,
+    AddNewSeason,
+    AddNewSeries
   },
   data(){
     return{
@@ -106,7 +121,10 @@ export default {
           {}
         ],
       player: null,
-      seasonsHeadSliderIndex: 1
+      seasonsHeadSliderIndex: 1,
+      isNewSeason: true,
+      progressStep: 1,
+      isModalShown: false
     }
   }, 
   mounted(){
@@ -130,6 +148,29 @@ export default {
         this.$refs.seasonsHeadSlider.updateSlideWidth();
         this.seasonsHeadSliderIndex ++;
     },
+    openNewSeasonModal(){
+        this.isModalShown = true;
+        this.isNewSeason = true;
+    },
+    openNewSeriesModal(){
+        this.isModalShown = true;
+        this.isNewSeason = false;
+    },
+    closeModal(){
+        this.isModalShown = false;
+    },
+    finishAddNewSeason(){
+        this.progressStep = 2;
+        setTimeout(() => {
+            this.isModalShown = false;
+        }, 200);
+    },
+    finishAddNewSeries(){
+        this.progressStep = 2;
+        setTimeout(() => {
+            this.isModalShown = false;
+        }, 200);
+    }
   },
   computed:{
       filmName(){
