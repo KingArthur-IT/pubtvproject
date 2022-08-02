@@ -1,7 +1,7 @@
 <template>
   <div class="main-carousel">
     <div class="main-carousel__hero">
-        <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel">
+        <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel" :breakpoints='breakpoints'>
             <Slide v-for="slide in mainSliderList" :key="slide.id">
                 <div @click="goToDetailPage" class="carousel__item main-carousel__item">
                     <img :src="getImageUrl(slide.imgName)" alt="img" class="carousel__img">
@@ -39,6 +39,24 @@ export default {
         return{
             mainSliderData,
             mainSliderList: [],
+            breakpoints: {
+                320:{
+                    itemsToShow: 1.15,
+                },
+                425: {
+                    itemsToShow: 1.2,
+                },
+                600: {
+                    itemsToShow: 1.6,
+                },
+                860: {
+                    itemsToShow: 2,
+                },
+                // 1024 and up
+                1240: {
+                    itemsToShow: 2,
+                },
+            },
         }
     }, 
     mounted(){
@@ -140,5 +158,53 @@ export default {
 }
 .carousel__slide--active > .carousel__item {
   transform: scale(1.0);
+}
+
+@media screen and (max-width: 1024px) {
+    .main-carousel__arrow{
+        width: 60px;
+        height: 60px;
+    }
+    .main-carousel__arrow svg{
+        height: 24px;
+    }
+    .arrow-left svg{
+        transform: translateX(-2px);
+    }
+    .arrow-right svg{
+        transform: translateX(3px);
+    }
+}
+@media screen and (max-width: 860px) {
+    .arrow-left{
+        left: 19%;
+    }
+    .arrow-right{
+        right: 19%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .arrow-left{
+        left: 12%;
+    }
+    .arrow-right{
+        right: 12%;
+    }
+    .main-carousel__arrow{
+        width: 40px;
+        height: 40px;
+    }
+    .main-carousel__arrow svg{
+        height: 18px;
+    }
+    .arrow-right svg{
+        transform: translateX(2px);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .main-carousel__arrow{
+        display: none;
+    }
 }
 </style>
