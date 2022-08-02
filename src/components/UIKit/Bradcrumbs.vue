@@ -50,4 +50,10 @@ export default {
 .bradcrumbs__link:hover{
     color: var(--primary-hover-color);
 }
+
+@media screen and (max-width: 600px){
+    .bradcrumbs{
+        margin-bottom: 14px;
+    }
+}
 </style>

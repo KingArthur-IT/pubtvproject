@@ -39,4 +39,36 @@ export default {
     stroke: var(--primary-hover-color);
     fill: var(--primary-hover-color);
 }
+
+@media screen and (max-width: 768px){
+    .icon{
+        width: 55px;
+        height: 55px;
+    }
+    .icon svg{
+        width: 28px;
+        height: 24px;
+    }
+}
+@media screen and (max-width: 600px){
+    .icon{
+        width: 40px;
+        height: 40px;
+    }
+    .icon svg{
+        width: 20px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .icon{
+        width: 29px;
+        height: 29px;
+    }
+    .icon svg{
+        width: 13px;
+        height: 11px;
+    }
+}
 </style>

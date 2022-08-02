@@ -2,7 +2,7 @@
 <main>
     <div class="details">
         <div class="container">
-            <Bradcrumbs />
+            <Bradcrumbs class="details__bradcrumbs" />
             <div class="title-wrap">
                 <h1 class="title">{{filmName}}</h1>
                 <div class="title-wrap__icons">
@@ -20,31 +20,37 @@
                     <!-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> -->
                 </video>
             </div>
+        </div>
+        <div class="container">
             <div class="seasons">
                 <div class="seasons__list">
-                    <Carousel :items-to-show="6.2" :snapAlign="'start'" ref="seasonsHeadSlider">
+                    <Carousel :items-to-show="6.2" :snapAlign="'start'" ref="seasonsHeadSlider" :breakpoints='seasonsHeadBreakpoints'>
                         <Slide v-for="slide in 8" :key="slide">
                             <div @click="currentSeason = slide" class="seasons__item" :class="{'active': slide === currentSeason}">{{slide}} сезон</div>
                         </Slide>
                     </Carousel>
                     <img src="@/assets/blur-right-small.png" class="blur-right">
                 </div>
-                <div class="seasons__arrows">
-                    <div class="seasons__arrow arrow-left" @click="prevSeasonsHeadClick">
-                        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <div class="seasons__controls-wrap">
+                    <div class="seasons__arrows">
+                        <div class="seasons__arrow arrow-left" @click="prevSeasonsHeadClick">
+                            <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="seasons__arrow arrow-right" @click="nextSeasonsHeadClick">
+                            <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
-                    <div class="seasons__arrow arrow-right" @click="nextSeasonsHeadClick">
-                        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 2L15 15L2 28" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                    <CustomButton @click="openNewSeasonModal" class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
                 </div>
-                <CustomButton @click="openNewSeasonModal" class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
+        </div>
+        <div class="container series-container">
             <div class="seasons-hero">
-                <Carousel :items-to-show="3.9" :snapAlign="'start'">
+                <Carousel :items-to-show="3.9" :snapAlign="'start'" :breakpoints='seriesBreakpoints'>
                     <Slide v-for="(slide, i) in seriesList" :key="slide.id">
                         <div class="seasons-hero__item">
                             <div v-if="i < seriesList.length - 1" class="seasons-hero__content">
@@ -59,6 +65,8 @@
                     </Slide>
                 </Carousel>
             </div>
+        </div>
+        <div class="container">
             <FilmTextDescription />
         </div>
     </div>
@@ -125,7 +133,48 @@ export default {
       isSeasonModal: true,
       isEditSeason: false,
       progressStep: 1,
-      isModalShown: false
+      isModalShown: false,
+      seasonsHeadBreakpoints: {
+                320:{
+                    itemsToShow: 2.5,
+                },
+                375:{
+                    itemsToShow: 3.3,
+                },
+                500:{
+                    itemsToShow: 1.8,
+                },
+                515: {
+                    itemsToShow: 2.5,
+                },
+                710: {
+                    itemsToShow: 3.3,
+                },
+                870: {
+                    itemsToShow: 4.3,
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 6.3,
+                },
+        },
+        seriesBreakpoints: {
+                320: {
+                    itemsToShow: 1.7,
+                },
+                500: {
+                    itemsToShow: 2.2,
+                },
+                700: {
+                    itemsToShow: 2.9,
+                },
+                1024: {
+                    itemsToShow: 3.2,
+                },
+                1240: {
+                    itemsToShow: 3.9,
+                },
+        },
     }
   }, 
   mounted(){
@@ -215,6 +264,11 @@ export default {
     width: 100%;
     margin-bottom: 37px;
 }
+.seasons__controls-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 .seasons{
     width: 100%;
     display: flex;
@@ -250,6 +304,9 @@ export default {
 .active:after{
     background: var(--primary-color);
 }
+.arrow-right{
+    margin-right: 5px;
+}
 .seasons__btn-text{
     font-family: 'Nunito';
     font-style: normal;
@@ -264,17 +321,22 @@ export default {
 }
 .seasons-hero__item{
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 .seasons-hero__content{
     position: relative;
 }
 .seasons-hero__img{
     position: relative;
+    width: 100%;
 }
 .seasons-hero__img img{
     height: 153px;
     border-radius: 8px;
     pointer-events: none;
+    width: 100%;
+    height: auto;
 }
 .seasons-hero__label{
     font-family: 'Nunito';
@@ -303,6 +365,9 @@ export default {
 }
 .seasons-hero__add-area{
     margin-bottom: 35px;
+    width: 100%;
+    margin-left: 9px;
+    height: calc(100% - 35px);
 }
 .blur-right{
     position: absolute;
@@ -353,5 +418,97 @@ export default {
 .seasons__arrow svg{
     width: 6px;
     height: 12px;
+}
+
+@media screen and (max-width: 1240px){
+    .seasons__list{
+        flex-basis: 71%;
+    }
+    .seasons__item:after{
+        width: 74px;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .seasons__list{
+        flex-basis: 65%;
+    }
+    .series-container{
+        padding-right: 0px;
+    }
+}
+
+@media screen and (max-width: 870px){
+    .seasons__controls-wrap{
+        min-width: 307px;
+        margin-left: 5px;
+    }
+}
+@media screen and (max-width: 810px){
+    .seasons__list{
+        width: 50%;
+    }
+    .seasons__controls-wrap{
+        min-width: 307px;
+        margin-left: 5px;
+    }
+}
+@media screen and (max-width: 768px){
+    .edit-icon{
+        margin-right: 27px;
+    }
+    .seasons-hero{
+        margin-bottom: 40px;
+    }
+}
+@media screen and (max-width: 680px){
+    .seasons__list{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 600px){
+    .details{
+        padding-top: 23px;
+    }
+    .edit-icon{
+        margin-right: 17px;
+    }
+    .title-wrap{
+        margin-bottom: 20px;
+    }
+    .seasons__arrow{
+        display: none;
+    }
+    .seasons__controls-wrap{
+        min-width: 202px;
+    }
+}
+@media screen and (max-width: 500px){
+    .seasons{
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .seasons__list{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .seasons__controls-wrap{
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 425px){
+    .title-wrap{
+        margin-bottom: 14px;
+    }
+    .details__bradcrumbs{
+        display: none;
+    }   
+    .edit-icon{
+        margin-right: 13px;
+    }
+    .seasons-hero{
+        margin-bottom: 31px;
+    }
 }
 </style>
