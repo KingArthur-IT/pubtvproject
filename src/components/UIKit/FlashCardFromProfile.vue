@@ -105,4 +105,10 @@ export default {
     }
 }
 
+@media screen and (max-width: 375px) {
+    .card{
+        min-height: 375px;
+    }
+}
+
 </style>

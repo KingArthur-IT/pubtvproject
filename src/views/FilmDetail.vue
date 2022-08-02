@@ -73,7 +73,7 @@
         <AddNewSeries v-else @addEvent="finishAddNewSeries" />
     </ModalWrapper>
 </main>
-<FooterDefault />
+<!-- <FooterDefault /> -->
 </template>
 
 <script>

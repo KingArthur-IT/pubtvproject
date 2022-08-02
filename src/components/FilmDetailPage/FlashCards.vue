@@ -57,4 +57,40 @@ export default {
 .flash__title{
     margin-bottom: 54px;
 }
+
+@media screen and (max-width: 1240px) {
+    .flash__item{
+        flex-basis: 31%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .flash__item{
+        flex-basis: 47%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .flash{
+        margin: auto;
+        padding-top: 0;
+    }
+    .flash__wrap{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(0px);
+        width: 100%;
+    }
+    .flash__item{
+        flex-basis: auto;
+        width: 360px;
+        margin-bottom: 40px;
+    }
+    
+}
+@media screen and (max-width: 425px) {
+    .flash__item{
+        width: 100%;
+        margin: 0 0px 40px 0px;
+    }
+}
 </style>

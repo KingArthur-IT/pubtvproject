@@ -91,4 +91,16 @@ export default {
     align-self: flex-end;
     margin-right: 12px;
 }
+
+@media screen and (max-width: 768px) {
+    .card{
+        min-height: 392px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .card{
+        min-height: 375px;
+    }
+}
 </style>
