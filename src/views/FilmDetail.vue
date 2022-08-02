@@ -20,7 +20,7 @@
                     <!-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> -->
                 </video>
             </div>
-            <div class="seasons" style="display: none">
+            <div class="seasons">
                 <div class="seasons__list">
                     <Carousel :items-to-show="6.2" :snapAlign="'start'" ref="seasonsHeadSlider">
                         <Slide v-for="slide in 8" :key="slide">
@@ -43,7 +43,7 @@
                 </div>
                 <CustomButton @click="openNewSeasonModal" class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
-            <div class="seasons-hero" style="display: none">
+            <div class="seasons-hero">
                 <Carousel :items-to-show="3.9" :snapAlign="'start'">
                     <Slide v-for="(slide, i) in seriesList" :key="slide.id">
                         <div class="seasons-hero__item">

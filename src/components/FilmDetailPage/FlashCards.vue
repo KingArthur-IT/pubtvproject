@@ -71,7 +71,11 @@ export default {
 @media screen and (max-width: 768px) {
     .flash{
         margin: auto;
-        padding-top: 0;
+        padding-top: 35px;
+        padding-bottom: 20px;
+    }
+    .flash__title{
+        margin-bottom: 30px;
     }
     .flash__wrap{
         flex-direction: column;
@@ -86,6 +90,15 @@ export default {
         margin-bottom: 40px;
     }
     
+}
+@media screen and (max-width: 600px) {
+    .flash{
+        margin: auto;
+        padding-top: 24px;
+    }
+    .flash__title{
+        margin-bottom: 17px;
+    }
 }
 @media screen and (max-width: 425px) {
     .flash__item{
