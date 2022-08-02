@@ -6,7 +6,7 @@
             <div class="title-wrap">
                 <h1 class="title">{{filmName}}</h1>
                 <div class="title-wrap__icons">
-                    <EditIcon class="edit-icon" />
+                    <EditIcon @click="openEditSeasonModal" class="edit-icon" />
                     <HeartIcon :isSelected="isFavourite" @click="isFavourite = !isFavourite" />
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <!-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> -->
                 </video>
             </div>
-            <div class="seasons">
+            <div class="seasons" style="display: none">
                 <div class="seasons__list">
                     <Carousel :items-to-show="6.2" :snapAlign="'start'" ref="seasonsHeadSlider">
                         <Slide v-for="slide in 8" :key="slide">
@@ -43,7 +43,7 @@
                 </div>
                 <CustomButton @click="openNewSeasonModal" class="seasons__btn" :paddingY="9"><span class="seasons__btn-text">Добавить сезон</span></CustomButton>
             </div>
-            <div class="seasons-hero">
+            <div class="seasons-hero" style="display: none">
                 <Carousel :items-to-show="3.9" :snapAlign="'start'">
                     <Slide v-for="(slide, i) in seriesList" :key="slide.id">
                         <div class="seasons-hero__item">
@@ -64,12 +64,12 @@
     </div>
     <FlashCards />
     <ModalWrapper 
-            :title="isNewSeason ? 'Добавить сезон' : 'Добавить Серию'" 
+            :title="!isSeasonModal ? 'Добавить Серию' : isEditSeason ? 'Редактировать сезон' : 'Добавить сезон'" 
             :lineWidth="progressStep * 50"
             :isShown="isModalShown" 
             @closeModal="closeModal"
         >
-        <AddNewSeason v-if="isNewSeason" @addEvent="finishAddNewSeason"/>
+        <AddNewSeason v-if="isSeasonModal" :isEdit="isEditSeason" @addEvent="finishAddNewSeason"/>
         <AddNewSeries v-else @addEvent="finishAddNewSeries" />
     </ModalWrapper>
 </main>
@@ -122,7 +122,8 @@ export default {
         ],
       player: null,
       seasonsHeadSliderIndex: 1,
-      isNewSeason: true,
+      isSeasonModal: true,
+      isEditSeason: false,
       progressStep: 1,
       isModalShown: false
     }
@@ -149,12 +150,21 @@ export default {
         this.seasonsHeadSliderIndex ++;
     },
     openNewSeasonModal(){
+        this.progressStep = 1;
         this.isModalShown = true;
-        this.isNewSeason = true;
+        this.isSeasonModal = true;
+        this.isEditSeason = false;
+    },
+    openEditSeasonModal(){
+        this.progressStep = 1;
+        this.isModalShown = true;
+        this.isSeasonModal = true;
+        this.isEditSeason = true;
     },
     openNewSeriesModal(){
+        this.progressStep = 1;
         this.isModalShown = true;
-        this.isNewSeason = false;
+        this.isSeasonModal = false;
     },
     closeModal(){
         this.isModalShown = false;

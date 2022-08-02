@@ -21,6 +21,10 @@ export default {
         AddButton
     },
     props:{
+        id:{
+            type: Number,
+            default: 0
+        },
         phrase: {
             type: String,
             required: true
@@ -39,6 +43,7 @@ export default {
         addCard(){
             this.isAdding = false;
             setTimeout(() => {
+                this.$emit('addFlashCardEvent', this.id)
                 this.isAdding = true;
             }, 1000);
         }

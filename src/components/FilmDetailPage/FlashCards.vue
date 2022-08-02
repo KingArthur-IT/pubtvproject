@@ -2,14 +2,19 @@
   <div class="container flash">
       <h2 class="title flash__title">Флэш-карты</h2>
       <div class="flash__wrap">
-          <div v-for="(item, i) in phrases" :key="i" class="flash__item">
-            <FlashCardFromFilmDetail :phrase="item.phrase" :translation="item.translation" />
+          <div v-for="card in phrases" :key="card.id" class="flash__item">
+            <FlashCardFromFilmDetail    :id="card.id" 
+                                        :phrase="card.phrase" 
+                                        :translation="card.translation" 
+                                        @addFlashCardEvent="addFlashCard"
+            />
           </div>
       </div>
   </div>
 </template>
 
 <script>
+import { cardPhrases } from '@/data/data.js'
 import FlashCardFromFilmDetail from '@/components/UIKit/FlashCardFromFilmDetail.vue';
 
 export default {
@@ -18,19 +23,17 @@ export default {
     },
     data(){
         return{
-            phrases:[
-                {phrase: 'Alright', translation: 'Привет'},
-                {phrase: 'Cheers mate!', translation: 'Спасибо'},
-                {phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.'},
-                {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник'},
-                {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
-            ]
+            cardPhrases,
+            phrases:[]
         }
     },
+    mounted(){
+        this.phrases = this.cardPhrases;
+    },
     methods:{
-        
+        addFlashCard(cardId){
+            this.phrases = this.phrases.filter(card => card.id !== cardId);
+        }
     }
 }
 </script>

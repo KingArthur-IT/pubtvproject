@@ -57,3 +57,13 @@ export const favouritesListData = [
     {id: 8, imgName: 9, filmName: 'Ривердэйл', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов', isFavourite: false},
     {id: 9, imgName: 10, filmName: 'Карточный домик', filmType: 'Сериал', markList: [8, 9.8, 10, 8.5, 9], mark: 9, filmInfo: '2017, Англия, Драма', seasons: '6 сезонов', isFavourite: false},
 ]
+
+export const cardPhrases = [
+    {id: 0, phrase: 'Alright', translation: 'Привет'},
+    {id: 1, phrase: 'Cheers mate!', translation: 'Спасибо'},
+    {id: 2, phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.'},
+    {id: 3, phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник'},
+    {id: 4, phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
+    {id: 5, phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
+    {id: 6, phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
+]
