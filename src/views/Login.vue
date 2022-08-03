@@ -3,13 +3,8 @@
       <div class="container login__hero">
         <h1 class="big-title login__title">Вход</h1>
         <form class="login__form">
-            <input  v-model="email" 
-                    type="email" 
-                    class="input login__input" 
-                    placeholder="Email" 
-                    :class="{'input-error': !isEmailValid}"
-                    @input="isEmailValid = true"
-            >
+            <input  v-model="email" type="email" class="input login__input" placeholder="Email" :class="{'input-error': !isEmailValid}" @input="isEmailValid = true">
+            <div v-if="!isEmailValid" class="text error-text">Введите правильный email</div>
             <input v-model="password" type="password" class="input login__input" placeholder="Пароль">
             <div class="login__link-wrapper">
                 <div @click="forgotPassword" class="link login__forgot-link">Забыли пароль?</div>
@@ -145,9 +140,6 @@ export default {
     width: 100%;
     margin-bottom: 14px;
 }
-.login__input:first-child{
-    margin-bottom: 27px;
-}
 .login__link-wrapper{
     width: 100%;
     display: flex;
@@ -235,6 +227,18 @@ export default {
     width: 20px;
     height: 20px;
 }
+.login__input.input-error{
+    margin-bottom: 5px;
+}
+.error-text{
+    color: red;
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    width: 590px;
+}
 
 @media screen and (max-width: 768px) {
     .login__title{
@@ -247,6 +251,11 @@ export default {
         display: block;
     }
 }
+@media screen and (max-width: 650px) {
+    .error-text{
+        width: calc(100vw - 60px)
+    }
+}
 @media screen and (max-width: 600px) {
     .login{
         margin-bottom: 82px;
@@ -254,9 +263,6 @@ export default {
     .login__title{
         text-align: left;
         margin-bottom: 42px;
-    }
-    .login__input:first-child{
-        margin-bottom: 18px;
     }
     .login__btn-text{
         font-size: 20px;
@@ -266,9 +272,6 @@ export default {
 @media screen and (max-width: 425px) {
     .login__title{
         margin-bottom: 24px;
-    }
-    .login__input:first-child{
-        margin-bottom: 15px;
     }
     .login__forgot-link{
         font-size: 12px;
@@ -316,6 +319,9 @@ export default {
     .login__social-fb img{
         width: 26px;
         height: 26px;
+    }
+    .error-text{
+        width: calc(100vw - 30px)
     }
 }
 </style>

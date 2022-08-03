@@ -10,6 +10,7 @@
                     :class="{'input-error': !isEmailValid}"
                     @input="isEmailValid = true"
             >
+            <div v-if="!isEmailValid" class="text error-text">Введите правильный email</div>
             <InputDropdown  v-model="gender"
                             class="login__input" 
                             :list="genderList" 
@@ -109,6 +110,9 @@ export default {
     width: 100%;
     margin-bottom: 27px;
 }
+.login__input.input-error{
+    margin-bottom: 5px;
+}
 .last-input{
     margin-bottom: 11px;
 }
@@ -178,6 +182,14 @@ export default {
 .login__social-fb img{
     width: 20px;
     height: 20px;
+}
+.error-text{
+    color: red;
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+    width: 100%;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
