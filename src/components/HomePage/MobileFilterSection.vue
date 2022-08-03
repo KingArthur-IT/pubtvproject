@@ -1,25 +1,30 @@
 <template>
     <div class="filter">
-        <h2 class="container title filter__title">Фильтры</h2>
+        <h2 class="container title filter__title">Все фильтры</h2>
         <div class="filter__wrapper">
-            <div class="container filter__hero">
-                <CustomDropdown     v-for="filter in filtersData" :key="filter.id"
-                                    :id="filter.id"
-                                    class="filter__item" 
-                                    :list="filter.data" 
-                                    :notselectedValue="filter.notselectedValue" 
-                                    :openedDropdownId="openedDropdownId"
-                                    @openDropdown="(e) => {openedDropdownId = e}"
-                />
-            </div>
+            <Carousel :items-to-show="3.5" :snapAlign="'start'" :wrap-around="true">
+                <Slide v-for="filter in filtersData" :key="filter.id">
+                    <CustomDropdown     :id="filter.id"
+                                        class="filter__item" 
+                                        :list="filter.data" 
+                                        :notselectedValue="filter.notselectedValue" 
+                                        :openedDropdownId="openedDropdownId"
+                                        @openDropdown="(e) => {openedDropdownId = e}"
+                    />
+                </Slide>
+            </Carousel>
         </div>
     </div>
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue3-carousel';
 import CustomDropdown from '@/components/UIKit/CustomDropdown.vue';
+
 export default {
     components:{
+        Carousel,
+        Slide,
         CustomDropdown
     },
     data(){
@@ -53,6 +58,10 @@ export default {
 </script>
 
 <style scoped>
+.carousel__viewport {
+    overflow: inherit !important;
+}
+
 .filter__title{
     margin-bottom: 32px;
 }
@@ -67,23 +76,15 @@ export default {
     transition: all var(--transition-time) ease-in-out;
 }
 .filter__item{
-    flex-basis: 25%;
+    flex-basis: auto;
+    min-width: 225px;
+    margin-left: 72px;
 }
 
-@media screen and (max-width: 1240px) {
-    .filter__item{
-        flex-basis: auto;
+@media screen and (max-width: 425px) {
+    .filter__wrapper{
+        padding: 15px 0 14px;
     }
 }
 
-@media screen and (max-width: 950px) {
-    .filter__item{
-        font-size: 22px;
-    }
-}
-@media screen and (max-width: 860px) {
-    .filter__item{
-        font-size: 20px;
-    }
-}
 </style>

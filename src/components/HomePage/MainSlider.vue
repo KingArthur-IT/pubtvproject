@@ -47,10 +47,10 @@ export default {
                     itemsToShow: 1.2,
                 },
                 600: {
-                    itemsToShow: 1.6,
+                    itemsToShow: 1.5,
                 },
                 860: {
-                    itemsToShow: 2,
+                    itemsToShow: 1.8,
                 },
                 // 1024 and up
                 1240: {
@@ -160,6 +160,27 @@ export default {
   transform: scale(1.0);
 }
 
+@media screen and (max-width: 1240px) {
+    .arrow-left{
+        left: 22.5%;
+    }
+    .arrow-right{
+        right: 22.5%;
+    }
+    .arrow-left svg{
+        transform: translateX(-2px);
+    }
+    .arrow-right svg{
+        transform: translateX(3px);
+    }
+    .main-carousel__tag-list{
+        bottom: 30px;
+        left: 40px;
+    }
+    .main-carousel__tag{
+        margin-right: 40px;
+    }
+}
 @media screen and (max-width: 1024px) {
     .main-carousel__arrow{
         width: 60px;
@@ -174,21 +195,39 @@ export default {
     .arrow-right svg{
         transform: translateX(3px);
     }
+    .main-carousel__tag{
+        font-size: 18px;
+    }
 }
 @media screen and (max-width: 860px) {
     .arrow-left{
-        left: 19%;
+        left: 17%;
     }
     .arrow-right{
-        right: 19%;
+        right: 17%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .main-carousel{
+        margin-top: 40px;
+        margin-bottom: 48px;
+    }
+    .main-carousel__tag-list{
+        bottom: 20px;
+        left: 30px;
+    }
+    .main-carousel__tag{
+        margin-right: 25px;
+        font-size: 14px;
+        color: #fff;
     }
 }
 @media screen and (max-width: 600px) {
     .arrow-left{
-        left: 12%;
+        left: 8.5%;
     }
     .arrow-right{
-        right: 12%;
+        right: 8.5%;
     }
     .main-carousel__arrow{
         width: 40px;
@@ -200,11 +239,33 @@ export default {
     .arrow-right svg{
         transform: translateX(2px);
     }
+    .main-carousel{
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .main-carousel__tag-list{
+        bottom: 15px;
+        left: 20px;
+    }
+    .main-carousel__tag{
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 425px) {
+    .main-carousel{
+        margin-top: 24px;
+        margin-bottom: 29px;
+    }
     .main-carousel__arrow{
         display: none;
+    }
+    .main-carousel__tag-list{
+        bottom: 10px;
+        left: 19px;
+    }
+    .main-carousel__tag{
+        font-size: 8px;
     }
 }
 </style>
