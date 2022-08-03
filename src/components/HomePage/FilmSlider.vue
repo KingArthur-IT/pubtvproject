@@ -1,6 +1,6 @@
 <template>
     <section class="section filter">
-        <div class="container">
+        <div class="container filter-container">
             <h2 class="section-title filter__title">{{title}}</h2>
             <div class="filter__carousel-wrapper">
                 <img :class="{'visible': isLeftArrowShow}" src="@/assets/blur-left.png" class="filter__blur-left">
@@ -12,7 +12,7 @@
                 <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
                         <div @click="goToDetailPage(slide.id)" class="filter__item">
-                            <div class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
+                            <div @click="posterClick" class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
                                 <img :src="getImageUrl(slide.imgName)" alt="img">
                                 <FilmHoverInfo  @toggleFavourite="$emit('toggleFavourite', slide.id)" 
                                                 :isVisible="hoverSlideId === slide.id" 
@@ -81,11 +81,18 @@ export default {
             isLeftArrowShow: false,
             slideIndex: 1,
             breakpoints: {
-                // 700px and up
-                700: {
+                320: {
+                    itemsToShow: 2.4,
+                },
+                600: {
+                    itemsToShow: 2.7,
+                },
+                768: {
+                    itemsToShow: 2.7,
+                },
+                1024: {
                     itemsToShow: 3.7,
                 },
-                // 1024 and up
                 1240: {
                     itemsToShow: 4.4,
                 },
@@ -110,6 +117,10 @@ export default {
         },
         goToDetailPage(filmId){
             this.$router.push({name: 'detail', params: {filmId: filmId}})
+        },
+        posterClick(e){
+            if (window.innerWidth < 1024)
+                e.stopPropagation();
         }
     },
     watch:{
@@ -135,6 +146,7 @@ export default {
 .filter__item{
     cursor: pointer;
     border-radius: 18px;
+    width: 100%;
 }
 .filter__film-name{
     font-weight: 700;
@@ -150,6 +162,12 @@ export default {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.filter__img img{
+    width: 97%;
 }
 .filter__carousel-wrapper{
     position: relative;
@@ -221,13 +239,97 @@ export default {
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .filter__arrow{
+        width: 60px;
+        height: 60px;
+    }
+    .filter__arrow svg{
+        height: 24px;
+    }
+    .arrow-left svg{
+        transform: translateX(-2px);
+    }
+    .arrow-right svg{
+        transform: translateX(3px);
+    }
+}
+@media screen and (max-width: 768px) {
+    .filter{
+        margin-top: 60px;
+    }
+    .filter__film-type{
+        font-size: 16px;
+    }
+    .filter__img{
+        margin-bottom: 12px;
+    }
+    .filter__title{
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .filter{
+        margin-top: 40px;
+    }
+    .filter__arrow{
+        width: 40px;
+        height: 40px;
+    }
+    .filter__arrow svg{
+        height: 18px;
+    }
+    .arrow-right svg{
+        transform: translateX(2px);
+    }
+    .filter__blur-left{
+        display: none;
+    }
+    .filter-container{
+        padding-right: 0;
+    }
+    .filter__film-type{
+        font-size: 14px;
+    }
+    .filter__img{
+        margin-bottom: 10px;
+    }
+    .filter__title{
+        margin-bottom: 22px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .filter{
+        margin-top: 29px;
+    }
+    .filter__arrow{
+        display: none;
+    }
+    .filter__blur-right{
+        display: none;
+    }
+    .filter__film-name{
+        font-size: 11px;
+    }
+    .filter__film-type{
+        font-size: 9px;
+    }
+    .filter__img{
+        margin-bottom: 8px;
+    }
+    .filter__title{
+        margin-bottom: 12px;
+    }
+}
+
 .filter__item .filter__img{
-  transform: scale(0.97);
+  transform: scale(0.97) translateX(-4px);
   transform-origin: 50% 100%;
   transition: transform 0.2s ease-in-out;
 }
 .filter__item:hover .filter__img{
-  transform: scale(1.0);
+  transform: scale(1.0) translateX(-4px);;
 }
 
 </style>

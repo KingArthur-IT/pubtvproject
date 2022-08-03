@@ -1,28 +1,19 @@
 <template>
   <main>
       <MainSlider />
-      <FilterSection class="only-desctop" />
+      <FilterSection />
       <div class="sliders-wrapper">
-        <FilmSlider :title="'Новые Сериалы'"
-                    :refer="'hard-carousel'" 
-                    :sliderDataFolder="'films'"
-                    :slidesData="hardEnglishFilms" 
-                    @toggleFavourite="toggleFavouriteFilm"
-                    class="only-mobile"
-        />
         <FilmSlider :title="'Сложный Английский'"
                     :refer="'hard-carousel'" 
                     :sliderDataFolder="'films'"
                     :slidesData="hardEnglishFilms" 
                     @toggleFavourite="toggleFavouriteFilm"
-                    class="only-desctop"
         />
         <FilmSlider :title="'Понятный Английский'"
                     :refer="'understand-carousel'" 
                     :sliderDataFolder="'films'"
                     :slidesData="undestandableEnglishFilms" 
                     @toggleFavourite="toggleFavouriteFilm"
-                    class="only-desctop"
         />
         <FilmSlider :title="'Интересный Сюжет'"
                     :refer="'interesting-carousel'" 
@@ -85,18 +76,5 @@ export default {
 <style scoped>
 .sliders-wrapper{
   margin-bottom: 50px;
-}
-.only-mobile{
-  display: none;
-}
-
-@media screen and (max-width: 768px){
-  .only-mobile{
-    display: block;
-  }
-  .only-desctop{
-    display: none;
-  }
-
 }
 </style>

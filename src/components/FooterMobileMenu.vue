@@ -10,14 +10,16 @@
             </div>
           </router-link>
 
-          <div class="footer-mobile__item">
-            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.1875 24.75L26.8125 24.75C27.9516 24.75 28.875 23.8266 28.875 22.6875L28.875 8.25C28.875 7.11091 27.9516 6.1875 26.8125 6.1875L6.1875 6.1875C5.04841 6.1875 4.125 7.11091 4.125 8.25L4.125 22.6875C4.125 23.8266 5.04841 24.75 6.1875 24.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20.625 28.875H12.375" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20.625 15.4688L14.4375 11.3438V19.5938L20.625 15.4688Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <p class="text footer-mobile__text">Каталог</p>
-          </div>
+          <router-link to="/catalog">
+            <div class="footer-mobile__item">
+                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.1875 24.75L26.8125 24.75C27.9516 24.75 28.875 23.8266 28.875 22.6875L28.875 8.25C28.875 7.11091 27.9516 6.1875 26.8125 6.1875L6.1875 6.1875C5.04841 6.1875 4.125 7.11091 4.125 8.25L4.125 22.6875C4.125 23.8266 5.04841 24.75 6.1875 24.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.625 28.875H12.375" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.625 15.4688L14.4375 11.3438V19.5938L20.625 15.4688Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p class="text footer-mobile__text">Каталог</p>
+            </div>
+          </router-link>
 
           <router-link to="/login">
             <div class="footer-mobile__item">

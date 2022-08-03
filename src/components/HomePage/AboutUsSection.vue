@@ -54,4 +54,48 @@ export default {
 .about__img:hover img{
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 1024px) {
+    .about__hero{
+        flex-direction: column;
+    }
+    .about__content{
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .about__img{
+        width: 80%;
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .about{
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+    .about__img{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about{
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .about{
+        padding-top: 24px;
+        padding-bottom: 36px;
+    }
+    .about__content{
+        margin-bottom: 14px;
+    }
+    .about__title{
+        margin-bottom: 15px;
+    }
+}
 </style>
