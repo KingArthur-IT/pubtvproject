@@ -3,15 +3,18 @@
         <h2 class="container title filter__title">Все фильтры</h2>
         <div class="filter__wrapper">
             <div class="container filter__hero">
-                <CustomDropdown     v-for="filter in filtersData" :key="filter.id"
-                                    :id="filter.id"
-                                    class="filter__item" 
-                                    :list="filter.data" 
-                                    :notselectedValue="filter.notselectedValue" 
-                                    :openedDropdownId="openedDropdownId"
-                                    @openDropdown="(e) => {openedDropdownId = e}"
-                />
-            </div>
+                <Carousel :items-to-show="4" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
+                    <Slide v-for="filter in filtersData" :key="filter.id">
+                        <CustomDropdown     :id="filter.id"
+                                            class="filter__item" 
+                                            :list="filter.data" 
+                                            :notselectedValue="filter.notselectedValue" 
+                                            :openedDropdownId="openedDropdownId"
+                                            @openDropdown="(e) => {openedDropdownId = e}"
+                        />
+                    </Slide>
+                </Carousel>
+            </div> 
         </div>
     </div>
 </template>
@@ -50,7 +53,15 @@ export default {
                     data: ['Высокий', 'Средний', 'Низкий'],
                     notselectedValue: 'Уровень Английского',
                 },
-            ]
+            ],
+            breakpoints: {
+                320: {
+                    itemsToShow: 4,
+                },
+                // 600: {
+                //     itemsToShow: 4,
+                // },
+            },
         }
     }
 }
@@ -63,7 +74,8 @@ export default {
 .filter__wrapper{
     background: #272727;
     padding: 35px 0;
-    overflow-x: scroll;
+    z-index: 10;
+    position: relative;
 }
 .filter__hero{
     display: flex;
@@ -76,26 +88,26 @@ export default {
     width: 25vw;
 }
 .filter__item:last-child{
-    min-width: 250px;
+    min-width: 220px;
 }
 
 @media screen and (max-width: 550px) {
-    .filter__item{
-        width: 28vw;
+    .filter__item:last-child{
+        min-width: 200px;
     }
 }
 
-@media screen and (max-width: 475px) {
-    .filter__item{
-        width: 30vw;
+@media screen and (max-width: 425px) {
+    .filter__item:last-child{
+        min-width: 178px;
     }
 }
 
-@media screen and (max-width: 375px) {
+/* @media screen and (max-width: 375px) {
     .filter__item{
         width: 40vw;
     }
-}
+} */
 
 @media screen and (max-width: 425px) {
     .filter__wrapper{

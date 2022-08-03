@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main">
       <MainSlider />
       <MobileFilterSection />
       <div class="sliders-wrapper">
@@ -68,5 +68,8 @@ export default {
 <style scoped>
 .sliders-wrapper{
   margin-bottom: 50px;
+}
+.main{
+  overflow-x: hidden;
 }
 </style>

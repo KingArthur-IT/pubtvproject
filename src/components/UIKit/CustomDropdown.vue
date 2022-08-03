@@ -98,6 +98,7 @@ export default {
     opacity: 0;
     transition: opacity var(--transition-time) ease-in-out;
     overflow-y: scroll;
+    text-align: left;
 }
 .dropdown-item{
     width: 100%;
@@ -132,5 +133,20 @@ export default {
 }
 .rotated{
     transform: rotate(180deg);
+}
+
+@media screen and (max-width: 600px) {
+    .dropdown-list{
+        min-width: 250px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .dropdown-list{
+        border-radius: 10px;
+    }
+    .dropdown-item{
+        font-size: 15px;
+    }
 }
 </style>

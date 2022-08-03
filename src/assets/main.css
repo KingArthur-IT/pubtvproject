@@ -171,3 +171,8 @@ a{
         font-size: 14px;
     }
 }
+
+.filter__hero .carousel__viewport{
+    overflow-x: hidden !important;
+    overflow: inherit !important;
+}
