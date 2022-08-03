@@ -2,17 +2,16 @@
     <div class="filter">
         <h2 class="container title filter__title">Все фильтры</h2>
         <div class="filter__wrapper">
-            <Carousel :items-to-show="3.5" :snapAlign="'start'" :wrap-around="true">
-                <Slide v-for="filter in filtersData" :key="filter.id">
-                    <CustomDropdown     :id="filter.id"
-                                        class="filter__item" 
-                                        :list="filter.data" 
-                                        :notselectedValue="filter.notselectedValue" 
-                                        :openedDropdownId="openedDropdownId"
-                                        @openDropdown="(e) => {openedDropdownId = e}"
-                    />
-                </Slide>
-            </Carousel>
+            <div class="container filter__hero">
+                <CustomDropdown     v-for="filter in filtersData" :key="filter.id"
+                                    :id="filter.id"
+                                    class="filter__item" 
+                                    :list="filter.data" 
+                                    :notselectedValue="filter.notselectedValue" 
+                                    :openedDropdownId="openedDropdownId"
+                                    @openDropdown="(e) => {openedDropdownId = e}"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -58,27 +57,44 @@ export default {
 </script>
 
 <style scoped>
-.carousel__viewport {
-    overflow: inherit !important;
-}
-
 .filter__title{
     margin-bottom: 32px;
 }
 .filter__wrapper{
     background: #272727;
     padding: 35px 0;
+    overflow-x: scroll;
 }
 .filter__hero{
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all var(--transition-time) ease-in-out;
+    width: fit-content;
 }
 .filter__item{
-    flex-basis: auto;
-    min-width: 225px;
-    margin-left: 72px;
+    width: 25vw;
+}
+.filter__item:last-child{
+    min-width: 250px;
+}
+
+@media screen and (max-width: 550px) {
+    .filter__item{
+        width: 28vw;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .filter__item{
+        width: 30vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .filter__item{
+        width: 40vw;
+    }
 }
 
 @media screen and (max-width: 425px) {

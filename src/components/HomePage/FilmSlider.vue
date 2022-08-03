@@ -21,6 +21,7 @@
                                                 :filmInfo="slide.filmInfo" 
                                                 :seasons="slide.seasons" 
                                                 :isFavourite="slide.isFavourite"
+                                                class="filter__film-info"
                                 />
                             </div>
                             <p class="text filter__film-name">{{slide.filmName}}</p>
@@ -82,7 +83,10 @@ export default {
             slideIndex: 1,
             breakpoints: {
                 320: {
-                    itemsToShow: 2.4,
+                    itemsToShow: 1.9,
+                },
+                375: {
+                    itemsToShow: 2.2,
                 },
                 600: {
                     itemsToShow: 2.7,
@@ -147,6 +151,7 @@ export default {
     cursor: pointer;
     border-radius: 18px;
     width: 100%;
+    margin-right: 5px;
 }
 .filter__film-name{
     font-weight: 700;
@@ -165,9 +170,11 @@ export default {
     width: 100%;
     display: flex;
     justify-content: flex-start;
+    overflow: hidden;
 }
 .filter__img img{
-    width: 97%;
+    /* width: 97%; */
+    width: 100%;
 }
 .filter__carousel-wrapper{
     position: relative;
@@ -317,6 +324,7 @@ export default {
     }
     .filter__img{
         margin-bottom: 8px;
+        overflow: hidden;
     }
     .filter__title{
         margin-bottom: 12px;
@@ -328,8 +336,9 @@ export default {
   transform-origin: 50% 100%;
   transition: transform 0.2s ease-in-out;
 }
+
 .filter__item:hover .filter__img{
-  transform: scale(1.0) translateX(-4px);;
+  transform: scale(1.0) translateX(-4px);
 }
 
 </style>

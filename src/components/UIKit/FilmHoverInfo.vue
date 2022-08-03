@@ -61,12 +61,12 @@ export default {
 <style scoped>
 .film-info{
     position: absolute;
-    top: 0;
+    top: 0px;
     bottom: 0;
     right: 0;
     left: 0;
     width: 100%;
-    height: 99%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.7);
     padding: 28px 20px;
     opacity: 0;
@@ -151,5 +151,54 @@ export default {
     height: 4px;
     background: #7E4EFA;
     border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .film-info{
+        padding: 20px 20px;
+    }
+    .film-info__about{
+        margin-bottom: 20px;
+    }
+    .film-info__seasons{
+        font-size: 16px;
+        line-height: 137%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .film-info__hero{
+        margin-bottom: 16px;
+    }
+    .film-info__about{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .film-info__fav-icon{
+        margin-bottom: 4px;
+    }
+    .film-info__hero span{
+        font-size: 35px;
+    }
+    .film-info__rating-wrap{
+        height: 4px;
+    }
+    .film-info__hero{
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .film-info{
+        padding: 15px 10px;
+    }
+    .film-info__about{
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+    .film-info__rating-item-wrap{
+        height: 3px;
+    }
 }
 </style>

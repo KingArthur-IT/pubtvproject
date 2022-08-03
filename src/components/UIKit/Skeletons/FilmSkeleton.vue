@@ -14,7 +14,8 @@ export default {
 
 <style scoped>
 .skeleton{
-    width: 258px;
+    /* width: 258px; */
+    width: 90%;
     position: relative;
 }
 .skeleton__item{

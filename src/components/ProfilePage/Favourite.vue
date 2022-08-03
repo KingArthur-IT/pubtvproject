@@ -64,6 +64,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding: 45px 0 50px;
+    width: 100%;
 }
 .favourites__item{
     cursor: pointer;
@@ -104,6 +105,7 @@ export default {
     }
     .favourites__item{
         margin-bottom: 25px;
+        flex-basis: 33%;
     }
 }
 @media screen and (max-width: 768px) {
@@ -111,7 +113,7 @@ export default {
         padding-top: 0;
     }
     .favourites__item{
-        flex-basis: 33%;
+        flex-basis: 50%;
     }
     .favourites__film-name{
         font-size: 16px;
@@ -121,11 +123,11 @@ export default {
     }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .favourites__item{
         flex-basis: 50%;
     }
-}
+} */
 @media screen and (max-width: 425px) {
     .favourites__film-name{
         font-size: 11px;
