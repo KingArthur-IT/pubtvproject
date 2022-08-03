@@ -1,8 +1,14 @@
 <template>
     <div class="settings">
         <div class="settings__title">Учётная Запись</div>
-        <div @click="changePasswordModal" class="container settings__link-wrap">
+        <div @click="changePasswordModal" class="container settings__link-wrap change-password-section">
             <div class="settings__link-text">Изменить пароль</div>
+            <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div @click="changeGenderModal" class="container settings__link-wrap">
+            <div class="settings__link-text">Изменить пол</div>
             <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -15,15 +21,17 @@
             </svg>
         </div>
 
+
         <ModalWrapper 
-                :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
+                :title="modalTitle" 
                 :lineWidth="progressStep * 50"
                 :isShown="isModalShown" 
                 @closeModal="closeModal"
                 :isLongModal="!isChangePassword"
             >
-            <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
-            <addMovie v-else @addEvent="addMovie" />
+            <RestorePasswordSetNew v-if="modalTitle === 'Изменение Пароля'" @nextRestore="changePassword"/>
+            <ChangeGender v-if="modalTitle === 'Изменить Пол'" @changeGender="changeGender"/>
+            <addMovie v-if="modalTitle === 'Добавить Кино'" @addEvent="addMovie" />
         </ModalWrapper>
     </div>
 </template>
@@ -32,23 +40,25 @@
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
 import addMovie from '@/components/Modals/addMovie.vue';
+import ChangeGender from '@/components/Modals/ChangeGender.vue';
 
 export default {
     components:{
         ModalWrapper,
         RestorePasswordSetNew,
-        addMovie
+        addMovie,
+        ChangeGender
     },
     data(){
         return{
-            isChangePassword: true,
+            modalTitle: '',
             isModalShown: false,
             progressStep: 1,
         }
     },
     methods:{
         changePasswordModal(){
-            this.isChangePassword = true;
+            this.modalTitle = 'Изменение Пароля';
             this.progressStep = 1;
             this.isModalShown = true;
         },
@@ -62,7 +72,7 @@ export default {
             }, 200);
         },
         addMovieModal(){
-            this.isChangePassword = false;
+            this.modalTitle = 'Добавить Кино';
             this.progressStep = 1;
             this.isModalShown = true;
         },
@@ -71,7 +81,18 @@ export default {
             setTimeout(() => {
                 this.isModalShown = false;
             }, 200);
-        }
+        },
+        changeGenderModal(){
+            this.modalTitle = 'Изменить Пол';
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        changeGender(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        },
     }
 }
 </script>
@@ -99,6 +120,9 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.change-password-section{
+    padding-bottom: 0px;
 }
 .settings__link-text{
     font-family: 'Nunito';

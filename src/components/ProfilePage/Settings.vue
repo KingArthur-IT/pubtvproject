@@ -2,17 +2,19 @@
     <div class="settings">
         <h2 class="section-title settings__title">Учётная Запись</h2>
         <CustomButton @click="changePasswordModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
+        <CustomButton @click="changeGenderModal" class="gender__btn" :paddingY="12"><span class="settings__btn-text">Изменить пол</span></CustomButton>
         <h2 class="section-title settings__title">Админ Панель</h2>
         <CustomButton @click="addMovieModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
         
         <ModalWrapper 
-                :title="isChangePassword ? 'Изменение Пароля' : 'Добавить Кино'" 
+                :title="modalTitle" 
                 :lineWidth="progressStep * 50"
                 :isShown="isModalShown" 
                 @closeModal="closeModal"
             >
-            <RestorePasswordSetNew v-if="isChangePassword" @nextRestore="changePassword"/>
-            <addMovie v-else @addEvent="addMovie" />
+            <RestorePasswordSetNew v-if="modalTitle === 'Изменение Пароля'" @nextRestore="changePassword"/>
+            <ChangeGender v-if="modalTitle === 'Изменить Пол'" @changeGender="changeGender"/>
+            <addMovie v-if="modalTitle === 'Добавить Кино'" @addEvent="addMovie" />
         </ModalWrapper>
     </div>
 </template>
@@ -21,22 +23,23 @@
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
+import ChangeGender from '@/components/Modals/ChangeGender.vue';
 import addMovie from '@/components/Modals/addMovie.vue';
 
 export default {
     components:{
-        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie
+        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie, ChangeGender
     },
     data(){
         return{
             isModalShown: false,
             progressStep: 1,
-            isChangePassword: true
+            modalTitle: '',
         }
     },
     methods:{
         changePasswordModal(){
-            this.isChangePassword = true;
+            this.modalTitle = 'Изменение Пароля';
             this.progressStep = 1;
             this.isModalShown = true;
         },
@@ -50,7 +53,7 @@ export default {
             }, 200);
         },
         addMovieModal(){
-            this.isChangePassword = false;
+            this.modalTitle = 'Добавить Кино';
             this.progressStep = 1;
             this.isModalShown = true;
         },
@@ -59,7 +62,18 @@ export default {
             setTimeout(() => {
                 this.isModalShown = false;
             }, 200);
-        }
+        },
+        changeGenderModal(){
+            this.modalTitle = 'Изменить Пол';
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        changeGender(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        },
     }
 }
 </script>
@@ -75,6 +89,10 @@ export default {
     text-align: center;
 }
 .settings__btn{
+    margin-bottom: 15px;
+    width: 100%;
+}
+.gender__btn{
     margin-bottom: 83px;
     width: 100%;
 }
