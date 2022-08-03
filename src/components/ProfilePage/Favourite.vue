@@ -10,6 +10,7 @@
                             :filmInfo="item.filmInfo" 
                             :seasons="item.seasons" 
                             :isFavourite="item.isFavourite"
+                            class="favourites__hover-info"
             />
         </div>
         <p class="text favourites__film-name">{{item.filmName}}</p>
@@ -87,10 +88,18 @@ export default {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
+    transform-origin: 50% 100%;
+    transition: transform 0.2s ease-in-out;
 }
 
 .favourites__img img{
     width: 100%;
+}
+.favourites__img:hover{
+    transform: scale(1.04);
+}
+.favourites__hover-info{
+    height: 99%;
 }
 
 @media screen and (max-width: 1024px) {
