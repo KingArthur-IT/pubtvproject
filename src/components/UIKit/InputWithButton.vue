@@ -1,14 +1,18 @@
 <template>
     <div>
         <div>
-            <input ref="input" type="file" @change="addFile" class="d-none">
+            <input ref="input" type="file" @change="addFile" class="d-none" :multiple="isMultiple">
             <div class="input-wrapper">
                 <input type="text" class="input modal__input" :placeholder="placeholder" readonly>
                 <div @click="openModalDialog" class="modal__input-btn">
                     <slot></slot>
                 </div>
             </div>
-            <p v-if="file" class="text file-name">{{file.name}} <span @click="deleteFile" class="delete">X</span> </p>
+            <div v-if="files && files.length">
+                <p v-for="(file, i) in files" :key="i" class="text file-name">
+                    {{file.name}} <span @click="deleteFile" class="delete">X</span> 
+                </p>
+            </div>
             <div v-if="wordsList && wordsList.length" class="words-wrapper">
                 <div v-for="(word,i) in wordsList" :key="i" class="word">
                     <p class="text file-name">{{word}} <span @click="deleteWord(i)" class="delete">X</span>  </p>
@@ -41,6 +45,10 @@ export default {
         isWordAdding:{
             type: Boolean,
             default: false
+        },
+        isMultiple:{
+            type: Boolean,
+            default: false
         }
     },
     components:{
@@ -49,7 +57,7 @@ export default {
     },
     data(){
         return{
-            file: null,
+            files: [],
             isModalShown: false,
             progressStep: 1,
             wordsList: []
@@ -63,7 +71,7 @@ export default {
             else this.isModalShown = true;
         },
         addFile(){
-            this.file = event.target.files[0];
+            this.files = event.target.files;
             console.log(this.file.name)
         },
         closeModal(){

@@ -59,11 +59,11 @@ export const favouritesListData = [
 ]
 
 export const cardPhrases = [
-    {id: 0, phrase: 'Alright', translation: 'Привет', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 1, phrase: 'Cheers mate!', translation: 'Спасибо', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 2, phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 3, phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 4, phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 5, phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
-    {id: 6, phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
+    {id: 0, phrase: 'Alright', translation: 'Привет', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 1, phrase: 'Cheers mate!', translation: 'Спасибо', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 2, phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 3, phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 4, phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 5, phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../assets/audio/sample.mp3'},
+    {id: 6, phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../assets/audio/sample.mp3'},
 ]

@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { cardPhrases } from '@/data/data.js'
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import FlashCardFromProfile from '@/components/UIKit/FlashCardFromProfile.vue';
 import InformationIcon from '@/components/Icons/InformationIcon.vue';
@@ -41,20 +42,16 @@ export default {
         AddFlashCard,
         InfoPopup
     },
+    mounted(){
+        this.phrases = this.cardPhrases;
+    },
     data(){
         return{
             isModalShown: false,
             isInfoModalShown: false,
             progressStep: 1,
-            phrases:[
-                {phrase: 'Alright', translation: 'Привет', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'Cheers mate!', translation: 'Спасибо', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
-            ],
+            cardPhrases,
+            phrases:[]
         }
     },
     methods:{

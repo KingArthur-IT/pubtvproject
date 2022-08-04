@@ -16,7 +16,7 @@
                 <LoadIcon />
             </div>
         </InputWithButton>
-        <InputWithButton class="modal__input" :placeholder="'Субтитры'" >
+        <InputWithButton class="modal__input" :placeholder="'Субтитры'" :isMultiple="true">
             <div class="modal__input-btn-wrap">
                 <span class="modal__btn-text">Субтитры</span>
                 <LoadIcon />
