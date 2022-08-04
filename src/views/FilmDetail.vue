@@ -76,6 +76,8 @@
             :lineWidth="progressStep * 50"
             :isShown="isModalShown" 
             @closeModal="closeModal"
+            :isLongModal="true"
+            :marginHeroMobileTop="isSeasonModal ? 100 : 0"
         >
         <AddNewSeason v-if="isSeasonModal" :isEdit="isEditSeason" @addEvent="finishAddNewSeason"/>
         <AddNewSeries v-else @addEvent="finishAddNewSeries" />

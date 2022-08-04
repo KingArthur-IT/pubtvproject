@@ -12,7 +12,8 @@
             :lineWidth="progressStep * 50"
             :isShown="isModalShown" 
             @closeModal="closeModal"
-            :isLongModal="false"
+            :isLongModal="true"
+            :marginHeroMobileTop="50"
     >
         <AddFlashCard @addEvent="addFlashCard" />
     </ModalWrapper>

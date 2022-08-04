@@ -1,7 +1,7 @@
 <template>
     <div class="modal" :class="{'show': isDisplay, 'visible': isVisible}">
         <div class="modal__header" :class="{'long': isLongModal}">
-            <div class="container modal__header-hero" :class="{'long': isLongModal}">
+            <div class="container modal__header-hero" :class="{'long': isLongModal}" >
                 <Logo class="modal__logo" :class="{'long': isLongModal}"/>
                 <h2 class="modal__title">{{title}}</h2>
                 <CloseIcon class="modal__close" @click="closeModal"/>
@@ -11,7 +11,7 @@
             <div class="modal__line" :style="`width: ${lineWidth}%`"></div>
         </div>
         <div class="container modal__hero" :class="{'long': isLongModal}">
-            <div class="mob-title-wrap" :class="{'long': isLongModal}">
+            <div class="mob-title-wrap" :class="{'long': isLongModal}" :style="`margin-top: ${marginHeroMobileTop}px`">
                 <h2 class="modal__title mob-title" :class="{'long': isLongModal}">{{title}}</h2>
                 <MobileInfoIcon @click="$emit('showModalInfoPopup')" v-if="isShowInfoIconOnModal" class="mob-title-icon"/>
             </div>
@@ -56,6 +56,10 @@ export default {
         isShowInfoIconOnModal:{
             type: Boolean,
             default: false
+        },
+        marginHeroMobileTop:{
+            type: Number,
+            default: 0
         }
     },
     data(){

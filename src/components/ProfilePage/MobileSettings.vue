@@ -33,7 +33,8 @@
                 :lineWidth="progressStep * 50"
                 :isShown="isModalShown" 
                 @closeModal="closeModal"
-                :isLongModal="!isChangePassword"
+                :isLongModal="true"
+                :marginHeroMobileTop="modalTitle !== 'Добавить Кино' ? 60 : 0"
             >
             <RestorePasswordSetNew v-if="modalTitle === 'Изменение Пароля'" @nextRestore="changePassword"/>
             <ChangeGender v-if="modalTitle === 'Изменить Пол'" @changeGender="changeGender"/>
