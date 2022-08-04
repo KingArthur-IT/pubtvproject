@@ -45,6 +45,7 @@ export default {
     filter: drop-shadow(0px 13px 25px rgba(0, 0, 0, 0.16));
     border-radius: 17px;
     overflow: hidden;
+    user-select: none;
 }
 .about__img img{
     width: 100%;

@@ -100,6 +100,7 @@ export default {
 .main-carousel__item{
     cursor: pointer;
     position: relative;
+    user-select: none;
 }
 .main-carousel__tag-list{
     display: flex;
