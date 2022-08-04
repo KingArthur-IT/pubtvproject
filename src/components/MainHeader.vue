@@ -76,7 +76,7 @@ export default {
             }, 200);
         },
         toAboutUs(){
-            if (this.$route.path === '/catalog'){
+            if (this.$route.path !== '/'){
                 localStorage.setItem('isToAboutSection', 'true');
                 this.$router.push({path: '/'});
             };

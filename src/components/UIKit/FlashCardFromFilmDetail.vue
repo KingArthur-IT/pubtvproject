@@ -46,7 +46,8 @@ export default {
         }
     },
     mounted(){
-        this.audio = new Audio(this.audioUrl); 
+        // this.audio = new Audio(this.audioUrl); 
+        this.audio = new Audio(this.getAudioUrl()); 
     },
     methods:{
         addCard(){
@@ -61,7 +62,10 @@ export default {
             if (this.isPlay)
                 this.audio.play();
             else this.audio.pause();
-        }
+        },
+        getAudioUrl(){
+            return new URL(`../assets/audio/sample.mp3`, import.meta.url).href
+        },
     }
 }
 </script>
