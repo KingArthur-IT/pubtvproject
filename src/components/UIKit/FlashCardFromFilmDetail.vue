@@ -1,6 +1,5 @@
 <template>
     <div class="card">
-        <audio src="../assets/audio/sample.mp3" style="display: none"></audio>
         <SoundIcon @click="playToggle" class="card__icon" />
         <div>
             <p class="card__word">{{phrase}}</p>
@@ -47,7 +46,8 @@ export default {
         }
     },
     mounted(){
-        this.audio = new Audio(this.audioUrl); 
+        // this.audio = new Audio(this.audioUrl); https://file-examples.com/storage/fe20c819d662ebd6f944042/2017/11/file_example_MP3_700KB.mp3
+        this.audio = new Audio('https://file-examples.com/storage/fe20c819d662ebd6f944042/2017/11/file_example_MP3_700KB.mp3');
     },
     methods:{
         addCard(){
