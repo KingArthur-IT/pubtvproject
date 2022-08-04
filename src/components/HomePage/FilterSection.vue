@@ -1,6 +1,6 @@
 <template>
     <div class="filter">
-        <h2 class="container title filter__title">Фильтры</h2>
+        <h2 class="container title filter__title">{{title}}</h2>
         <div class="filter__wrapper">
             <div class="container filter__hero">
                 <CustomDropdown     v-for="filter in filtersData" :key="filter.id"
@@ -21,6 +21,12 @@ import CustomDropdown from '@/components/UIKit/CustomDropdown.vue';
 export default {
     components:{
         CustomDropdown
+    },
+    props:{
+        title:{
+            type: String,
+            default: 'Фильтры'
+        }
     },
     data(){
         return{

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-carousel">
+  <div class="main-carousel" :class="{'onCatalogPage': isOnCatalogPage}">
     <div class="main-carousel__hero">
         <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel" :breakpoints='breakpoints'>
             <Slide v-for="slide in mainSliderList" :key="slide.id">
@@ -34,6 +34,12 @@ export default {
     components: {
         Carousel,
         Slide,
+    },
+    props:{
+        isOnCatalogPage:{
+            type: Boolean,
+            default: false
+        }
     },
     data(){
         return{
@@ -221,6 +227,9 @@ export default {
         font-size: 14px;
         color: #fff;
     }
+    .onCatalogPage{
+        margin-top: 0px;
+    }
 }
 @media screen and (max-width: 600px) {
     .arrow-left{
@@ -250,6 +259,9 @@ export default {
     .main-carousel__tag{
         font-size: 12px;
     }
+    .onCatalogPage{
+        margin-top: 0px;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -266,6 +278,9 @@ export default {
     }
     .main-carousel__tag{
         font-size: 8px;
+    }
+    .onCatalogPage{
+        margin-top: 0px;
     }
 }
 </style>
