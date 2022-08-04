@@ -1,10 +1,10 @@
 <template>
   <header ref="header" class="header">
     <div class="container header__hero">
-        <div v-if="isLogoShow">
+        <div class="header__logo" :class="{'not-visible': !isLogoShow}">
             <router-link to="/"><Logo /></router-link>
         </div>
-        <ul v-if="!isSearchInputShow" class="header__list">
+        <ul  class="header__list">
             <router-link to="/">
                 <li class="header__item">Главная</li>
             </router-link>
@@ -20,10 +20,10 @@
             </router-link>
         </ul>
         <div class="header__controls">
-            <div v-if="!isSearchInputShow" class="header__icon" @click.stop="openSearch">
+            <div  class="header__icon" @click.stop="openSearch">
                 <SearchIcon />
             </div>
-            <div v-else class="header__search-wrap" @click.stop>
+            <div v-if="isSearchInputShow" class="header__search-wrap" @click.stop>
                 <input ref="searchInput" type="text" class="input header__search" :class="{'opened': isSearchInputVisible}" placeholder="Поиск">
                 <div class="header__search-icon">
                     <SearchIcon :color="'black'" @clickEvent="closeSearch" />
@@ -85,14 +85,14 @@ export default {
     watch:{
         isSearchInputShow: function() {
             if (this.isSearchInputShow){
-                if (this.$refs.header.clientWidth < 1025)
+                if (this.$refs.header.clientWidth < 769)
                     this.isLogoShow = false;
                 setTimeout(() => {
                     this.$refs.searchInput.focus();
                 }, 300);
             }
             else 
-                if (this.$refs.header.clientWidth < 1025)
+                if (this.$refs.header.clientWidth < 769)
                     setTimeout(() => {
                         this.isLogoShow = true;
                     }, 200);
@@ -108,7 +108,15 @@ export default {
     min-height: 135px;
     padding: 36px 0;
 }
+.header__logo{
+    opacity: 1;
+    transition: opacity var(--transition-time) ease-in-out;
+}
+.not-visible{
+    opacity: 0;
+}
 .header__hero{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -141,8 +149,10 @@ export default {
     margin-right: 36px;
 }
 .header__search-wrap{
-    position: relative;
-    margin: 2px 36px 2px 0;
+    /* position: relative;
+    margin: 2px 36px 2px 0; */
+    position: absolute;
+    right: 190px;
 }
 .header__search{
     padding: 11px 50px 11px 36px;
@@ -150,7 +160,8 @@ export default {
     transition: width .3s ease-in-out;
 }
 .header__search.opened{
-    width: calc(1240px - 60px - 180px - 170px - 30px)
+    /* width: calc(1240px - 60px - 180px - 170px - 30px) */
+    width: 420px;
 }
 .header__search-icon{
     position: absolute;
@@ -160,7 +171,8 @@ export default {
 }
 @media screen and (max-width: 1240px){
     .header__search.opened{
-        width: calc(100vw - 60px - 180px - 170px - 30px)
+        /* width: calc(100vw - 60px - 180px - 170px - 30px) */
+        width: calc(44vw);
     }
 }
 @media screen and (max-width: 1024px){
@@ -175,7 +187,7 @@ export default {
         margin-left: auto;
     }
     .header__search.opened{
-        width: calc(100vw - 60px - 180px)
+        width: calc(100vw - 60px - 180px - 170px)
     }
 }
 @media screen and (max-width: 768px){
@@ -208,10 +220,16 @@ export default {
     .header__search.opened{
         width: calc(100vw - 60px)
     }
+    .header__search-wrap{
+        right: 25px;
+    }
 }
 @media screen and (max-width: 425px){
     .header__search.opened{
         width: calc(100vw - 30px)
+    }
+    .header__search-wrap{
+        right: 15px;
     }
 }
 </style>

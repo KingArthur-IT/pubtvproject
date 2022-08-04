@@ -77,7 +77,7 @@
             :isShown="isModalShown" 
             @closeModal="closeModal"
             :isLongModal="true"
-            :marginHeroMobileTop="isSeasonModal ? 100 : 0"
+            :marginHeroMobileTop="isSeasonModal ? 80 : 0"
         >
         <AddNewSeason v-if="isSeasonModal" :isEdit="isEditSeason" @addEvent="finishAddNewSeason"/>
         <AddNewSeries v-else @addEvent="finishAddNewSeries" />
