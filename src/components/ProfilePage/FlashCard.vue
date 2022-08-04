@@ -4,7 +4,7 @@
       <CustomButton @click="openAddFlashCardModal" class="flash__btn" :paddingY="12"><span class="flash__btn-text">Добавить слово</span></CustomButton>
       <div class="flash__wrap">
           <div v-for="(item, i) in phrases" :key="i" class="flash__item">
-            <FlashCardFromProfile :phrase="item.phrase" :translation="item.translation" />
+            <FlashCardFromProfile :phrase="item.phrase" :translation="item.translation" :audioUrl="item.audioUrl"/>
         </div>
       </div>
       <ModalWrapper 
@@ -47,14 +47,14 @@ export default {
             isInfoModalShown: false,
             progressStep: 1,
             phrases:[
-                {phrase: 'Alright', translation: 'Привет'},
-                {phrase: 'Cheers mate!', translation: 'Спасибо'},
-                {phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.'},
-                {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник'},
-                {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
-                {phrase: 'That\'s load of bollocks', translation: 'Это неправда'},
-            ]
+                {phrase: 'Alright', translation: 'Привет', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'Cheers mate!', translation: 'Спасибо', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'I\'m off then. Ta-ra', translation: 'Я ухожу, прощай.', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'Fancy a cuppa? I\'m brewing one just now', translation: 'Не хотите ли чашку чая? Я только что поставил чайник', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'Give me a bell on Friday.', translation: 'Позвони мне в пятницу', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
+                {phrase: 'That\'s load of bollocks', translation: 'Это неправда', audioUrl: '../src/assets/audio/sample.mp3'},
+            ],
         }
     },
     methods:{

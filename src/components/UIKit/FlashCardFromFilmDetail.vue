@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <SoundIcon class="card__icon" />
+        <SoundIcon @click="playToggle" class="card__icon" />
         <div>
             <p class="card__word">{{phrase}}</p>
             <div class="card__translate">{{translation}}</div>
@@ -33,11 +33,20 @@ export default {
             type: String,
             required: true
         },
+        audioUrl:{
+            type: String,
+            default: ''
+        }
     },
     data(){
         return{
-            isAdding: true
+            isAdding: true,
+            audio: null,
+            isPlay: false
         }
+    },
+    mounted(){
+        this.audio = new Audio(this.audioUrl); 
     },
     methods:{
         addCard(){
@@ -46,6 +55,12 @@ export default {
                 this.$emit('addFlashCardEvent', this.id)
                 this.isAdding = true;
             }, 1000);
+        },
+        playToggle(){
+            this.isPlay = !this.isPlay;
+            if (this.isPlay)
+                this.audio.play();
+            else this.audio.pause();
         }
     }
 }

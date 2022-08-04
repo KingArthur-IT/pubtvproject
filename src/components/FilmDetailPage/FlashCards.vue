@@ -6,6 +6,7 @@
             <FlashCardFromFilmDetail    :id="card.id" 
                                         :phrase="card.phrase" 
                                         :translation="card.translation" 
+                                        :audioUrl="card.audioUrl"
                                         @addFlashCardEvent="addFlashCard"
             />
           </div>

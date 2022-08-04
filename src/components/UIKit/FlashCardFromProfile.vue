@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <SoundIcon class="card__icon" />
+        <SoundIcon @click="playToggle" class="card__icon" />
         <div>
             <p class="card__word">{{phrase}}</p>
             <div class="card__translate">
@@ -33,6 +33,27 @@ export default {
             type: String,
             required: true
         },
+        audioUrl:{
+            type: String,
+            default: ''
+        }
+    },
+    data(){
+        return{
+            audio: null,
+            isPlay: false
+        }
+    },
+    mounted(){
+        this.audio = new Audio(this.audioUrl); 
+    },
+    methods:{
+        playToggle(){
+            this.isPlay = !this.isPlay;
+            if (this.isPlay)
+                this.audio.play();
+            else this.audio.pause();
+        }
     }
 }
 </script>
