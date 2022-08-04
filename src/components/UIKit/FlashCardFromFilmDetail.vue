@@ -1,5 +1,6 @@
 <template>
     <div class="card">
+        <audio src="../assets/audio/sample.mp3" style="display: none"></audio>
         <SoundIcon @click="playToggle" class="card__icon" />
         <div>
             <p class="card__word">{{phrase}}</p>
@@ -46,8 +47,7 @@ export default {
         }
     },
     mounted(){
-        // this.audio = new Audio(this.audioUrl); 
-        this.audio = new Audio(this.getAudioUrl()); 
+        this.audio = new Audio(this.audioUrl); 
     },
     methods:{
         addCard(){
@@ -62,9 +62,6 @@ export default {
             if (this.isPlay)
                 this.audio.play();
             else this.audio.pause();
-        },
-        getAudioUrl(){
-            return new URL(`../assets/audio/sample.mp3`, import.meta.url).href
         },
     }
 }
