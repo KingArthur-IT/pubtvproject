@@ -8,7 +8,7 @@
             <router-link to="/">
                 <li class="header__item">Главная</li>
             </router-link>
-            <a href="#aboutUsSection" class="header__item">О Нас</a>
+            <a href="#aboutUsSection" @click="toAboutUs" class="header__item">О Нас</a>
             <router-link to="/catalog">
                 <li class="header__item">Сериалы</li>
             </router-link>
@@ -75,6 +75,12 @@ export default {
                 this.isSearchInputShow = false;
             }, 200);
         },
+        toAboutUs(){
+            if (this.$route.path === '/catalog'){
+                localStorage.setItem('isToAboutSection', 'true');
+                this.$router.push({path: '/'});
+            };
+        }
     },
     watch:{
         isSearchInputShow: function() {

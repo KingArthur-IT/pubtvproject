@@ -31,7 +31,7 @@
                     @toggleFavourite="toggleFavouriteFilm"
         />
       </div>
-      <AboutUsSection />
+      <AboutUsSection ref="aboutUsSection" />
   </main>
   <FooterDefault />
 </template>
@@ -58,6 +58,11 @@ export default {
     }
   }, 
   mounted(){
+    if (localStorage.getItem('isToAboutSection') === 'true'){
+      localStorage.setItem('isToAboutSection', 'false');
+      this.scrollMeTo('aboutUsSection');
+    }
+
     setTimeout(() => {
       this.filmList = this.filmListData;
     }, 3000);
@@ -68,8 +73,7 @@ export default {
       arrItem.isFavourite = !arrItem.isFavourite;
     },
     scrollMeTo(refName) {
-        var element = this.$refs[refName];
-        console.log(element)
+        var element = document.getElementById(refName);
         var top = element.offsetTop;
 
         window.scrollTo(0, top);

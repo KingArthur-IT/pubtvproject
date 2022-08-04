@@ -10,7 +10,7 @@
           </li>
         </ul>
       </div>
-      <MainSlider isOnCatalogPage="true" />
+      <MainSlider :isOnCatalogPage="true" />
       <FilterSection :title="'Все фильтры'" class="only-desctop" />
       <MobileFilterSection class="only-mobile" />
       <div class="sliders-wrapper">
