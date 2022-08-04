@@ -139,6 +139,7 @@ export default {
 }
 .filter{
     margin-top: 73px;
+    user-select: none;
 }
 .filter__title{
     margin-bottom: 40px;
