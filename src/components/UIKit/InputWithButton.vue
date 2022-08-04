@@ -10,7 +10,7 @@
             </div>
             <div v-if="files && files.length">
                 <p v-for="(file, i) in files" :key="i" class="text file-name">
-                    {{file.name}} <span @click="deleteFile" class="delete">X</span> 
+                    {{file.name}} <span @click="deleteFile(i)" class="delete">X</span> 
                 </p>
             </div>
             <div v-if="wordsList && wordsList.length" class="words-wrapper">
@@ -71,8 +71,13 @@ export default {
             else this.isModalShown = true;
         },
         addFile(){
-            this.files = event.target.files;
-            console.log(this.file.name)
+            console.log(event.target.files)
+            if (this.isMultiple)
+                [...event.target.files].forEach(element => {
+                   this.files.push(element) 
+                });
+            else
+                this.files = event.target.files;
         },
         closeModal(){
             this.isModalShown = false;
@@ -87,8 +92,10 @@ export default {
         deleteWord(index){
             this.wordsList.splice(index, 1);
         },
-        deleteFile(){
-            this.file = null;
+        deleteFile(index){
+            if (this.files.length > 1)
+                this.files.splice(index, 1);
+            else this.files = [];
         }
     }
 }
