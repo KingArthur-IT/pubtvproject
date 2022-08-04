@@ -21,7 +21,7 @@
             <div class="footer__mobile-hero">
                 <div class="footer__mob-left">
                     <a href="mailto:support@pubtv.online" class="footer__link footer__email">support@pubtv.online</a>
-                    <a href="#" class="footer__link footer__private-policy">Privacy Policy</a>
+                    <a href="#" class="footer__link footer__private-policy">Политика конфиденциальности</a>
                     <a href="#" class="footer__link footer__developer">Пользовательское соглашение</a>
                 </div>
                 <div class="footer__mob-right">

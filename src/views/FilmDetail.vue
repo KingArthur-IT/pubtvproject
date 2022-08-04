@@ -278,7 +278,7 @@ export default {
 }
 .seasons__list{
     position: relative;
-    flex-basis: 75%;
+    flex-basis: 72%;
 }
 .seasons__item{
     font-family: 'Nunito';
@@ -306,6 +306,9 @@ export default {
 }
 .arrow-right{
     margin-right: 5px;
+}
+.seasons__btn{
+    margin-left: 20px;
 }
 .seasons__btn-text{
     font-family: 'Nunito';
@@ -429,6 +432,12 @@ export default {
     }
 }
 
+@media screen and (max-width: 1100px){
+    .seasons__list{
+        flex-basis: 69%;
+    }
+}
+
 @media screen and (max-width: 1024px){
     .seasons__list{
         flex-basis: 65%;
@@ -437,6 +446,13 @@ export default {
         padding-right: 0px;
     }
 }
+
+@media screen and (max-width: 920px){
+    .seasons__list{
+        flex-basis: 60%;
+    }
+}
+
 
 @media screen and (max-width: 870px){
     .seasons__controls-wrap{
@@ -481,6 +497,9 @@ export default {
     }
     .seasons__controls-wrap{
         min-width: 202px;
+    }
+    .seasons__btn{
+        margin-left: 0px;
     }
 }
 @media screen and (max-width: 500px){

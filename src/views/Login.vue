@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="login__btns">
-                <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
                 <CustomButton @click.prevent="loginEvent" class="login__btn" :paddingY="12"><span class="login__btn-text">Войти</span></CustomButton>
+                <CustomButton @click="$router.push({path: '/register'})" class="login__btn" :isOutlined="true" :paddingY="12"><span class="login__btn-text">Регистрация</span></CustomButton>
             </div>
             <div class="login__remember-mobile">
                 <CustomCheckbox v-model="isRememberMe" class="login__mobile-checkbox">
@@ -174,12 +174,13 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row-reverse;
 }
 .login__btn{
     width: 100%;
     margin-bottom: 29px;
 }
-.login__btn:first-child{
+.login__btn:last-child{
     margin-right: 20px;
 }
 .login__btn-text{
@@ -291,7 +292,7 @@ export default {
         margin: auto;
     }
     .login__btns{
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     .login__btn:first-child{
         margin-right: 0px;

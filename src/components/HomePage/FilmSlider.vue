@@ -12,7 +12,7 @@
                 <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
                     <Slide v-for="slide in slidesData" :key="slide.id">
                         <div @click="goToDetailPage(slide.id)" class="filter__item">
-                            <div @click="posterClick" class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
+                            <div class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
                                 <img :src="getImageUrl(slide.imgName)" alt="img">
                                 <FilmHoverInfo  @toggleFavourite="$emit('toggleFavourite', slide.id)" 
                                                 :isVisible="hoverSlideId === slide.id" 
@@ -122,10 +122,6 @@ export default {
         goToDetailPage(filmId){
             this.$router.push({name: 'detail', params: {filmId: filmId}})
         },
-        posterClick(e){
-            if (window.innerWidth < 1024)
-                e.stopPropagation();
-        }
     },
     watch:{
         slideIndex: function(){
@@ -273,6 +269,9 @@ export default {
     }
     .filter__title{
         margin-bottom: 25px;
+    }
+    .filter__film-info{
+        display: none;
     }
 }
 @media screen and (max-width: 600px) {

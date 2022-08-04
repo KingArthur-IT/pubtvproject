@@ -1,7 +1,7 @@
 <template>
   <div v-if="favouritesMountedList && favouritesMountedList.length" class="favourites">
     <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @click="goToDetailPage(item.id)">
-        <div @click="posterClick" class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
+        <div class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
             <img :src="getImageUrl(item.imgName)" alt="img">
             <FilmHoverInfo  @toggleFavourite="item.isFavourite = !item.isFavourite" 
                             :isVisible="hoverId === item.id" 
@@ -52,10 +52,6 @@ export default {
         goToDetailPage(filmId){
             this.$router.push({name: 'detail', params: {filmId: filmId}})
         },
-        posterClick(e){
-            if (window.innerWidth < 1024)
-                e.stopPropagation();
-        }
     }
 }
 </script>
@@ -129,6 +125,9 @@ export default {
     }
     .favourites__film-type{
         font-size: 12px;
+    }
+    .favourites__hover-info{
+        display: none;
     }
 }
 

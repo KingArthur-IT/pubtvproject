@@ -1,22 +1,30 @@
 <template>
-  <header class="header">
+  <header ref="header" class="header">
     <div class="container header__hero">
-        <div>
+        <div v-if="isLogoShow">
             <router-link to="/"><Logo /></router-link>
         </div>
         <ul v-if="!isSearchInputShow" class="header__list">
-            <li class="header__item">Главная</li>
-            <li class="header__item">О Нас</li>
-            <li class="header__item">Сериалы</li>
-            <li class="header__item">Фильмы</li>
-            <li class="header__item">Мультфильмы</li>
+            <router-link to="/">
+                <li class="header__item">Главная</li>
+            </router-link>
+            <a href="#aboutUsSection" class="header__item">О Нас</a>
+            <router-link to="/catalog">
+                <li class="header__item">Сериалы</li>
+            </router-link>
+            <router-link to="/catalog">
+                <li class="header__item">Фильмы</li>
+            </router-link>
+            <router-link to="/catalog">
+                <li class="header__item">Мультфильмы</li>
+            </router-link>
         </ul>
         <div class="header__controls">
             <div v-if="!isSearchInputShow" class="header__icon" @click.stop="openSearch">
                 <SearchIcon />
             </div>
             <div v-else class="header__search-wrap" @click.stop>
-                <input type="text" class="input header__search" :class="{'opened': isSearchInputVisible}" placeholder="Поиск">
+                <input ref="searchInput" type="text" class="input header__search" :class="{'opened': isSearchInputVisible}" placeholder="Поиск">
                 <div class="header__search-icon">
                     <SearchIcon :color="'black'" @clickEvent="closeSearch" />
                 </div>
@@ -45,7 +53,8 @@ export default {
     data(){
         return{
             isSearchInputShow: false,
-            isSearchInputVisible: false
+            isSearchInputVisible: false,
+            isLogoShow: true
         }
     },
     mounted(){
@@ -65,6 +74,22 @@ export default {
             setTimeout(() => {
                 this.isSearchInputShow = false;
             }, 200);
+        },
+    },
+    watch:{
+        isSearchInputShow: function() {
+            if (this.isSearchInputShow){
+                if (this.$refs.header.clientWidth < 1025)
+                    this.isLogoShow = false;
+                setTimeout(() => {
+                    this.$refs.searchInput.focus();
+                }, 300);
+            }
+            else 
+                if (this.$refs.header.clientWidth < 1025)
+                    setTimeout(() => {
+                        this.isLogoShow = true;
+                    }, 200);
         }
     }
 }
@@ -119,7 +144,7 @@ export default {
     transition: width .3s ease-in-out;
 }
 .header__search.opened{
-    width: 500px;
+    width: calc(1240px - 60px - 180px - 170px - 30px)
 }
 .header__search-icon{
     position: absolute;
@@ -127,7 +152,11 @@ export default {
     top: 50%;
     transform: translateY(-50%);
 }
-
+@media screen and (max-width: 1240px){
+    .header__search.opened{
+        width: calc(100vw - 60px - 180px - 170px - 30px)
+    }
+}
 @media screen and (max-width: 1024px){
     .header{
         min-height: 88px;
@@ -136,8 +165,11 @@ export default {
     .header__list{
         display: none;
     }
+    .header__controls{
+        margin-left: auto;
+    }
     .header__search.opened{
-        width: 350px;
+        width: calc(100vw - 60px - 180px)
     }
 }
 @media screen and (max-width: 768px){
@@ -164,20 +196,16 @@ export default {
     .header__search-icon{
         right: 16px;
     }
-}
-@media screen and (max-width: 615px){
-    .header__search.opened{
-        width: 300px;
+    .header__logo-wrap.opened{
+        display: none;
     }
-}
-@media screen and (max-width: 515px){
     .header__search.opened{
-        width: calc(100vw - 150px - 60px - 30px)
+        width: calc(100vw - 60px)
     }
 }
 @media screen and (max-width: 425px){
     .header__search.opened{
-        width: calc(100vw - 150px - 30px)
+        width: calc(100vw - 30px)
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="section about">
+  <section id="aboutUsSection" class="section about">
       <div class="container">
           <h2 class="title about__title">О нас</h2>
           <div class="about__hero">
@@ -76,6 +76,9 @@ export default {
     }
     .about__img{
         width: 100%;
+    }
+    .about__img:hover img{
+        transform: scale(1);
     }
 }
 

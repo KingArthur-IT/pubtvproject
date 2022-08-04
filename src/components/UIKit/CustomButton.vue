@@ -21,7 +21,7 @@ export default {
         minWidth:{
             type: Number,
             default: 0
-        }
+        },
     }
 }
 </script>

@@ -67,6 +67,13 @@ export default {
       var arrItem = this.filmList.find(el => el.id === id);
       arrItem.isFavourite = !arrItem.isFavourite;
     },
+    scrollMeTo(refName) {
+        var element = this.$refs[refName];
+        console.log(element)
+        var top = element.offsetTop;
+
+        window.scrollTo(0, top);
+    },
   },
   computed:{
     hardEnglishFilms(){
