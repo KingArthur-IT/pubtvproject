@@ -22,7 +22,7 @@
           </router-link>
 
           <router-link to="/login">
-            <div class="footer-mobile__item" :class="{'active': $route.path.includes('/profile')}">
+            <div class="footer-mobile__item" :class="{'active': $route.path.includes('/profile') || $route.path === '/login' || $route.path === '/register'}">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 26.25C21.2132 26.25 26.25 21.2132 26.25 15C26.25 8.7868 21.2132 3.75 15 3.75C8.7868 3.75 3.75 8.7868 3.75 15C3.75 21.2132 8.7868 26.25 15 26.25Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M15 18.75C17.5888 18.75 19.6875 16.6513 19.6875 14.0625C19.6875 11.4737 17.5888 9.375 15 9.375C12.4112 9.375 10.3125 11.4737 10.3125 14.0625C10.3125 16.6513 12.4112 18.75 15 18.75Z" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
