@@ -7,6 +7,12 @@
                 <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
+        <div @click="changeEmailModal" class="container settings__link-wrap change-password-section">
+            <div class="settings__link-text">Изменить email</div>
+            <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L8 8.5L1 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
         <div @click="changeGenderModal" class="container settings__link-wrap">
             <div class="settings__link-text">Изменить пол</div>
             <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,6 +37,7 @@
             >
             <RestorePasswordSetNew v-if="modalTitle === 'Изменение Пароля'" @nextRestore="changePassword"/>
             <ChangeGender v-if="modalTitle === 'Изменить Пол'" @changeGender="changeGender"/>
+            <ChangeEmail v-if="modalTitle === 'Изменить Email'" @changeEmail="changeEmail"/>
             <addMovie v-if="modalTitle === 'Добавить Кино'" @addEvent="addMovie" />
         </ModalWrapper>
     </div>
@@ -41,13 +48,15 @@ import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
 import addMovie from '@/components/Modals/addMovie.vue';
 import ChangeGender from '@/components/Modals/ChangeGender.vue';
+import ChangeEmail from '@/components/Modals/ChangeEmail.vue';
 
 export default {
     components:{
         ModalWrapper,
         RestorePasswordSetNew,
         addMovie,
-        ChangeGender
+        ChangeGender,
+        ChangeEmail
     },
     data(){
         return{
@@ -88,6 +97,17 @@ export default {
             this.isModalShown = true;
         },
         changeGender(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        },
+        changeEmailModal(){
+            this.modalTitle = 'Изменить Email';
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        changeEmail(){
             this.progressStep = 2;
             setTimeout(() => {
                 this.isModalShown = false;

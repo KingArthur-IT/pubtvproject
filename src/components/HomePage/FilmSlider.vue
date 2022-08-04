@@ -9,10 +9,10 @@
                         <path d="M15 28L2 15L15 2" stroke="white" stroke-opacity="0.58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints'>
+                <Carousel v-if="slidesData && slidesData.length" :items-to-show="4.3" :ref="refer" :wrap-around="true" :snapAlign="'start'" :breakpoints='breakpoints' :mouseDrag="false">
                     <Slide v-for="slide in slidesData" :key="slide.id">
-                        <div @click="goToDetailPage(slide.id)" class="filter__item">
-                            <div class="filter__img" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
+                        <div @click="goToDetailPage(slide.id)" class="filter__item" @mouseenter="hoverSlideId = slide.id" @mouseleave="hoverSlideId = -1">
+                            <div class="filter__img">
                                 <img :src="getImageUrl(slide.imgName)" alt="img">
                                 <FilmHoverInfo  @toggleFavourite="$emit('toggleFavourite', slide.id)" 
                                                 :isVisible="hoverSlideId === slide.id" 

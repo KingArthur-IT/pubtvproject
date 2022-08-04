@@ -2,6 +2,7 @@
     <div class="settings">
         <h2 class="section-title settings__title">Учётная Запись</h2>
         <CustomButton @click="changePasswordModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить пароль</span></CustomButton>
+        <CustomButton @click="changeEmailModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Изменить email</span></CustomButton>
         <CustomButton @click="changeGenderModal" class="gender__btn" :paddingY="12"><span class="settings__btn-text">Изменить пол</span></CustomButton>
         <h2 class="section-title settings__title">Админ Панель</h2>
         <CustomButton @click="addMovieModal" class="settings__btn" :paddingY="12"><span class="settings__btn-text">Добавить кино</span></CustomButton>
@@ -14,6 +15,7 @@
             >
             <RestorePasswordSetNew v-if="modalTitle === 'Изменение Пароля'" @nextRestore="changePassword"/>
             <ChangeGender v-if="modalTitle === 'Изменить Пол'" @changeGender="changeGender"/>
+            <ChangeEmail v-if="modalTitle === 'Изменить Email'" @changeEmail="changeEmail"/>
             <addMovie v-if="modalTitle === 'Добавить Кино'" @addEvent="addMovie" />
         </ModalWrapper>
     </div>
@@ -24,11 +26,12 @@ import CustomButton from '@/components/UIKit/CustomButton.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue';
 import ChangeGender from '@/components/Modals/ChangeGender.vue';
+import ChangeEmail from '@/components/Modals/ChangeEmail.vue';
 import addMovie from '@/components/Modals/addMovie.vue';
 
 export default {
     components:{
-        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie, ChangeGender
+        CustomButton, ModalWrapper, RestorePasswordSetNew, addMovie, ChangeGender, ChangeEmail
     },
     data(){
         return{
@@ -69,6 +72,17 @@ export default {
             this.isModalShown = true;
         },
         changeGender(){
+            this.progressStep = 2;
+            setTimeout(() => {
+                this.isModalShown = false;
+            }, 200);
+        },
+        changeEmailModal(){
+            this.modalTitle = 'Изменить Email';
+            this.progressStep = 1;
+            this.isModalShown = true;
+        },
+        changeEmail(){
             this.progressStep = 2;
             setTimeout(() => {
                 this.isModalShown = false;

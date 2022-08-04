@@ -1,7 +1,7 @@
 <template>
   <div v-if="favouritesMountedList && favouritesMountedList.length" class="favourites">
-    <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @click="goToDetailPage(item.id)">
-        <div class="favourites__img" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
+    <div v-for="item in favouritesMountedList" :key="item.id" class="favourites__item" @click="goToDetailPage(item.id)" @mouseenter="hoverId = item.id" @mouseleave="hoverId = -1">
+        <div class="favourites__img">
             <img :src="getImageUrl(item.imgName)" alt="img">
             <FilmHoverInfo  @toggleFavourite="item.isFavourite = !item.isFavourite" 
                             :isVisible="hoverId === item.id" 
@@ -91,7 +91,7 @@ export default {
 .favourites__img img{
     width: 100%;
 }
-.favourites__img:hover{
+.favourites__item:hover .favourites__img{
     transform: scale(1.04);
 }
 .favourites__hover-info{
@@ -131,11 +131,6 @@ export default {
     }
 }
 
-/* @media screen and (max-width: 600px) {
-    .favourites__item{
-        flex-basis: 50%;
-    }
-} */
 @media screen and (max-width: 425px) {
     .favourites__film-name{
         font-size: 11px;

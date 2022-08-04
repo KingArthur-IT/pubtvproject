@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
       <div class="container">
-            Авторизуясь, ты соглашаешься с условиями <br>
+            Регистрируясь, ты соглашаешься с условиями <br>
             <a href="#" class="link footer__link">Пользовательского соглашения</a> и <a href="#" class="link footer__link">Политики конфиденциальности</a>
       </div>
   </footer>

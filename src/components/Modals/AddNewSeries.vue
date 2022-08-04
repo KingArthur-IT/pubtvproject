@@ -1,8 +1,6 @@
 <template>
     <div class="modal">
         <input type="text" class="input modal__input" placeholder="Название">
-        <InputDropdown class="modal__input" :list="englishLevelList" :placeholder="'Уровень Английского'" />
-        <InputDropdown class="modal__input" :list="serialslList" :placeholder="'Сериал'" />
         <InputWithButton class="modal__input" :placeholder="'Постер'" >
             <div class="modal__input-btn-wrap">
                 <span class="modal__btn-text">Постер</span>
@@ -35,13 +33,12 @@
 
 <script>
 import CustomButton from '@/components/UIKit/CustomButton.vue';
-import InputDropdown from '@/components/UIKit/InputDropdown.vue';
 import InputWithButton from '@/components/UIKit/InputWithButton.vue';
 import LoadIcon from '@/components/Icons/LoadIcon.vue';
 
 export default {
     components:{
-        CustomButton, InputDropdown, InputWithButton, LoadIcon
+        CustomButton, InputWithButton, LoadIcon
     },
     data(){
         return{

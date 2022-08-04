@@ -36,8 +36,6 @@
         </form>
     </div>
   </div>
-  <FooterLogin />
-  
 
   <ModalWrapper 
         :title="'Восстановление Пароля'" 
@@ -53,7 +51,6 @@
 </template>
 
 <script>
-import FooterLogin from '@/components/FooterLogin.vue';
 import CustomButton from '@/components/UIKit/CustomButton.vue';
 import CustomCheckbox from '@/components/UIKit/CustomCheckbox.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
@@ -63,7 +60,6 @@ import RestorePasswordSetNew from '@/components/Modals/RestorePasswordSetNew.vue
 
 export default {
     components:{
-        FooterLogin,
         CustomButton,
         ModalWrapper,
         RestorePassword,
@@ -124,7 +120,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0;
+    /* margin: 50px 0; */
+    margin: 70px 0 30px;
 }
 .login__hero{
 
