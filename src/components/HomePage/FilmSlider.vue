@@ -219,6 +219,7 @@ export default {
     width: 80px;
     height: 100%;
     pointer-events: none;
+    user-select: none;
 }
 .filter__blur-left{
     position: absolute;
@@ -231,9 +232,20 @@ export default {
     opacity: 0;
     transition: opacity .2s ease-in-out;
     pointer-events: none;
+    user-select: none;
 }
 .visible{
     opacity: 1;
+}
+
+.filter__item .filter__img{
+  transform: scale(0.97) translateX(-4px);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.filter__item:hover .filter__img{
+  transform: scale(1.0) translateX(-4px);
 }
 
 @media screen and (max-width: 1275px) {
@@ -272,6 +284,9 @@ export default {
     }
     .filter__film-info{
         display: none;
+    }
+    .filter__item:hover .filter__img{
+        transform: scale(0.97) translateX(-4px);
     }
 }
 @media screen and (max-width: 600px) {
@@ -328,16 +343,6 @@ export default {
     .filter__title{
         margin-bottom: 12px;
     }
-}
-
-.filter__item .filter__img{
-  transform: scale(0.97) translateX(-4px);
-  transform-origin: 50% 100%;
-  transition: transform 0.2s ease-in-out;
-}
-
-.filter__item:hover .filter__img{
-  transform: scale(1.0) translateX(-4px);
 }
 
 </style>

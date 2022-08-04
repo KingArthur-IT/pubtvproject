@@ -136,10 +136,10 @@ export default {
       isModalShown: false,
       seasonsHeadBreakpoints: {
                 320:{
-                    itemsToShow: 2.5,
+                    itemsToShow: 2.9,
                 },
                 375:{
-                    itemsToShow: 3.3,
+                    itemsToShow: 3.6,
                 },
                 500:{
                     itemsToShow: 1.8,
@@ -380,6 +380,7 @@ export default {
     width: 80px;
     height: 100%;
     pointer-events: none;
+    user-select: none;
 }
 #player{
     --plyr-color-main: #7E4EFA
@@ -476,6 +477,18 @@ export default {
     .seasons-hero{
         margin-bottom: 40px;
     }
+    .seasons-hero__item:hover .seasons-hero__img{
+        transform: scale(0.97);
+    }
+    .seasons__item{
+        font-size: 18px;
+    }
+    .seasons-hero__text{
+        font-size: 14px;
+    }
+    .seasons__item:after{
+        width: 69px;
+    }
 }
 @media screen and (max-width: 680px){
     .seasons__list{
@@ -528,6 +541,15 @@ export default {
     }
     .seasons-hero{
         margin-bottom: 31px;
+    }
+    .seasons__item{
+        font-size: 15px;
+    }
+    .seasons-hero__text{
+        font-size: 12px;
+    }
+    .seasons__item:after{
+        width: 56px;
     }
 }
 </style>

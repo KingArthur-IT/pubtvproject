@@ -129,6 +129,9 @@ export default {
     .favourites__hover-info{
         display: none;
     }
+    .favourites__item:hover .favourites__img{
+        transform: scale(1.0);
+    }
 }
 
 @media screen and (max-width: 425px) {
