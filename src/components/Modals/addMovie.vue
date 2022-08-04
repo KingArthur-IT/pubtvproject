@@ -22,7 +22,7 @@
                 <LoadIcon />
             </div>
         </InputWithButton>
-        <InputWithButton class="modal__input" :placeholder="'Слово'" >
+        <InputWithButton class="modal__input" :placeholder="'Слово'" :isWordAdding="true" >
             <div class="modal__input-btn-wrap">
                 <span class="modal__btn-text">Добавить слово</span>
             </div>
