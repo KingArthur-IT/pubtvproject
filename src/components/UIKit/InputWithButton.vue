@@ -15,7 +15,7 @@
             </div>
             <div v-if="wordsList && wordsList.length" class="words-wrapper">
                 <div v-for="(word,i) in wordsList" :key="i" class="word">
-                    <p class="text file-name">{{word}} <span @click="deleteWord(i)" class="delete">X</span>  </p>
+                    <p class="text file-name">{{word.original}}, {{word.translation}} <span @click="deleteWord(i)" class="delete">X</span>  </p>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ export default {
         },
         addFlashCard(word){
             this.progressStep = 2;
-            this.wordsList.push(word.original)
+            this.wordsList.push(word)
             setTimeout(() => {
                 this.isModalShown = false;
             }, 200);

@@ -52,23 +52,23 @@ export default {
 }
 @media screen and (max-width: 600px){
     .icon{
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
     .icon svg{
-        width: 20px;
-        height: 18px;
+        width: 22px;
+        height: 20px;
     }
 }
 
 @media screen and (max-width: 425px){
     .icon{
-        width: 29px;
-        height: 29px;
+        width: 35px;
+        height: 35px;
     }
     .icon svg{
-        width: 13px;
-        height: 11px;
+        width: 17px;
+        height: 15px;
     }
 }
 </style>
