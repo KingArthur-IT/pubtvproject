@@ -112,6 +112,13 @@ a{
     color: var(--primary-hover-color);
 }
 
+.textarea {
+    resize: none;
+    outline: none;
+    padding: 16px 36px;
+    border-radius: 15px;
+  }
+
 
 @media screen and (max-width: 1024px) {
     .title{
@@ -171,6 +178,10 @@ a{
     }
     .text{
         font-size: 14px;
+    }
+    .textarea {
+        padding: 16px 23px !important; 
+        border-radius: 6px;
     }
 }
 

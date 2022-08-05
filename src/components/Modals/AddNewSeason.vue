@@ -2,7 +2,7 @@
     <div class="modal">
         <input type="text" class="input modal__input" placeholder="Введите название сезона">
         <CustomButton @click="restoreEvent" class="modal__btn" :paddingY="12">
-            <span class="modal__btn-text">{{isEdit ? 'Сохранить' : 'Добавить'}}</span>
+            <span class="modal__btn-text">Добавить</span>
         </CustomButton>
     </div>
 </template>
@@ -13,12 +13,6 @@ import CustomButton from '@/components/UIKit/CustomButton.vue';
 export default {
     components:{
         CustomButton
-    },
-    props:{
-        isEdit:{
-            type: Boolean,
-            default: false
-        }
     },
     methods:{
         restoreEvent(){

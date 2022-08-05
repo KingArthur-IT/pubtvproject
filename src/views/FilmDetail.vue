@@ -72,15 +72,16 @@
     </div>
     <FlashCards />
     <ModalWrapper 
-            :title="!isSeasonModal ? 'Добавить Серию' : isEditSeason ? 'Редактировать сезон' : 'Добавить сезон'" 
+            :title="title" 
             :lineWidth="progressStep * 50"
             :isShown="isModalShown" 
             @closeModal="closeModal"
             :isLongModal="true"
-            :marginHeroMobileTop="isSeasonModal ? 80 : 0"
+            :marginHeroMobileTop="title === 'Добавить Сезон' ? 80 : 0"
         >
-        <AddNewSeason v-if="isSeasonModal" :isEdit="isEditSeason" @addEvent="finishAddNewSeason"/>
-        <AddNewSeries v-else @addEvent="finishAddNewSeries" />
+        <AddNewSeason v-if="title === 'Добавить Сезон'" @addEvent="finishAddNewSeason"/>
+        <EditSeason v-if="title === 'Редактировать Сериал'"  @addEvent="finishAddNewSeason"/>
+        <AddNewSeries v-if="title === 'Добавить Серию'" @addEvent="finishAddNewSeries" />
     </ModalWrapper>
 </main>
 <FooterDefault />
@@ -102,6 +103,7 @@ import Bradcrumbs from '@/components/UIKit/Bradcrumbs.vue';
 import ModalWrapper from '@/components/Modals/ModalWrapper.vue';
 import AddNewSeason from '@/components/Modals/AddNewSeason.vue';
 import AddNewSeries from '@/components/Modals/AddNewSeries.vue';
+import EditSeason from '@/components/Modals/EditSeason.vue';
 
 export default {
   components:{
@@ -117,7 +119,8 @@ export default {
     Bradcrumbs,
     ModalWrapper,
     AddNewSeason,
-    AddNewSeries
+    AddNewSeries,
+    EditSeason
   },
   data(){
     return{
@@ -135,6 +138,7 @@ export default {
       isSeasonModal: true,
       isEditSeason: false,
       progressStep: 1,
+      title: '',
       isModalShown: false,
       seasonsHeadBreakpoints: {
                 320:{
@@ -201,18 +205,21 @@ export default {
         this.seasonsHeadSliderIndex ++;
     },
     openNewSeasonModal(){
+        this.title = 'Добавить Сезон';
         this.progressStep = 1;
         this.isModalShown = true;
         this.isSeasonModal = true;
         this.isEditSeason = false;
     },
     openEditSeasonModal(){
+        this.title = 'Редактировать Сериал';
         this.progressStep = 1;
         this.isModalShown = true;
         this.isSeasonModal = true;
         this.isEditSeason = true;
     },
     openNewSeriesModal(){
+        this.title = 'Добавить Серию';
         this.progressStep = 1;
         this.isModalShown = true;
         this.isSeasonModal = false;
