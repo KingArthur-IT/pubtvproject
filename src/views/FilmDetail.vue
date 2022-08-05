@@ -51,7 +51,7 @@
         <div class="container series-container">
             <div class="seasons-hero">
                 <img :class="{'visible': isLeftArrowShow}" src="@/assets/blur-left-detail.png" class="filter__blur-left">
-                <div :class="{'visible': isLeftArrowShow}" class="filter__arrow arrow-left" @click="prevClick">
+                <div :class="{'visible': isLeftArrowShow}" class="filter__arrow arrow-left-series" @click="prevClick">
                     <svg width="13" height="23" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.4443 1.93054L1.87489 11.5L11.4443 21.0694" stroke="white" stroke-opacity="0.58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -71,7 +71,7 @@
                     </Slide>
                 </Carousel>
                 <img v-if="seriesList && seriesList.length" src="@/assets/blur-right-detail.png" class="filter__blur-right">
-                <div v-if="seriesList && seriesList.length" class="filter__arrow arrow-right" @click="nextClick">
+                <div v-if="seriesList && seriesList.length" class="filter__arrow arrow-right-series" @click="nextClick">
                     <svg width="13" height="23" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.55566 1.93054L11.1251 11.5L1.55566 21.0694" stroke="white" stroke-opacity="0.58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -228,9 +228,11 @@ export default {
         }
     },
     nextClick(){
-        this.$refs.serialSlider.next();
-        this.$refs.serialSlider.updateSlideWidth();
-        this.slideIndex ++;
+        if (this.slideIndex < this.seriesList.length - 2){
+            this.$refs.serialSlider.next();
+            this.$refs.serialSlider.updateSlideWidth();
+            this.slideIndex ++;
+        }
     },
     openNewSeasonModal(){
         this.title = 'Добавить Сезон';
@@ -494,20 +496,20 @@ export default {
     stroke: #000;
     opacity: 0.5;
 }
-.arrow-right{
+.arrow-right-series{
     transform: translate(50%, -80%);
     right: 0;
 }
-.arrow-left{
+.arrow-left-series{
     transform: translate(-50%, -80%);
     left: 10px;
     z-index: 2;
     opacity: 0;
 }
-.arrow-right svg{
+.arrow-right-series svg{
     transform: translate(4px, 0);
 }
-.arrow-left svg{
+.arrow-left-series svg{
     transform: translate(-2px, 0);
 }
 .filter__blur-right{
