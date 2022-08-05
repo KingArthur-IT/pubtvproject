@@ -70,8 +70,8 @@
                         </div>
                     </Slide>
                 </Carousel>
-                <img v-if="seriesList && seriesList.length" src="@/assets/blur-right-detail.png" class="filter__blur-right">
-                <div v-if="seriesList && seriesList.length" class="filter__arrow arrow-right-series" @click="nextClick">
+                <img v-if="seriesList && seriesList.length && isRightArrowShow" src="@/assets/blur-right-detail.png" class="filter__blur-right">
+                <div v-if="seriesList && seriesList.length && isRightArrowShow" class="filter__arrow arrow-right-series" @click="nextClick">
                     <svg width="13" height="23" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.55566 1.93054L11.1251 11.5L1.55566 21.0694" stroke="white" stroke-opacity="0.58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -137,6 +137,7 @@ export default {
   data(){
     return{
       isLeftArrowShow: false,
+      isRightArrowShow: true,
       slideIndex: 1,
       filmListData,
       filmList: [],
@@ -280,6 +281,11 @@ export default {
             if (this.slideIndex > 1)
                 this.isLeftArrowShow = true;
             else this.isLeftArrowShow = false;
+
+            console.log(this.slideIndex, this.seriesList.length)
+            if (this.slideIndex < this.seriesList.length - 2)
+                this.isRightArrowShow = true;
+            else this.isRightArrowShow = false;
         }
     }
 }
@@ -416,7 +422,7 @@ export default {
 }
 .seasons-hero__add-area{
     margin-bottom: 35px;
-    width: 100%;
+    width: 97%;
     margin-left: 9px;
     height: calc(100% - 35px);
     transform: scale(0.97);
@@ -498,7 +504,7 @@ export default {
 }
 .arrow-right-series{
     transform: translate(50%, -80%);
-    right: 0;
+    right: 0px;
 }
 .arrow-left-series{
     transform: translate(-50%, -80%);
@@ -507,7 +513,7 @@ export default {
     opacity: 0;
 }
 .arrow-right-series svg{
-    transform: translate(4px, 0);
+    transform: translate(2px, 0);
 }
 .arrow-left-series svg{
     transform: translate(-2px, 0);
@@ -534,6 +540,11 @@ export default {
     transition: opacity .2s ease-in-out;
     pointer-events: none;
     user-select: none;
+}
+@media screen and (max-width: 1240px){
+    .arrow-right-series{
+        right: 0px;
+    }
 }
 
 @media screen and (max-width: 1240px){
