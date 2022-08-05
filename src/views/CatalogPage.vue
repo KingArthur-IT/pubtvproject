@@ -107,9 +107,9 @@ export default {
   color: #FFFFFF;
   cursor: pointer;
 }
-.catalog__item:hover{
+/* .catalog__item:hover{
     color: var(--primary-hover-color);
-}
+} */
 .active-link:after{
     content: '';
     position: absolute;

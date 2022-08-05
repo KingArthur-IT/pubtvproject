@@ -50,7 +50,13 @@
         </div>
         <div class="container series-container">
             <div class="seasons-hero">
-                <Carousel :items-to-show="3.9" :snapAlign="'start'" :breakpoints='seriesBreakpoints'>
+                <img :class="{'visible': isLeftArrowShow}" src="@/assets/blur-left-detail.png" class="filter__blur-left">
+                <div :class="{'visible': isLeftArrowShow}" class="filter__arrow arrow-left" @click="prevClick">
+                    <svg width="13" height="23" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.4443 1.93054L1.87489 11.5L11.4443 21.0694" stroke="white" stroke-opacity="0.58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <Carousel ref="serialSlider" :items-to-show="3.9" :snapAlign="'start'" :breakpoints='seriesBreakpoints' :mouseDrag="false">
                     <Slide v-for="(slide, i) in seriesList" :key="slide.id">
                         <div class="seasons-hero__item">
                             <div v-if="i < seriesList.length - 1" class="seasons-hero__content">
@@ -64,6 +70,12 @@
                         </div>
                     </Slide>
                 </Carousel>
+                <img v-if="seriesList && seriesList.length" src="@/assets/blur-right-detail.png" class="filter__blur-right">
+                <div v-if="seriesList && seriesList.length" class="filter__arrow arrow-right" @click="nextClick">
+                    <svg width="13" height="23" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.55566 1.93054L11.1251 11.5L1.55566 21.0694" stroke="white" stroke-opacity="0.58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -124,6 +136,8 @@ export default {
   },
   data(){
     return{
+      isLeftArrowShow: false,
+      slideIndex: 1,
       filmListData,
       filmList: [],
       currentSeason: 1,
@@ -131,6 +145,8 @@ export default {
       seriesList: [
           {id: 0, imgName: 1, timeValue: 60},
           {id: 1, imgName: 2, timeValue: 63},
+          {id: 2, imgName: 1, timeValue: 60},
+          {id: 3, imgName: 2, timeValue: 63},
           {}
         ],
       player: null,
@@ -204,6 +220,18 @@ export default {
         this.$refs.seasonsHeadSlider.updateSlideWidth();
         this.seasonsHeadSliderIndex ++;
     },
+    prevClick(){
+        if (this.slideIndex > 1){
+            this.$refs.serialSlider.prev();
+            this.$refs.serialSlider.updateSlideWidth();
+            this.slideIndex --;
+        }
+    },
+    nextClick(){
+        this.$refs.serialSlider.next();
+        this.$refs.serialSlider.updateSlideWidth();
+        this.slideIndex ++;
+    },
     openNewSeasonModal(){
         this.title = 'Добавить Сезон';
         this.progressStep = 1;
@@ -244,7 +272,14 @@ export default {
       filmName(){
           return this.filmList.find(film => film.id == this.$route.params.filmId)?.filmName;
       }
-  }
+  },
+  watch:{
+        slideIndex: function(){
+            if (this.slideIndex > 1)
+                this.isLeftArrowShow = true;
+            else this.isLeftArrowShow = false;
+        }
+    }
 }
 </script>
 
@@ -328,8 +363,10 @@ export default {
     color: #FFFFFF;
 }
 .seasons-hero{
+    position: relative;
     width: 100%;
     margin-bottom: 65px;
+    user-select: none;
 }
 .seasons-hero__item{
     position: relative;
@@ -380,6 +417,7 @@ export default {
     width: 100%;
     margin-left: 9px;
     height: calc(100% - 35px);
+    transform: scale(0.97);
 }
 .blur-right{
     position: absolute;
@@ -431,6 +469,69 @@ export default {
 .seasons__arrow svg{
     width: 6px;
     height: 12px;
+}
+.visible{
+    opacity: 1 !important;
+}
+
+.filter__arrow{
+    cursor: pointer;
+    position: absolute;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    background: #595959;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    transition: background var(--transition-time) ease-in-out, opacity .2s ease-in-out;
+}
+.filter__arrow:hover{
+    background: #fff;
+}
+.filter__arrow:hover path{
+    stroke: #000;
+    opacity: 0.5;
+}
+.arrow-right{
+    transform: translate(50%, -80%);
+    right: 0;
+}
+.arrow-left{
+    transform: translate(-50%, -80%);
+    left: 10px;
+    z-index: 2;
+    opacity: 0;
+}
+.arrow-right svg{
+    transform: translate(4px, 0);
+}
+.arrow-left svg{
+    transform: translate(-2px, 0);
+}
+.filter__blur-right{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+}
+.filter__blur-left{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -5px;
+    width: 100px;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;
+    user-select: none;
 }
 
 @media screen and (max-width: 1240px){
@@ -497,6 +598,13 @@ export default {
     }
     .seasons__item:after{
         width: 69px;
+    }
+    .filter__arrow{
+        display: none;
+    }
+    .filter__blur-right,
+    .filter__blur-left{
+        display: none;
     }
 }
 @media screen and (max-width: 680px){

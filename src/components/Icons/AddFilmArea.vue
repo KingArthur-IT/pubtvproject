@@ -22,4 +22,11 @@ export default {
     background: url('@/assets/add-film-hover.png') no-repeat;
     background-size: 100% 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .area:hover{
+        background: url('@/assets/add-film.png') no-repeat;
+        background-size: 100% 100%;
+    }
+}
 </style>

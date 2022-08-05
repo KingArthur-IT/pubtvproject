@@ -27,4 +27,10 @@ export default {
     .icon:hover path{
         stroke: var(--primary-hover-color);
     }
+
+    @media screen and (max-width: 768px) {
+        .icon:hover path{
+            stroke: #fff;
+        }
+    }
 </style>
