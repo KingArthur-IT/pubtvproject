@@ -1,7 +1,7 @@
 <template>
   <div class="main-carousel" :class="{'onCatalogPage': isOnCatalogPage}">
     <div class="main-carousel__hero">
-        <Carousel :items-to-show="2" :wrap-around="true" ref="mainCarousel" :breakpoints='breakpoints'>
+        <Carousel :items-to-show="2" :wrap-around="true" :snapAlign="'center'" ref="mainCarousel" :breakpoints='breakpoints'>
             <Slide v-for="slide in mainSliderList" :key="slide.id">
                 <div @click="goToDetailPage" class="carousel__item main-carousel__item">
                     <img :src="getImageUrl(slide.imgName)" alt="img" class="carousel__img">
