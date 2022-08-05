@@ -77,6 +77,9 @@ export default {
             isEmailValid: true,
         }
     },
+    mounted(){
+        window.scrollTo(0, 0);
+    },
     methods:{
         loginEvent(){
             if (this.email && this.validateEmail(this.email))

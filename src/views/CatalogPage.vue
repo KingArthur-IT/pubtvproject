@@ -56,6 +56,7 @@ export default {
     }
   }, 
   mounted(){
+    window.scrollTo(0, 0);
     setTimeout(() => {
       this.filmList = this.filmListData;
     }, 3000);

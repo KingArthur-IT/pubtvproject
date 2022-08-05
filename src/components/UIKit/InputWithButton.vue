@@ -106,14 +106,15 @@ export default {
         display: none;
     }
     .input-wrapper{
-        border-radius: 22px;
+        /* border-radius: 22px; */
+        border-radius: 15px;
         overflow: hidden;
         position: relative;
     }
     .modal__input{
         position: relative;
         width: 100%;
-        border-radius: 22px;
+        /* border-radius: 22px; */
     }
     .modal__input-btn{
         content: '';
@@ -155,6 +156,9 @@ export default {
 @media screen and (max-width: 425px) {
     .modal__input-btn{
         width: 100%;
+    }
+    .input-wrapper{
+        border-radius: 6px;
     }
 }
 </style>

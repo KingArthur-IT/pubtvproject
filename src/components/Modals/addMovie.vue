@@ -65,7 +65,7 @@ export default {
 .modal__input{
     width: 100%;
     margin-bottom: 27px;
-    border-radius: 22px;
+    /* border-radius: 22px; */
 }
 .modal__btn{
     width: 100%;
@@ -97,7 +97,7 @@ textarea {
 @media screen and (max-width: 425px) {
     .modal__input{
         margin-bottom: 16px;
-        border-radius: 11px;
+        /* border-radius: 11px; */
     }
     .modal__input-btn-wrap span{
         display: block;

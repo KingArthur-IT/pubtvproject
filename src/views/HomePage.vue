@@ -62,6 +62,7 @@ export default {
       localStorage.setItem('isToAboutSection', 'false');
       this.scrollMeTo('aboutUsSection');
     }
+    else window.scrollTo(0, 0);
 
     setTimeout(() => {
       this.filmList = this.filmListData;

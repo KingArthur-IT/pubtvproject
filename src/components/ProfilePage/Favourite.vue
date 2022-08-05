@@ -62,6 +62,7 @@ export default {
     flex-wrap: wrap;
     padding: 45px 0 50px;
     width: 100%;
+    user-select: none;
 }
 .favourites__item{
     cursor: pointer;
