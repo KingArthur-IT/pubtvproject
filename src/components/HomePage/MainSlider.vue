@@ -67,6 +67,7 @@ export default {
     }, 
     mounted(){
         this.mainSliderList = this.mainSliderData;
+        this.$refs.mainCarousel.restartCarousel();
     },
     methods:{
         getImageUrl(imgName){
