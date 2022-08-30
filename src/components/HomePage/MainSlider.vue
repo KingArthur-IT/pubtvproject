@@ -67,9 +67,16 @@ export default {
     }, 
     mounted(){
         this.mainSliderList = this.mainSliderData;
+        
         setTimeout(() => {
             this.$refs.mainCarousel.restartCarousel();
         }, 100);
+
+        document.onreadystatechange = () => { 
+            if (document.readyState == "complete") { 
+                this.$refs.mainCarousel.restartCarousel();
+            } 
+        }
     },
     methods:{
         getImageUrl(imgName){
